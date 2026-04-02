@@ -17,9 +17,14 @@ class TestLogin:
         driver.get(URLs.HOME)
         wait_for_page_load(driver)
 
-        login_btn = wait_for_element_clickable(driver, HomeElements.MAIN_LOGIN)
+        login_btn = get_element_by_platform(
+                    driver,
+                    HomeElements.MAIN_LOGIN_AOS,
+                    HomeElements.MAIN_LOGIN_IOS
+                )
         tap_element(driver, login_btn)
-        wait_for_url_change(driver,URLs.HOME)
+        wait_seconds(3)
+        wait_for_url_change(driver,URLs.HOME,timeout=30)
 
         assert URLs.LOGIN in driver.current_url, \
         f"로그인 페이지 이동실패. 현재 URL: {driver.current_url}"
@@ -33,12 +38,17 @@ class TestLogin:
         pw_input_box = wait_for_element_clickable(driver, LoginElements.PW_INPUT)
         login_box = wait_for_element_clickable(driver, LoginElements.LOGIN_BTN)
 
+        tap_element(driver, id_input_box)
         clear_and_input(driver, id_input_box, LoginData.valid['id'])
-        clear_and_input(driver, pw_input_box, LoginData.valid['pw'])
-        tap_element(driver, login_box)
 
+        tap_element(driver, pw_input_box)
+        clear_and_input(driver, pw_input_box, LoginData.valid['pw'])
+
+        tap_element(driver, login_box)
+        dismiss_save_password_popup(driver)
         wait_for_url_change(driver, URLs.LOGIN)
 
         assert URLs.LOGIN not in driver.current_url, \
             f"로그인 실패. 현재 URL: {driver.current_url}"
+        
 

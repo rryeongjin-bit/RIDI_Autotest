@@ -6,8 +6,8 @@ class URLs:
     LOGIN = f"{BASE_URL}/account/login"
 
 class HomeElements:
-    MAIN_TITLE  = (By.CSS_SELECTOR, '#__next > div.fig-6bprg0 > header > nav > a')
-    MAIN_LOGIN = (By.CSS_SELECTOR, '#__next > div.fig-6bprg0 > header > nav > div > div:nth-child(3)')
+    MAIN_LOGIN_AOS = (By.CSS_SELECTOR, '#__next > div.fig-6bprg0 > header > nav > div > div:nth-child(3) > a')
+    MAIN_LOGIN_IOS = (By.CLASS_NAME, 'fig-10qv71b')
 
 class LoginElements:
     ID_INPUT  = (By.CSS_SELECTOR, 'input[name="username"]')
@@ -18,5 +18,4 @@ class LoginData:
     valid =  {
         "id": "4qatest",
         "pw": "qwer1234!",
-    },
-    
+    }

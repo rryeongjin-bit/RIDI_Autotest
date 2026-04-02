@@ -4,7 +4,7 @@
 APPIUM_PORTS = {
     "aos_emulator": 4723,
     # "aos_real":     4725,
-    # "ios_simulator": 4727,
+    "ios_simulator": 4727,
     # "ios_real":     4729,
 }
 
@@ -36,40 +36,42 @@ AOS_DEVICE = {
     },
 }
 
-# # iOS 디바이스 정보
-# IOS_DEVICE = {
+# iOS 디바이스 정보
+IOS_DEVICE = {
 #     "real": {
 #         "device_name":      "YOUR_IOS_DEVICE_NAME",
 #         "udid":             "YOUR_IOS_DEVICE_UDID",  # 실기기 필수 (Xcode > Devices 에서 확인)
 #         "platform_version": "17.0",
 #     },
-#     "simulator": {
-#         "device_name":      "iPhone 15",
-#         "udid":             "",  # 1개 실행 시 생략, 여러 대 실행 시 xcrun simctl list 로 확인 후 기재
-#         "platform_version": "17.0",
-#     },
-# }
+    "simulator": {
+        "device_name":      "iPhone 16 Pro",
+        "udid":             "",  # 1개 실행 시 생략, 여러 대 실행 시 xcrun simctl list 로 확인 후 기재
+        "platform_version": "18.6",
+    },
+}
 
 # etc
 CHROMEDRIVER_PATH = "/path/to/chromedriver"  # Samsung Browser용 chromedriver 경로
 
-# 리포트 경로 (기기별 분리 + 타임스탬프) 
+
+# 리포트 경로 (기기별 분리 + 타임스탬프)
 # 타임스탬프는 run_all.py 실행 시점에 생성해서 주입
 # 직접 실행 시(pytest -m ...) 타임스탬프 없이 기기명만으로 저장
 REPORT_DIR = "reports"
 
 REPORT_NAMES = {
     "aos_emulator":  "report_aos_emulator",
-    # "aos_real":      "report_aos_real",
-    # "ios_simulator": "report_ios_simulator",
-    # "ios_real":      "report_ios_real",
+    "aos_real":      "report_aos_real",
+    "ios_simulator": "report_ios_simulator",
+    "ios_real":      "report_ios_real",
 }
 
 def get_report_path(key: str, timestamp: str = "") -> str:
-    """
-    기기별 리포트 경로 반환
-    - run_all.py 실행 시: timestamp 주입 → report_aos_emulator_20240330_143022.html
-    - 직접 실행 시: timestamp 없음 → report_aos_emulator.html
-    """
     suffix = f"_{timestamp}" if timestamp else ""
     return f"{REPORT_DIR}/{REPORT_NAMES[key]}{suffix}.html"
+
+# 스크린샷 경로 
+SCREENSHOT_DIR = "screenshots"
+
+# 로그 경로 
+LOG_DIR = "logs"

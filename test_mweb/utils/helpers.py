@@ -1,7 +1,6 @@
-# utils/helpers.py
-
 import os
 import time
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -123,14 +122,77 @@ def hide_keyboard(driver):
 
 
 # 스크린샷
-def save_screenshot(driver, filename, device_key="unknown"):
+def save_screenshot(driver, filename, device_key="unknown", timestamp=""):
     """
-    스크린샷 저장 (기기별 폴더 분리)
-    저장 경로: screenshots/{device_key}/{filename}
-    예시: screenshots/aos_emulator/test_login__fail.png
+    스크린샷 저장 (기기별 + 타임스탬프 폴더 분리)
+    저장 경로: screenshots/{device_key}/{timestamp}/{filename}
+    예시: screenshots/aos_emulator/20240330_143022/test_login_PASS.png
     """
-    folder = os.path.join("screenshots", device_key)
+    from config.settings import SCREENSHOT_DIR
+    folder = os.path.join(SCREENSHOT_DIR, device_key, timestamp) if timestamp \
+        else os.path.join(SCREENSHOT_DIR, device_key)
     os.makedirs(folder, exist_ok=True)
     path = os.path.join(folder, filename)
     driver.save_screenshot(path)
     return path
+
+# 컨텍스트 전환 
+def switch_to_native(driver):
+    """웹 → 네이티브 컨텍스트로 전환"""
+    driver.switch_to.context("NATIVE_APP")
+
+
+def switch_to_webview(driver):
+    """네이티브 → 웹 컨텍스트로 복귀"""    
+    try:
+        contexts = driver.contexts
+        webview = [c for c in contexts if "WEBVIEW" in c]
+        if webview:
+            driver.switch_to.context(webview[0])
+    except Exception:
+        pass
+
+def close_browser(driver):
+    """
+    브라우저 종료
+    - iOS Safari: 네이티브 컨텍스트로 전환 후 앱 종료
+    - AOS: driver.quit()에서 자동 종료되므로 skip
+    """
+    if is_ios(driver):
+        try:
+            driver.execute_script("mobile: terminateApp", {"bundleId": "com.apple.mobilesafari"})
+        except Exception:
+            pass
+        
+
+# 시스템 팝업 처리
+def dismiss_save_password_popup(driver):
+    """
+    비밀번호 저장 팝업 처리
+    - iOS만 해당 (네이티브 시스템 팝업)
+    - AOS는 해당 팝업 없으므로 skip
+    """
+    if is_android(driver):
+        return
+
+    try:
+        switch_to_native(driver)
+        not_now_btn = WebDriverWait(driver, 3).until(
+            EC.presence_of_element_located(
+                (By.XPATH, "//XCUIElementTypeButton[@name='Not Now']")
+            )
+        )
+        not_now_btn.click()
+    except Exception:
+        pass
+    finally:
+        switch_to_webview(driver)
+
+def get_element_by_platform(driver, locator_aos, locator_ios):
+    """
+    플랫폼에 따라 다른 locator로 element 반환
+    - AOS: locator_aos 사용
+    - iOS: locator_ios 사용
+    """
+    locator = locator_aos if is_android(driver) else locator_ios
+    return wait_for_element_clickable(driver, locator)

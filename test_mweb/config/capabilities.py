@@ -55,17 +55,17 @@ AOS_EMULATOR_CHROME = _build_caps({
 #     "appium:newCommandTimeout":      TIMEOUT["new_command"],
 # }, udid=AOS_DEVICE["real"]["udid"])
 
-# # iOS Simulator 
-# IOS_SIMULATOR_SAFARI = _build_caps({
-#     "appium:serverUrl":          get_appium_url("ios_simulator"),
-#     "platformName":              "iOS",
-#     "appium:automationName":     "XCUITest",
-#     "appium:deviceName":         IOS_DEVICE["simulator"]["device_name"],
-#     "appium:platformVersion":    IOS_DEVICE["simulator"]["platform_version"],
-#     "browserName":               "Safari",
-#     "appium:noReset":            True,
-#     "appium:newCommandTimeout":  TIMEOUT["new_command"],
-# }, udid=IOS_DEVICE["simulator"]["udid"])
+# iOS Simulator 
+IOS_SIMULATOR_SAFARI = _build_caps({
+    "appium:serverUrl":          get_appium_url("ios_simulator"),
+    "platformName":              "iOS",
+    "appium:automationName":     "XCUITest",
+    "appium:deviceName":         IOS_DEVICE["simulator"]["device_name"],
+    "appium:platformVersion":    IOS_DEVICE["simulator"]["platform_version"],
+    "browserName":               "Safari",
+    "appium:noReset":            True,
+    "appium:newCommandTimeout":  TIMEOUT["new_command"],
+}, udid=IOS_DEVICE["simulator"]["udid"])
 
 # IOS_SIMULATOR_CHROME = _build_caps({
 #     "appium:serverUrl":          get_appium_url("ios_simulator"),
@@ -111,8 +111,8 @@ CAPS_MAP = {
     ("aos",  "emulator",  "chrome"):  AOS_EMULATOR_CHROME,
     # ("aos",  "real",      "chrome"):  AOS_REAL_CHROME,
     # ("aos",  "real",      "samsung"): AOS_REAL_SAMSUNG,
-    # ("ios",  "simulator", "safari"):  IOS_SIMULATOR_SAFARI,
-    # ("ios",  "simulator", "chrome"):  IOS_SIMULATOR_CHROME,
+    ("ios",  "simulator", "safari"):  IOS_SIMULATOR_SAFARI,
+    #("ios",  "simulator", "chrome"):  IOS_SIMULATOR_CHROME,
     # ("ios",  "real",      "safari"):  IOS_REAL_SAFARI,
     # ("ios",  "real",      "chrome"):  IOS_REAL_CHROME,
 }

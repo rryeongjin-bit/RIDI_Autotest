@@ -1,10 +1,3 @@
-
-# 사용법:
-#   전체 기기 병렬 실행        : python run_all.py
-#   특정 기기만 선택 실행      : python run_all.py --targets aos_emulator ios_simulator
-#   특정 마커 케이스만 실행    : python run_all.py --marker smoke
-#   기기 + 마커 조합 실행      : python run_all.py --targets aos_emulator --marker smoke
-
 import subprocess
 import concurrent.futures
 import argparse
@@ -15,10 +8,10 @@ from config.settings import *
 
 # 기기별 실행 마커 정의
 DEVICE_MARKERS = {
-    "aos_emulator":  "aos and emulator",
-    "aos_real":      "aos and real",
-    "ios_simulator": "ios and simulator",
-    "ios_real":      "ios and real",
+    "aos_emulator":  "aos and emulator and chrome",
+    "aos_real":      "aos and real and samsung",
+    "ios_simulator": "ios and simulator and safari",
+    "ios_real":      "ios and real and safari",
 }
 
 # Appium 서버 health check
@@ -58,7 +51,6 @@ def validate_appium_servers(targets: list) -> list:
     print(f"{'=' * 60}")
     return valid_targets
 
-
 # pytest 실행
 def run_pytest(target: str, marker_expr: str, report_path: str) -> dict:
     """기기 하나에 대한 pytest 실행 후 결과 반환"""
@@ -71,6 +63,7 @@ def run_pytest(target: str, marker_expr: str, report_path: str) -> dict:
         f"-m={marker_expr}",
         f"--html={report_path}",
         "--self-contained-html",
+        f"--device-key={target}",  # 기기 키 전달
     ]
 
     result = subprocess.run(cmd, text=True, capture_output=True)
