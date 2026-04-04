@@ -26,6 +26,15 @@ pytest -s -m "ios and simulator and safari" tests/test_basic.py &
 python run_all.py --targets aos_emulator ios_simulator 
 알아서 구별해서 각각 실행됨
 
+# test_login 함수만 실행
+python run_all.py --targets aos_emulator ios_simulator --keyword test_login
+
+# test_cart 함수만 실행
+python run_all.py --targets aos_emulator ios_simulator --keyword test_cart
+
+# smoke 마커 + test_login 함수만 실행
+python run_all.py --targets aos_emulator ios_simulator --marker smoke --keyword test_login
+
 ===
 -m  →  마커로 기기/환경/브라우저 필터링
 -k  →  함수명으로 특정 케이스 단독 실행

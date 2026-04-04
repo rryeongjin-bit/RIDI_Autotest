@@ -30,13 +30,29 @@ def get_platform(driver):
     """현재 driver의 플랫폼 반환 (android | ios)"""
     return driver.capabilities.get("platformName", "").lower()
 
-
 def is_android(driver):
     return get_platform(driver) == "android"
 
-
 def is_ios(driver):
     return get_platform(driver) == "ios"
+
+
+#브러우저 판별
+def get_browser(driver):
+    """현재 실행 중인 브라우저 반환 (chrome | safari | samsung internet)"""
+    return driver.capabilities.get("browserName", "").lower()
+
+
+def is_chrome(driver):
+    return "chrome" in get_browser(driver)
+
+
+def is_safari(driver):
+    return "safari" in get_browser(driver)
+
+
+def is_samsung(driver):
+    return "samsung" in get_browser(driver)
 
 
 # 대기
@@ -60,6 +76,11 @@ def wait_for_element_clickable(driver, locator, timeout=20):
         EC.element_to_be_clickable(locator)
     )
 
+def wait_for_url_not_contains(driver, url_part, timeout=30):
+    """특정 문자열이 URL에서 사라질 때까지 대기"""
+    WebDriverWait(driver, timeout).until(
+        lambda d: url_part not in d.current_url
+    )
 
 def wait_seconds(seconds=1):
     """명시적 대기 (꼭 필요한 경우에만 사용)"""
@@ -90,17 +111,13 @@ def scroll_to_center_element(driver, element):
 def tap_element(driver, element):
     """
     element 탭/클릭
-    - iOS Safari: 일반 click()이 간헐적으로 무시되는 경우가 있어 JS click으로 fallback
-    - AOS: 일반 click() 사용
+    - iOS Safari: click() 실패 시 JS click fallback
+    - AOS: click() 시도 → 실패 시 JS click fallback
     """
-    if is_ios(driver):
-        try:
-            element.click()
-        except Exception:
-            driver.execute_script("arguments[0].click();", element)
-    else:
+    try:
         element.click()
-
+    except Exception:
+        driver.execute_script("arguments[0].click();", element)
 
 # 입력
 def clear_and_input(driver, element, text):

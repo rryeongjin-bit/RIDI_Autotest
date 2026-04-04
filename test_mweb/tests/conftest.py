@@ -8,6 +8,7 @@ from selenium.webdriver.common.options import ArgOptions
 from config.capabilities import  *
 from config.settings import *
 from utils.helpers import *
+from tests.elements import *
 
 
 # CLI 옵션 등록
@@ -190,3 +191,46 @@ def driver(request, session_timestamp):
 
     close_browser(_driver)
     _driver.quit()
+
+
+# 로그인 fixture 
+@pytest.fixture(scope="module")
+def logged_in(driver):
+    """
+    로그인 상태 fixture
+    - scope="module"로 모듈 내 모든 테스트에서 로그인 상태 공유
+    - driver fixture에 의존
+    """
+    from tests.elements import LoginPage, LoginData, URLs
+    from utils.helpers import (
+        wait_for_page_load, wait_for_element_clickable,
+        tap_element, clear_and_input, dismiss_save_password_popup,
+        wait_for_url_not_contains, is_android
+    )
+
+    login_data = LoginData.valid_aos if is_android(driver) else LoginData.valid_ios
+
+    driver.get(URLs.LOGIN)
+    wait_for_page_load(driver)
+
+    id_input  = wait_for_element_clickable(driver, LoginPage.ID_INPUT)
+    pw_input  = wait_for_element_clickable(driver, LoginPage.PW_INPUT)
+    login_btn = wait_for_element_clickable(driver, LoginPage.LOGIN_BTN)
+
+    tap_element(driver, id_input)
+    clear_and_input(driver, id_input, login_data['id'])
+
+    tap_element(driver, pw_input)
+    clear_and_input(driver, pw_input, login_data['pw'])
+
+    tap_element(driver, login_btn)
+    dismiss_save_password_popup(driver)
+
+    # 콜백 URL까지 완전히 벗어날 때까지 대기 (iOS 콜백 처리 고려)
+    wait_for_url_not_contains(driver, "account/login")
+    wait_for_page_load(driver)
+
+    assert "account/login" not in driver.current_url, \
+        f"로그인 실패. 현재 URL: {driver.current_url}"
+
+    yield driver  # 로그인된 driver 반환
