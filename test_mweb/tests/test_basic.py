@@ -98,19 +98,23 @@ class TestCart:
         checkbox_first = wait_for_element(driver, ContentHome.FIRST_EPISODE_CHECKBOX)
         tap_element(driver, checkbox_first)
 
-        # btn_cart = wait_for_element_clickable(driver, ContentHome.CART_BTN)
-        # tap_element(driver, btn_cart)
-        # wait_for_page_load(driver, URLs.CART)
+        btn_cart = wait_for_element_clickable(driver, ContentHome.CART_BTN)
+        tap_element(driver, btn_cart)
 
-        # assert URLs.CART in driver.current_url, \
-        #     f"❌ 카드담기 실패"
+        try:
+            toast_msg = wait_for_element_visible(driver, ContentHome.TOAST_MSG_CART, timeout=5)
+            assert toast_msg.is_displayed(), "❌ 카트담기 실패"
+        except TimeoutException:
+            assert False, "❌ 카트담기 토스트 메시지 미노출"
         
-# class TestCartPyament:
-    # @pytest.mark.order(5)
-    # def test_cart_payment(self, logged_in):
-    #     driver = logged_in
+class TestCartPyament:
+    @pytest.mark.order(5)
+    def test_cart_payment(self, logged_in):
+        driver = logged_in
         
-    #     driver.get(URLs.CART)
-    #     wait_for_page_load(driver)
+        driver.get(URLs.CART)
+        wait_for_page_load(driver)
+
+        
 
 

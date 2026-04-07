@@ -25,6 +25,7 @@ class URLs:
 
     CONTENT_HOME = f"https://ridibooks.com/books/4395000113" # 만화e북 > 마왕성 요리사
     CART = f"https://ridibooks.com/cart/"
+    CHECKPOUT = f"https://ridibooks.com/order/checkout"
 
 class GenreHome:
     MAIN_LOGIN_AOS = (By.CSS_SELECTOR, '#__next > div.fig-6bprg0 > header > nav > div > div:nth-child(3) > a')
@@ -53,8 +54,10 @@ class ContentHome:
 
     SELECT_ALL = (By.XPATH, "//*[contains(text(), '전체 선택')]")
     FIRST_EPISODE_CHECKBOX = (By.XPATH, "//input[@id='book4395000113']")
-    CART_BTN = (By.CSS_SELECTOR, "#page_detail > div.footer_fixed_btn > div > div > ul > li:nth-child(2) > button")
-    
+
+    CART_BTN = (By.CSS_SELECTOR, "button.btn_cart.js_add_cart_selected")
+    TOAST_MSG_CART = (By.CSS_SELECTOR, "div.vex.RSGToast.vex-closing > div.vex-content.success > form > div.vex-dialog-message")
+
 class PaymentPopup:
     FREE_VIEW_HEADER = (By.XPATH, "//*[contains(@class, 'header_title') and contains(text(), '무료로 보기')]")
     PAYMENT_METHOD_BTN = (By.CSS_SELECTOR, "#js_serial_free_rent_coupon_popup > div.popup_body.serial_checkout_wrapper > div.checkout_buttons > button.text_button.js_show_another_payment")
@@ -71,5 +74,10 @@ class Viewer:
     NEXT_BTN  = (By.XPATH, "//button[.//span[contains(text(), '다음')]]")
     PREV_BTN  = (By.XPATH, "//button[.//span[contains(text(), '이전')]]")
 
+class CartPage:
+    SELECT_ALL_CHECKBOX = (By.XPATH, "//*[contains(text(), '카트에 있는 작품 전체 선택')]")
+    BUY_BTN = (By.CSS_SELECTOR, "#form > article.cart_summary_wrapper.js_cart_summary > div > div.buy_button_wrapper > button")
 
-#book3802000473
+class CheckoutPage:
+    toggle_payment = (By.CSS_SELECTOR, "#ISLANDS__Ridipay > div > div > section:nth-child(2) > div > label > span.ridipay-wzoz6w")
+    PAYMENT_BTN = (By.CSS_SELECTOR, "#ISLANDS__Ridipay > div > div > section:nth-child(2) > form > button")
