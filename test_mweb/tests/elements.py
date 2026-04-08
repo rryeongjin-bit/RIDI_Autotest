@@ -75,6 +75,10 @@ class Viewer:
     PREV_BTN  = (By.XPATH, "//button[.//span[contains(text(), '이전')]]")
 
 class CartPage:
+    # 소장 탭 (selected 클래스 포함 여부로 활성화 상태 확인)
+    BUY_TAB          = (By.CSS_SELECTOR, "li.cart_tab.js_buy_tab")
+    BUY_TAB_SELECTED = (By.CSS_SELECTOR, "li.cart_tab.js_buy_tab.selected")
+
     SELECT_ALL_CHECKBOX = (By.XPATH, "//*[contains(text(), '카트에 있는 작품 전체 선택')]")
     BUY_BTN = (By.CSS_SELECTOR, "#form > article.cart_summary_wrapper.js_cart_summary > div > div.buy_button_wrapper > button")
 

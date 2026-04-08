@@ -22,6 +22,7 @@ class TestLogin:
             f"❌ 로그인 실패. 현재 URL: {logged_in.current_url}"
         
 class TestContenthomeAll:
+    """ 회차목록 > 4화 대여결제 및 뷰어진입 """
     @pytest.mark.order(2)
     def test_contenthome_all(self, logged_in): 
         driver = logged_in
@@ -53,6 +54,7 @@ class TestContenthomeAll:
             f"❌ 뷰어 진입 실패"
 
 class TestViewerAll:
+    """ 뷰어진입 및 다음화 결제 """
     @pytest.mark.order(3)
     def test_viewer_all(self, logged_in): 
         driver = logged_in
@@ -84,6 +86,7 @@ class TestViewerAll:
             f"❌ 다음화 뷰어 진입 실패"
 
 class TestCart:
+    """ 회차목록 > 카트담기 """
     @pytest.mark.order(4)
     def test_cart(self, logged_in):
         driver = logged_in
@@ -109,11 +112,26 @@ class TestCart:
         
 class TestCartPyament:
     @pytest.mark.order(5)
-    def test_cart_payment(self, logged_in):
+    def test_cartpage(self, logged_in):
         driver = logged_in
         
         driver.get(URLs.CART)
         wait_for_page_load(driver)
+
+        # 소장 탭 활성화 여부 확인 후 분기 처리
+        buy_tab = wait_for_element(driver, CartPage.BUY_TAB)
+
+        if "selected" in buy_tab.get_attribute("class"):
+            print("소장가능 탭 활성화 상태")
+        else:
+            # 활성화 안 된 경우 탭 클릭
+            tap_element(driver, buy_tab)
+            wait_for_element_visible(driver, CartPage.BUY_TAB_SELECTED)
+            print("소장가능 탭 활성화 완료")
+
+        # 최종 활성화 상태 assert
+        assert "selected" in buy_tab.get_attribute("class"), \
+            "소장가능 탭이 활성화되지 않았습니다."
 
         
 
