@@ -42,7 +42,7 @@ order →  전체 실행 시 순서 보장
 
 
 ==
-# start_appium.sh 파일 사용법
+# start_appium.sh 파일 사용법 >> vs code 터미널에서 바로 실행
 #!/bin/bash
 # start_appium.sh
 # Appium 서버 자동 실행 + 프록시 설정 자동화

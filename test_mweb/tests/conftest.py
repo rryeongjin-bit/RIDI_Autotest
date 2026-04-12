@@ -201,13 +201,6 @@ def logged_in(driver):
     - scope="module"로 모듈 내 모든 테스트에서 로그인 상태 공유
     - driver fixture에 의존
     """
-    from tests.elements import LoginPage, LoginData, URLs
-    from utils.helpers import (
-        wait_for_page_load, wait_for_element_clickable,
-        tap_element, clear_and_input, dismiss_save_password_popup,
-        wait_for_url_not_contains, is_android
-    )
-
     login_data = LoginData.valid_aos if is_android(driver) else LoginData.valid_ios
 
     driver.get(URLs.LOGIN)

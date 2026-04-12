@@ -163,22 +163,6 @@ def save_screenshot(driver, filename, device_key="unknown", timestamp=""):
     driver.save_screenshot(path)
     return path
 
-# 컨텍스트 전환 
-def switch_to_native(driver):
-    """웹 → 네이티브 컨텍스트로 전환"""
-    driver.switch_to.context("NATIVE_APP")
-
-
-def switch_to_webview(driver):
-    """네이티브 → 웹 컨텍스트로 복귀"""    
-    try:
-        contexts = driver.contexts
-        webview = [c for c in contexts if "WEBVIEW" in c]
-        if webview:
-            driver.switch_to.context(webview[0])
-    except Exception:
-        pass
-
 # 시스템 팝업 처리
 def dismiss_save_password_popup(driver):
     """
