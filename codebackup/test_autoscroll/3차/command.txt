@@ -1,0 +1,4 @@
+# appium 서버 실행방식
+appium --allow-insecure adb_shell
+
+로컬터미널에서 실행
