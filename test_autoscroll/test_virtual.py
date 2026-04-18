@@ -23,8 +23,8 @@ def get_ios_caps():
     options = XCUITestOptions()
     options.load_capabilities({
         "platformName":   "iOS",
-        "deviceName":     "iPhone 15 Pro",
-        "udid":           "your-simulator-uuid",  # xcrun simctl list | grep Booted
+        "deviceName":     "iPhone 16 Pro",
+        "udid":           "D5CA49C2-5AC0-498F-9384-83E2533E5F9B",  # xcrun simctl list | grep Booted
         "bundleId":       "com.initialcoms.ridi.staging",
         "noReset":        True,
         "automationName": "XCUITest",
