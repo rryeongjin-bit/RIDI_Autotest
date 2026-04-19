@@ -1,0 +1,25 @@
+# 전체 일괄실행 (활성 기기 자동 감지)
+python run_all.py
+
+# 플랫폼 지정 실행
+python run_all.py --platform aos
+python run_all.py --platform ios
+
+# 특정 모듈 실행
+python run_all.py --module tests/test_basic.py
+
+# 키워드로 특정 함수 실행
+python run_all.py --keyword test_login_success
+
+# 마커 실행
+python run_all.py --marker smoke
+python run_all.py --marker regression
+
+# 병렬 실행
+python run_all.py --parallel
+
+# 조합 실행
+python run_all.py --platform aos --module tests/test_basic.py --marker smoke
+
+# pytest 직접 실행 (단독)
+pytest tests/test_basic.py -s --platform=aos --port=4723 --udid=YOUR_UDID

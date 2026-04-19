@@ -2,15 +2,22 @@ import sys
 import socket
 import subprocess
 from datetime import datetime
-from config.capabilities import *
-from utils.helpers import *
 
+from config.capabilities import DEVICE_CONFIG
+from utils.helpers import get_report_path, init_output_dirs
+
+
+# -------------------------------------------------------
 # Appium 서버 활성화 여부 체크
+# -------------------------------------------------------
 def check_appium_server(port: int) -> bool:
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         return s.connect_ex(("localhost", port)) == 0
 
+
+# -------------------------------------------------------
 # 활성화된 기기 필터링
+# -------------------------------------------------------
 def get_active_devices(platform: str = None) -> list:
     active  = []
     targets = DEVICE_CONFIG if platform is None else {platform: DEVICE_CONFIG.get(platform, [])}
@@ -29,7 +36,10 @@ def get_active_devices(platform: str = None) -> list:
 
     return active
 
+
+# -------------------------------------------------------
 # pytest 커맨드 생성
+# -------------------------------------------------------
 def build_pytest_command(
     device:  dict,
     module:  str  = None,
@@ -59,7 +69,10 @@ def build_pytest_command(
 
     return cmd
 
+
+# -------------------------------------------------------
 # 테스트 실행
+# -------------------------------------------------------
 def run(
     platform: str  = None,
     module:   str  = None,
@@ -91,7 +104,9 @@ def run(
         proc.wait()
 
 
+# -------------------------------------------------------
 # 진입점
+# -------------------------------------------------------
 if __name__ == "__main__":
     import argparse
 
