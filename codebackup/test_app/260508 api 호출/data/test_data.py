@@ -10,6 +10,15 @@ class TestAccount:
         "pw": IOS_TEST_PW,
     }
 
+class APIs:
+    WEBTOON_MAIN_VIEW = {
+        "url":    "https://api.ridibooks.com/v2/views/1",
+        "params": {
+            "aos": {"platform": "android"},
+            "ios": {"platform": "ios"},
+        }
+    }
+
 class DeepLinks:
     HOME             = "ridi://GenreHome/%EC%9B%B9%ED%88%B0/%EC%9B%B9%ED%88%B0/%EC%B6%94%EC%B2%9C"  #웹툰 추천탭
     SEARCH           = "ridi://search"

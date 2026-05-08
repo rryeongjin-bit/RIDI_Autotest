@@ -35,3 +35,8 @@ def init_output_dirs(platform: str):
     for d in dirs:
         os.makedirs(d, exist_ok=True)
         log.info(f"[init_output_dirs] 디렉토리 확인: {d}")
+
+def check_api_status(url: str, params: dict = None) -> int:
+    """API 응답 상태코드 반환"""
+    response = requests.get(url, params=params)
+    return response.status_code

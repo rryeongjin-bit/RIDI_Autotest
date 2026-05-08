@@ -17,7 +17,7 @@ DEVICE_CONFIG = {
             "udid":        "YOUR_AOS_UDID_1",
             "device_name": "Galaxy S23",
             "os_version":  "13.0",
-            "type":        "real",          # real | emulator
+            "type":        "real",          
         }
     ],
 
@@ -76,7 +76,7 @@ def _get_aos_capabilities(device: dict) -> UiAutomator2Options:
     options.no_reset         = True
     options.full_reset        = False
 
-    # 에뮬레이터 추가 설정
+
     if device["type"] == "emulator":
         options.is_headless  = False        # 에뮬레이터 UI 표시
 
@@ -91,29 +91,15 @@ def _get_ios_capabilities(device: dict) -> XCUITestOptions:
     options.udid             = device["udid"]
     options.platform_version = device["os_version"]
     options.automation_name  = "XCUITest"
-
-    # 하이브리드 앱 설정
     options.bundle_id        = BUNDLE_ID_IOS
-
-    # 이미 설치된 앱 실행 (재설치 없음)
     options.no_reset         = True
     options.full_reset        = False
 
-    # 시뮬레이터 추가 설정
     if device["type"] == "simulator":
         options.is_simulator = True
 
     return options
 
 
-# -------------------------------------------------------
-# Appium Server URL 생성
-# -------------------------------------------------------
 def get_server_url(port: int) -> str:
-    """
-    포트 번호를 받아 Appium Server URL 반환
-
-    :param port: 기기별 Appium 서버 포트
-    :return:     Appium Server URL 문자열
-    """
     return f"http://localhost:{port}"

@@ -132,16 +132,3 @@ class BasePage:
 
     def get_current_context(self) -> str:
         return self.driver.current_context
-    
-    def open_deeplink(self, url: str):
-        """딥링크 진입"""
-        if self.platform == "aos":
-            self.driver.execute_script("mobile: deepLink", {
-                "url":     url,
-                "package": APP_PACKAGE
-            })
-        else:
-            self.driver.execute_script("mobile: deepLink", {
-                "url": url
-            })
-        logging.info(f"[open_deeplink] 딥링크 진입: {url}")
