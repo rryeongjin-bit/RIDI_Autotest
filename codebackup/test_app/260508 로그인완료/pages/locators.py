@@ -23,14 +23,14 @@ class AOS_LoginLocators:
     LOGIN_BTN    = (By.XPATH, "//android.widget.TextView[@resource-id='button-label']")
     ID_INPUT     = (By.XPATH, "//android.widget.EditText[@resource-id=':Rauqtm:']")
     PW_INPUT     = (By.XPATH, "//android.widget.EditText[@resource-id=':RauqtmH1:']")
-    LOGIN_BUTTON = (By.XPATH, "//android.widget.Button[@text='로그인']")
+    LOGIN_BUTTON = (By.XPATH, "//android.widget.Button[@text='로그인']") 
     LOGOUT_BNT   = (AppiumBy.ANDROID_UIAUTOMATOR, "new UiSelector().text('로그아웃')")
 
 class IOS_LoginLocators:
     LOGIN_BTN    = (By.NAME, "로그인")
     ID_INPUT     = (By.CLASS_NAME, "XCUIElementTypeTextField")
     PW_INPUT     = (By.CLASS_NAME, "XCUIElementTypeSecureTextField")
-    LOGIN_BUTTON = (By.XPATH, "//XCUIElementTypeButton[@name='로그인']")
+    LOGIN_BUTTON = (By.XPATH, "//XCUIElementTypeButton[@name='로그인']") #로그인인앱웹뷰에 name = 로그인 2개있어서 xpath로 변경필요
     LOGOUT_BTN   = (AppiumBy.ACCESSIBILITY_ID, "로그아웃")
 
 class GenrehomeLocators:

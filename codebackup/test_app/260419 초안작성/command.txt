@@ -23,3 +23,35 @@ python run_all.py --platform aos --module tests/test_basic.py --marker smoke
 
 # pytest 직접 실행 (단독)
 pytest tests/test_basic.py -s --platform=aos --port=4723 --udid=YOUR_UDID
+
+
+===
+
+appium —allow-insecure chromedriver_autodownload
+# AOS 실기기 1
+appium --port 4723 --allow-insecure chromedriver_autodownload
+
+# AOS 실기기 2
+appium --port 4724 --allow-insecure chromedriver_autodownload
+
+# AOS 에뮬레이터
+appium --port 4725 --allow-insecure chromedriver_autodownload
+
+# iOS 실기기 1
+appium --port 4726
+
+# iOS 실기기 2
+appium --port 4727
+
+# iOS 시뮬레이터
+appium --port 4728
+appium --allow-insecure adb_shell
+
+
+
+==
+
+source venv/bin/activate
+python run_all.py --module tests/test_basic.py --parallel
+python run_all.py --module tests/test_basic.py --platform aos
+python run_all.py --module tests/test_basic.py::TestLaunchApp::test_launchapp --platform aos
