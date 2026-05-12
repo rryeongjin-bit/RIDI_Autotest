@@ -6,6 +6,7 @@ class Alertnotification(BasePage):
         self.click(CommonLocators.ALLOW_BTN)
 
     def close_braze_if_present(self):
+            """브레이즈 팝업 노출 시 닫기"""
             if self.has_webview():
                 self.switch_to_webview()
                 self.wait_for_webview()
@@ -35,19 +36,13 @@ class MainhomePage(BasePage):
 
 class ContentshomePage(BasePage):
     def click_episode_tab(self):
-        if self.platform == "aos":
-            self.click(AOS_ContentshomeLocators.CONTENTS_EPISODE_TAB)
-        else:
-            self.click(IOS_ContentshomeLocators.CONTENTS_EPISODE_TAB)
+        self.click(AOS_ContentshomeLocators.CONTENTS_EPISODE_TAB)
 
     def click_episode_sort(self):
-        if self.platform == "aos":
-            self.click(AOS_ContentshomeLocators.CONTENTS_EPISODE_SORT)
-        else:
-            self.click_by_visible(IOS_ContentshomeLocators.CONTENTS_EPISODE_SORT)
+        self.click(AOS_ContentshomeLocators.CONTENTS_EPISODE_SORT)
 
     def click_4th_episode(self):
-        if self.platform == "aos":
-            self.click(AOS_ContentshomeLocators.CONTENTS_4TH_EPISODE)
-        else:
-            self.click(IOS_ContentshomeLocators.CONTENTS_4TH_EPISODE)
+        self.click(AOS_ContentshomeLocators.CONTENTS_4TH_EPISODE)
+
+   
+    

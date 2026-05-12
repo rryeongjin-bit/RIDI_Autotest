@@ -69,12 +69,12 @@ class TestContentsHome:
 
     def test_contents_all_ages(self):
         self.page.open_deeplink(DeepLinks.CONTENT_ALL_AGES)
-        time.sleep(3)
 
         # 회차목록 결제시도
         self.page.click_episode_tab()
         self.page.click_episode_sort()
         self.page.click_4th_episode()
+
 
 class TestLogout:
     @pytest.fixture(autouse=True)

@@ -51,8 +51,3 @@ class AOS_ContentshomeLocators:
     CONTENTS_EPISODE_TAB = (AppiumBy.ACCESSIBILITY_ID, '회차')
     CONTENTS_EPISODE_SORT = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("회차순")')
     CONTENTS_4TH_EPISODE = (AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().className("android.widget.ImageView").instance(9)')
-
-class IOS_ContentshomeLocators:
-    CONTENTS_EPISODE_TAB = (AppiumBy.NAME, '회차')
-    CONTENTS_EPISODE_SORT = (AppiumBy.ACCESSIBILITY_ID, '회차순')
-    CONTENTS_4TH_EPISODE = (AppiumBy.IOS_CLASS_CHAIN, '**/XCUIElementTypeOther[`name == "downloadButton"`][4]')

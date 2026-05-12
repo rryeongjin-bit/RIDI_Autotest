@@ -103,6 +103,32 @@ def reset_app(driver, platform):
     driver.terminate_app(bundle_id)
     logging.info("[reset_app] 앱 종료")
 
+@pytest.fixture(scope="function")
+def login(driver, platform):
+
+    account = TestAccount.AOS if platform == "aos" else TestAccount.IOS
+    page    = LoginPage(driver, platform)
+    replace = Replacedevicelist(driver, platform)
+
+    # 이미 로그인된 상태면 스킵
+    if page.is_login_success():
+        logging.info("[login] 이미 로그인된 상태 - 스킵")
+        return
+
+    # 딥링크로 로그인 페이지 진입
+    page.open_deeplink(DeepLinks.LOGIN)
+    page.switch_to_webview()
+    page.wait_for_webview()
+    page.login(id=account["id"], pw=account["pw"])
+    page.switch_to_native()
+    page.wait_for_native()
+
+    if replace.is_replace_device_displayed():
+        replace.click_replace_toggle()
+        replace.click_replace_btn()
+
+    logging.info(f"[login] 로그인 완료 - platform: {platform}")
+
 def pytest_terminal_summary(terminalreporter, config):
     passed   = len(terminalreporter.stats.get("passed",   []))
     failed   = len(terminalreporter.stats.get("failed",   []))

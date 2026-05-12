@@ -51,11 +51,6 @@ class BasePage:
         el = self.wait_for_element_clickable(locator)
         el.click()
         self.log.info(f"[click] {locator}")
-    
-    def click_by_visible(self, locator: tuple):
-        el = self.wait_for_element_visible(locator)
-        el.click()
-        self.log.info(f"[click_by_visible] {locator}")
 
     def send_keys(self, locator: tuple, value: str):
         el = self.wait_for_element_visible(locator)
@@ -81,7 +76,24 @@ class BasePage:
         except (NoSuchElementException, TimeoutException):
             return False
 
+    def scroll_down(self):
+        size = self.driver.get_window_size()
+        start_x = size["width"] // 2
+        start_y = int(size["height"] * 0.8)
+        end_y   = int(size["height"] * 0.2)
+        self.driver.swipe(start_x, start_y, start_x, end_y, duration=800)
+        self.log.info("[scroll_down]")
+
+    def scroll_up(self):
+        size = self.driver.get_window_size()
+        start_x = size["width"] // 2
+        start_y = int(size["height"] * 0.2)
+        end_y   = int(size["height"] * 0.8)
+        self.driver.swipe(start_x, start_y, start_x, end_y, duration=800)
+        self.log.info("[scroll_up]")
+
     def has_webview(self) -> bool:
+        """웹뷰 컨텍스트 존재 여부 확인"""
         return any("WEBVIEW" in c for c in self.driver.contexts)
 
     def switch_to_webview(self, timeout: int = NETWORK_TIMEOUT):
@@ -118,6 +130,21 @@ class BasePage:
         self.driver.switch_to.context("NATIVE_APP")
         self.log.info("[switch_to_native] 네이티브 전환 완료")
 
+    def switch_to_webview_by_index(self, index: int = 0):
+        if self.platform == "ios":
+            self.log.info("[switch_to_webview_by_index] iOS - 전환 스킵")
+            return
+
+        contexts = self.driver.contexts
+        webviews = [ctx for ctx in contexts if "WEBVIEW" in ctx]
+
+        if index >= len(webviews):
+            raise IndexError(f"[switch_to_webview_by_index] 인덱스 초과: {index} / 전체: {len(webviews)}")
+
+        target = webviews[index]
+        self.driver.switch_to.context(target)
+        self.log.info(f"[switch_to_webview_by_index] 전환 완료: {target}")
+
     def wait_for_webview(self, timeout=10):
         if self.platform == "ios":
             self.log.info("[wait_for_webview] iOS - 대기 스킵")
@@ -148,6 +175,9 @@ class BasePage:
             lambda d: len(d.find_elements("xpath", "//*")) > 0
         )
         self.log.info("[wait_for_native] 네이티브 전환 완료")
+
+    def get_current_context(self) -> str:
+        return self.driver.current_context
 
     def open_deeplink(self, url: str):
 

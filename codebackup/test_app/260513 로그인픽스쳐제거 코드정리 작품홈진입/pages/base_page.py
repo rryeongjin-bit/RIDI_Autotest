@@ -53,6 +53,7 @@ class BasePage:
         self.log.info(f"[click] {locator}")
     
     def click_by_visible(self, locator: tuple):
+        """clickable 여부와 무관하게 visible 요소 클릭"""
         el = self.wait_for_element_visible(locator)
         el.click()
         self.log.info(f"[click_by_visible] {locator}")

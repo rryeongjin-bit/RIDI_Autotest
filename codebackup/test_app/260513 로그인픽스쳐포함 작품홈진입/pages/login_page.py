@@ -60,6 +60,7 @@ class LoginPage(BasePage):
 
 class Replacedevicelist(BasePage):
     def is_replace_device_displayed(self) -> bool:
+        """기기 교체 화면 노출 여부 확인 - 플랫폼별 분기"""
         locator = AOS_ReplacedeviceLocators.REPLACEDEVICE_LIST_TITLE if self.platform == "aos" \
                   else IOS_ReplacedeviceLocators.REPLACEDEVICE_LIST_TITLE
         return self.is_present(locator)
