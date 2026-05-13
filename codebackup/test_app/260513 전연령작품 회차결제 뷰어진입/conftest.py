@@ -85,6 +85,7 @@ def _find_active_device(platform: str, env: str) -> dict | None:
 
 @pytest.fixture(scope="module", autouse=True)
 def reset_app(driver, platform):
+    #앱 초기화/재실행 제어 주석처리
     # bundle_id = BUNDLE_ID_AOS if platform == "aos" else BUNDLE_ID_IOS
     # logging.info(f"[reset_app] 앱 초기화 시작: {bundle_id}")
 
@@ -95,7 +96,7 @@ def reset_app(driver, platform):
     #     driver.terminate_app(bundle_id)
     #     driver.activate_app(bundle_id)
 
-    # logging.info("[reset_app] 앱 초기화 완료")
+    logging.info("[reset_app] 앱 초기화 완료")
 
     yield
 

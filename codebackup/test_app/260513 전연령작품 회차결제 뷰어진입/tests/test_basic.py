@@ -114,8 +114,11 @@ class TestContentsHome_AllAges:
         assert self.viewer.is_viewer_top_title(TestContent.ALL_AGES["title"]), "❌ 뷰어 진입 실패" 
 
     def test_App_Checklist_294_다음화결제(self):
+        # 첫 번째 타이틀 저장
         first_title = self.viewer.get_viewer_title()
         print(f"\n첫 번째 타이틀: {first_title}")
+
+        # 다음화 버튼 클릭
         self.viewer.is_next_episode_displayed()
 
         # 결제 팝업 처리
@@ -138,6 +141,7 @@ class TestContentsHome_AllAges:
 
         time.sleep(2)
         self.viewer.click_viewer()
+        # 두 번째 타이틀 저장 후 비교
         second_title = self.viewer.get_viewer_title()
         print(f"\n두 번째 타이틀: {second_title}")
 

@@ -163,6 +163,7 @@ class BasePage:
             })
     
     def get_thumbnail_content_desc(self, locator: tuple) -> str:
+        """AOS: XPATH에서 content-desc 추출 / iOS: XPATH에서 name 추출"""
         xpath = locator[1]
         
         if self.platform == "aos":
@@ -173,4 +174,7 @@ class BasePage:
         if match:
             return match.group(1)
         return ""
+    # def get_thumbnail_content_desc(self, locator: tuple) -> str:
+    #     """썸네일 content-desc 값 반환"""
+    #     return self.find_element(locator).get_attribute("content-desc")
 

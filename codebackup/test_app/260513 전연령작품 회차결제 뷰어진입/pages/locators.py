@@ -7,6 +7,8 @@ class CommonLocators:
     ALLOW_BTN      = (AppiumBy.ID, 'com.android.permissioncontroller:id/permission_allow_button')
     BRAZEPOPUP_CLOSE_AOS = (By.XPATH, '//a[@id="never_show_again"]/span')
     BRAZEPOPUP_CLOSE_IOS = (AppiumBy.ACCESSIBILITY_ID, '다시 보지 않기')
+    #TWOFACTOR_ALERT_AOS = (AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("2단계 인증으로 계정을 더 안전하게")')
+    #TWOFACTOR_ALERT_CLOSE_AOS = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("다시 보지 않기")')
 
 class AOS_ReplacedeviceLocators:
     REPLACEDEVICE_LIST_TITLE   = (AppiumBy.ID, 'com.initialcoms.ridi:id/title') 
