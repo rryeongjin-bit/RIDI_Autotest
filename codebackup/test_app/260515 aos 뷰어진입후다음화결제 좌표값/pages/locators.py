@@ -63,6 +63,7 @@ class AOS_ContentshomeLocators:
 
     ALL_CONTENTS_THUMBNAIL_FIRST  = (AppiumBy.XPATH, '//android.view.ViewGroup[@content-desc="0두 명의 상속인 1화, 0두 명의 상속인 1화, 2022.04.14, 18.1MB"]/android.view.ViewGroup')
     ALL_CONTENTS_THUMBNAIL_SECOND = (AppiumBy.XPATH, '//android.view.ViewGroup[@content-desc="0두 명의 상속인 2화, 0두 명의 상속인 2화, 2022.04.14, 19.6MB"]/android.view.ViewGroup')
+
     EPISODE_TITLE_BEFORE_DOWNLOAD = (AppiumBy.XPATH,
     '(//android.view.ViewGroup[@resource-id="downloadButton"])[1]/preceding-sibling::android.view.ViewGroup[@content-desc][1]/android.widget.TextView[1]')
 
@@ -87,7 +88,7 @@ class IOS_ContentshomeLocators:
 
     ALL_CONTENTS_THUMBNAIL_FIRST = (AppiumBy.XPATH, '(//XCUIElementTypeOther[@name="두 명의 상속인 1화 2022.04.14, 18.1MB"])[3]')
     ALL_CONTENTS_THUMBNAIL_SECOND = (AppiumBy.XPATH, '(//XCUIElementTypeOther[@name="두 명의 상속인 2화 2022.04.14, 19.6MB"])[3]')
-    EPISODE_TITLE_BEFORE_DOWNLOAD = (AppiumBy.XPATH, '(//XCUIElementTypeOther[@name="downloadButton"])[1]/../../XCUIElementTypeOther[1]')
+    ALL_CONTENTS_EPISODE_ITEM = (AppiumBy.IOS_CLASS_CHAIN, '**/XCUIElementTypeOther[`name == "ownershipLabel"`]/parent::XCUIElementTypeOther')
     
     #결제팝업
     PAY_CASH_BTN = (AppiumBy.NAME, '캐시로 결제')

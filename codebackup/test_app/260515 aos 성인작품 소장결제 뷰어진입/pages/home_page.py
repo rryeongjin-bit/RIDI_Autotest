@@ -124,41 +124,33 @@ class ContentshomePage(BasePage):
             self.click(AOS_ContentshomeLocators.PAY_OWN_BTN)
         else:
             self.click(IOS_ContentshomeLocators.PAY_OWN_BTN)
+
+    def click_rent_ownership_displayed(self):
+        if self.platform == "aos":
+            if self.is_present(AOS_ContentshomeLocators.RENT_OWNERSHIP_LABEL):
+                self.click(AOS_ContentshomeLocators.ALL_CONTENTS_EPISODE_ITEM)
+        else:
+            if self.is_present(IOS_ContentshomeLocators.RENT_OWNERSHIP_LABEL):
+                self.click(IOS_ContentshomeLocators.ALL_CONTENTS_EPISODE_ITEM)
+    
+    def click_own_ownership_displayed(self):
+        if self.platform == "aos":
+            if self.is_present(AOS_ContentshomeLocators.OWN_OWNERSHIP_LABEL):
+                self.click(AOS_ContentshomeLocators.ADULT_CONTENTS_EPISODE_ITEM)
+        else:
+            if self.is_present(IOS_ContentshomeLocators.OWN_OWNERSHIP_LABEL):
+                self.click(IOS_ContentshomeLocators.ADULT_CONTENTS_EPISODE_ITEM)
     
     def get_first_download_episode_desc(self) -> str:
-        if self.platform == "aos":
-            el = self.find_element(AOS_ContentshomeLocators.EPISODE_TITLE_BEFORE_DOWNLOAD)
-            return el.text
-        else:
-            el = self.find_element(IOS_ContentshomeLocators.EPISODE_TITLE_BEFORE_DOWNLOAD)
-            return el.get_attribute("name")
+        """첫 번째 다운로드 버튼과 동일선상 회차 TextView text 반환"""
+        el = self.find_element((AppiumBy.XPATH,
+            '(//android.view.ViewGroup[@resource-id="downloadButton"])[1]/preceding-sibling::android.view.ViewGroup[@content-desc][1]//android.widget.TextView[1]'))
+        return el.text
+    
+   
 
     def click_ownership_by_desc(self, desc: str):
-        if self.platform == "aos":
-            locator = (AppiumBy.ANDROID_UIAUTOMATOR,
-                f'new UiSelector().text("{desc}")')
-            self.click(locator)
-        else:
-            locator = (AppiumBy.IOS_CLASS_CHAIN,
-                f'**/XCUIElementTypeOther[`name == "{desc}"`]')
-            self.click_by_visible(locator)
-
-    def click_pay_cash_viewer(self):
-        if self.platform == "aos":
-            self.tap_by_coordinate(294, 2175)
-        else:
-            self.click(IOS_ContentshomeLocators.PAY_CASH_BTN)
-
-    def click_pay_rent_viewer(self):
-        if self.platform == "aos":
-            self.tap_by_coordinate(280, 1254)
-            self.tap_by_coordinate(531, 2051)
-        else:
-            self.click(IOS_ContentshomeLocators.PAY_RENT_TAB)
-            self.click(IOS_ContentshomeLocators.PAY_RENT_BTN)
-
-    def click_pay_buy_viewer(self):
-        if self.platform == "aos":
-            self.tap_by_coordinate(531, 2051)
-        else:
-            self.click(IOS_ContentshomeLocators.PAY_OWN_BTN)
+        """저장된 회차명 TextView 클릭"""
+        locator = (AppiumBy.XPATH,
+            f'//android.widget.TextView[@text="{desc}"]')
+        self.click_by_visible(locator)

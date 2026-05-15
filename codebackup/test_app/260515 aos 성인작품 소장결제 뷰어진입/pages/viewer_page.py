@@ -43,19 +43,3 @@ class ViewerPage(BasePage):
             return self.find_element(AOS_ViewerLocators.VIEWER_TOP_TITLE).text
         else:
             return self.find_element(IOS_ViewerLocators.ADULT_VIEWER_TOP_TITLE).get_attribute("name")
-        
-    def click_back_all(self):
-        if self.platform == "aos":
-            self.click(AOS_ViewerLocators.VIEWER_BACK_BTN)
-        else:
-            self.click(IOS_ViewerLocators.VIEWER_BACK_BTN)
-    
-    def click_back_adult(self):
-        if self.platform == "aos":
-            if not self.is_present(AOS_ViewerLocators.VIEWER_BACK_BTN):
-                self.click(AOS_ViewerLocators.ADULT_VIEWER_CONTENT)
-            self.click(AOS_ViewerLocators.VIEWER_BACK_BTN)
-        else:
-            if not self.is_present(IOS_ViewerLocators.VIEWER_BACK_BTN):
-                self.click(IOS_ViewerLocators.ADULT_VIEWER_CONTENT)
-            self.click(IOS_ViewerLocators.VIEWER_BACK_BTN)

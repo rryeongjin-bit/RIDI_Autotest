@@ -84,6 +84,39 @@ class BasePage:
 
     def has_webview(self) -> bool:
         return any("WEBVIEW" in c for c in self.driver.contexts)
+    
+    # def switch_to_payment_webview(self, locator: tuple, timeout: int = NETWORK_TIMEOUT):
+    #     if self.platform == "ios":
+    #         self.log.info("[switch_to_payment_webview] iOS - 전환 스킵")
+    #         return
+
+    #     try:
+    #         # 웹뷰가 2개가 될 때까지 대기
+    #         WebDriverWait(self.driver, timeout).until(
+    #             lambda d: len([ctx for ctx in d.contexts if "WEBVIEW" in ctx]) >= 2
+    #         )
+    #         webviews = [ctx for ctx in self.driver.contexts if "WEBVIEW" in ctx]
+    #         self.log.info(f"[switch_to_payment_webview] 웹뷰 목록: {webviews}")
+
+    #         for webview in webviews:
+    #             try:
+    #                 self.driver.switch_to.context(webview)
+    #                 self.log.info(f"[switch_to_payment_webview] 전환 시도: {webview}")
+    #                 if self.is_present(locator, timeout=2):
+    #                     self.log.info(f"[switch_to_payment_webview] 결제 팝업 발견: {webview}")
+    #                     return
+    #             except Exception as e:
+    #                 self.log.warning(f"[switch_to_payment_webview] 전환 실패: {webview} | {e}")
+    #                 continue
+
+    #         raise RuntimeError("[switch_to_payment_webview] 결제 팝업 있는 웹뷰 없음")
+
+    #     except TimeoutException:
+    #         self.log.warning("[switch_to_payment_webview] 웹뷰 2개 대기 타임아웃 - 단일 웹뷰로 시도")
+    #         # 웹뷰 1개인 경우 fallback
+    #         webviews = [ctx for ctx in self.driver.contexts if "WEBVIEW" in ctx]
+    #         if webviews:
+    #             self.driver.switch_to.context(webviews[0])
 
     def switch_to_webview(self, timeout: int = NETWORK_TIMEOUT):
         if self.platform == "ios":
@@ -176,5 +209,6 @@ class BasePage:
 
 
     def tap_by_coordinate(self, x: int, y: int):
+        """좌표로 직접 탭"""
         self.driver.execute_script("mobile: clickGesture", {"x": x, "y": y})
         self.log.info(f"[tap_by_coordinate] x:{x}, y:{y}")

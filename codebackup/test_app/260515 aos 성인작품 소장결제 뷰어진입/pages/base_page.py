@@ -174,7 +174,3 @@ class BasePage:
             return match.group(1)
         return ""
 
-
-    def tap_by_coordinate(self, x: int, y: int):
-        self.driver.execute_script("mobile: clickGesture", {"x": x, "y": y})
-        self.log.info(f"[tap_by_coordinate] x:{x}, y:{y}")

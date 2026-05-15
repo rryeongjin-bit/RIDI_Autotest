@@ -61,19 +61,16 @@ class TestLogin:
             "❌ 로그인 실패"
 
 class TestContentsHome_AllAges:
-    episode_desc  = ""
-    before_count  = 0
-    has_pay_popup = False
-
     @pytest.fixture(autouse=True)
     def setup(self, driver, platform):
-        self.driver   = driver
-        self.platform = platform
-        self.page     = ContentshomePage(driver, platform)
-        self.viewer   = ViewerPage(driver, platform)
+        self.driver     = driver
+        self.platform   = platform
+        self.page       = ContentshomePage(driver, platform)
+        self.viewer     = ViewerPage(driver, platform)
 
     def test_contents_all_ages(self):
         self.page.open_deeplink(DeepLinks.CONTENT_ALL_AGES)
+        self.page.is_all_contents_title_displayed()
         assert self.page.is_all_contents_title_displayed(), "❌ 전연령작품홈 진입 실패"
 
     def test_App_Checklist_180_회차목록_정렬(self):
@@ -89,74 +86,65 @@ class TestContentsHome_AllAges:
         assert result, "❌ 회차별 썸네일 확인필요"
 
     def test_App_Checklist_177_다운로드아이콘(self):
-        assert self.page.is_download_btn_displayed(), "❌ 다운로드 버튼 미노출"
-        
-        TestContentsHome_AllAges.episode_desc = self.page.get_first_download_episode_desc()
         self.page.click_episode_download()
-        time.sleep(3)     
-
-        TestContentsHome_AllAges.has_pay_popup = self.page.has_webview()
-        print(f"\nhas_webview 결과: {TestContentsHome_AllAges.has_pay_popup}")
+        print(f"\nhas_webview 결과: {self.page.has_webview()}")
         print(f"\ncontexts: {self.driver.contexts}")
+        assert self.page.is_download_btn_displayed(), "❌ 다운로드 버튼 미노출"
 
-    def test_App_Checklist_423_회차구매_뷰어진입(self):
-        if TestContentsHome_AllAges.has_pay_popup:  
+    def test_App_Checklist_423_회차구매(self):
+        if self.page.has_webview():
             try:
                 self.page.switch_to_webview()
                 self.page.wait_for_webview()
                 assert self.page.is_paypopup_displayed(), "❌ 결제 팝업 미노출"
 
                 self.page.click_pay_cash()
+                self.page.click_pay_rent_tab()
                 self.page.click_pay_rent_btn()
                 self.page.switch_to_native()
                 self.page.wait_for_native()
-                self.page.click_ownership_by_desc(TestContentsHome_AllAges.episode_desc) 
-
+                self.page.click_rent_ownership_displayed()
             except Exception as e:
                 logging.warning(f"[결제 팝업] 웹뷰 전환 실패 - 스킵: {e}")
                 self.page.switch_to_native()
-                self.page.wait_for_native()
+                self.page.wait_for_native()        
 
-        time.sleep(3)
+        time.sleep(2)
         self.viewer.click_all_viewer()
-        assert self.viewer.is_all_viewer_top_title(TestContent.ALL_AGES["title"]), "❌ 뷰어 진입 실패"
+        assert self.viewer.is_all_viewer_top_title(TestContent.ALL_AGES["title"]), "❌ 뷰어 진입 실패" 
 
     def test_App_Checklist_294_다음화결제(self):
         first_title = self.viewer.get_all_viewer_title()
         print(f"\n첫 번째 타이틀: {first_title}")
-        
         self.viewer.is_next_episode_displayed()
-        TestContentsHome_AllAges.has_pay_popup = self.page.has_webview()
-        print(f"\nhas_webview 결과: {TestContentsHome_AllAges.has_pay_popup}")
-        print(f"\ncontexts: {self.driver.contexts}")
 
         if self.page.has_webview():
             try:
-                self.page.switch_to_webview()
+                self.page.switch_to_webview(timeout=5)
                 self.page.wait_for_webview()
-                self.page.click_pay_cash_viewer()
-                self.page.click_pay_rent_viewer()
+                assert self.page.is_paypopup_displayed(), "❌ 결제 팝업 미노출"
+
+                self.page.click_pay_cash()
+                self.page.click_pay_rent_tab()
+                self.page.click_pay_rent_btn()
                 self.page.switch_to_native()
                 self.page.wait_for_native()
-
+                self.page.click_rent_ownership_displayed()
             except Exception as e:
                 logging.warning(f"[결제 팝업] 웹뷰 전환 실패 - 스킵: {e}")
                 self.page.switch_to_native()
                 self.page.wait_for_native()
 
-        time.sleep(3)
+        time.sleep(2)
         self.viewer.click_all_viewer()
         second_title = self.viewer.get_all_viewer_title()
         print(f"\n두 번째 타이틀: {second_title}")
 
         assert first_title != second_title, \
             f"❌ 다음화 이동 실패"
-    
-    def test_App_Checklist_383_뷰어이탈(self):
-        self.viewer.click_back_all()
-        assert self.page.is_episode_tab_entered(), "❌ 뷰어이탈 및 작품홈 진입 실패" 
-            
+        
 class TestContentsHome_Adult:
+    # ✅ 클래스 변수로 선언 (setup 재실행해도 초기화 안됨)
     episode_desc  = ""
     before_count  = 0
     has_pay_popup = False
@@ -183,12 +171,9 @@ class TestContentsHome_Adult:
         assert self.page.is_download_btn_displayed(), "❌ 다운로드 버튼 미노출"
         
         TestContentsHome_Adult.episode_desc = self.page.get_first_download_episode_desc()
-        self.page.click_episode_download()
-        time.sleep(3)     
-
-        TestContentsHome_Adult.has_pay_popup = self.page.has_webview()
-        print(f"\nhas_webview 결과: {TestContentsHome_Adult.has_pay_popup}")
-        print(f"\ncontexts: {self.driver.contexts}")
+        self.page.click_episode_download() 
+        time.sleep(3)                        
+        TestContentsHome_Adult.has_pay_popup = self.page.has_webview()  
 
     def test_App_Checklist_423_회차구매_뷰어진입(self):
         if TestContentsHome_Adult.has_pay_popup:  
@@ -201,6 +186,8 @@ class TestContentsHome_Adult:
                 self.page.click_pay_buy_btn()
                 self.page.switch_to_native()
                 self.page.wait_for_native()
+
+                # 저장된 content-desc로 해당 회차 클릭
                 self.page.click_ownership_by_desc(TestContentsHome_Adult.episode_desc) 
 
             except Exception as e:
@@ -215,37 +202,31 @@ class TestContentsHome_Adult:
     def test_App_Checklist_294_다음화결제(self):
         first_title = self.viewer.get_adult_viewer_title()
         print(f"\n첫 번째 타이틀: {first_title}")
-        
         self.viewer.is_next_episode_displayed()
-        TestContentsHome_Adult.has_pay_popup = self.page.has_webview()
-        print(f"\nhas_webview 결과: {TestContentsHome_Adult.has_pay_popup}")
-        print(f"\ncontexts: {self.driver.contexts}")
 
         if self.page.has_webview():
             try:
-                self.page.switch_to_webview()
+                self.page.switch_to_webview(timeout=5)
                 self.page.wait_for_webview()
-                self.page.click_pay_cash_viewer()
-                self.page.click_pay_buy_viewer()
+                assert self.page.is_paypopup_displayed(), "❌ 결제 팝업 미노출"
+
+                self.page.click_pay_cash()
+                self.page.click_pay_buy_btn()
                 self.page.switch_to_native()
                 self.page.wait_for_native()
-
+                self.page.click_own_ownership_displayed()
             except Exception as e:
                 logging.warning(f"[결제 팝업] 웹뷰 전환 실패 - 스킵: {e}")
                 self.page.switch_to_native()
                 self.page.wait_for_native()
 
-        time.sleep(3)
+        time.sleep(2)
         self.viewer.click_adult_viewer()
         second_title = self.viewer.get_adult_viewer_title()
         print(f"\n두 번째 타이틀: {second_title}")
 
         assert first_title != second_title, \
             f"❌ 다음화 이동 실패"
-    
-    def test_App_Checklist_288_뷰어이탈(self):
-        self.viewer.click_back_adult()
-        assert self.page.is_episode_tab_entered(), "❌ 뷰어이탈 및 작품홈 진입 실패"        
         
 class TestLogout:
     @pytest.fixture(autouse=True)

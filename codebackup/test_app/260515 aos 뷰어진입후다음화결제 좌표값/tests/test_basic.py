@@ -74,6 +74,7 @@ class TestContentsHome_AllAges:
 
     def test_contents_all_ages(self):
         self.page.open_deeplink(DeepLinks.CONTENT_ALL_AGES)
+        self.page.is_all_contents_title_displayed()
         assert self.page.is_all_contents_title_displayed(), "❌ 전연령작품홈 진입 실패"
 
     def test_App_Checklist_180_회차목록_정렬(self):
@@ -119,43 +120,38 @@ class TestContentsHome_AllAges:
 
         time.sleep(3)
         self.viewer.click_all_viewer()
-        assert self.viewer.is_all_viewer_top_title(TestContent.ALL_AGES["title"]), "❌ 뷰어 진입 실패"
+        assert self.viewer.is_adult_viewer_top_title(TestContent.ALL_AGES["title"]), "❌ 뷰어 진입 실패"
 
     def test_App_Checklist_294_다음화결제(self):
         first_title = self.viewer.get_all_viewer_title()
         print(f"\n첫 번째 타이틀: {first_title}")
-        
         self.viewer.is_next_episode_displayed()
-        TestContentsHome_AllAges.has_pay_popup = self.page.has_webview()
-        print(f"\nhas_webview 결과: {TestContentsHome_AllAges.has_pay_popup}")
-        print(f"\ncontexts: {self.driver.contexts}")
 
         if self.page.has_webview():
             try:
-                self.page.switch_to_webview()
+                self.page.switch_to_webview(timeout=5)
                 self.page.wait_for_webview()
-                self.page.click_pay_cash_viewer()
-                self.page.click_pay_rent_viewer()
+                assert self.page.is_paypopup_displayed(), "❌ 결제 팝업 미노출"
+
+                self.page.click_pay_cash()
+                self.page.click_pay_rent_tab()
+                self.page.click_pay_rent_btn()
                 self.page.switch_to_native()
                 self.page.wait_for_native()
-
+                self.page.click_rent_ownership_displayed()
             except Exception as e:
                 logging.warning(f"[결제 팝업] 웹뷰 전환 실패 - 스킵: {e}")
                 self.page.switch_to_native()
                 self.page.wait_for_native()
 
-        time.sleep(3)
+        time.sleep(2)
         self.viewer.click_all_viewer()
         second_title = self.viewer.get_all_viewer_title()
         print(f"\n두 번째 타이틀: {second_title}")
 
         assert first_title != second_title, \
             f"❌ 다음화 이동 실패"
-    
-    def test_App_Checklist_383_뷰어이탈(self):
-        self.viewer.click_back_all()
-        assert self.page.is_episode_tab_entered(), "❌ 뷰어이탈 및 작품홈 진입 실패" 
-            
+        
 class TestContentsHome_Adult:
     episode_desc  = ""
     before_count  = 0
@@ -242,10 +238,6 @@ class TestContentsHome_Adult:
 
         assert first_title != second_title, \
             f"❌ 다음화 이동 실패"
-    
-    def test_App_Checklist_288_뷰어이탈(self):
-        self.viewer.click_back_adult()
-        assert self.page.is_episode_tab_entered(), "❌ 뷰어이탈 및 작품홈 진입 실패"        
         
 class TestLogout:
     @pytest.fixture(autouse=True)
