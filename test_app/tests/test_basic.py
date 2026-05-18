@@ -268,7 +268,6 @@ class TestSelectbuy_Cart:
         assert self.page.is_selectbuy_cart_entered(), "❌ 선택구매_카트담기 화면진입 실패"
 
     def test_App_Checklist_223_선택구매카트담기(self):
-        # 대여탭 진입 시도
         if not self.page.is_selectbuy_cart_1st_rent_displayed():
             self.page.click_selectbuy_cart_rent_tab()
 
@@ -279,7 +278,6 @@ class TestSelectbuy_Cart:
         assert rent_displayed, \
             "❌ 선택구매 및 카트담기 화면 대여탭 진입 실패"
 
-        # 소장탭
         self.page.click_selectbuy_cart_own_tab()
 
         if not self.page.is_selectbuy_cart_1st_own_displayed():

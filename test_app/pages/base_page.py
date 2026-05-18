@@ -184,13 +184,11 @@ class BasePage:
 
     def tap_coordinate(self, x: int, y: int):
         if self.platform == "ios":
-            # iOS는 mobile: clickGesture 미지원 → tap 액션 사용
             actions = ActionChains(self.driver)
             actions.w3c_actions.pointer_action.move_to_location(x, y)
             actions.w3c_actions.pointer_action.click()
             actions.perform()
         else:
-            # Android
             self.driver.execute_script("mobile: clickGesture", {"x": x, "y": y})
 
     def scroll_up(self, percent=0.75):
@@ -201,11 +199,8 @@ class BasePage:
 
     def _swipe(self, direction="up", percent=0.75):
         if self.platform == "ios":
-            # iOS는 mobile: swipeGesture 미지원 → driver.swipe() 사용
             self.fallback_swipe(direction)
             return
-
-        # Android
         size = self.driver.get_window_size()
         self.driver.execute_script("mobile: swipeGesture", {
             "left": int(size["width"] * 0.2),
@@ -254,89 +249,3 @@ class BasePage:
             self.scroll_up()
         except Exception:
             self.fallback_swipe("up")
-
-    # def scroll_to_element_center(self, locator, max_scroll=10):
-    #     """
-    #     특정 요소가 화면 중앙에 올 때까지 스크롤
-
-    #     :param locator: locator tuple
-    #     :param max_scroll: 최대 스크롤 횟수
-    #     :return: element
-    #     """
-
-    #     screen_size = self.driver.get_window_size()
-    #     screen_center_y = screen_size["height"] / 2
-
-    #     for attempt in range(max_scroll):
-
-    #         try:
-    #             element = self.find_element(locator)
-
-    #             # 요소 위치/크기
-    #             location = element.location
-    #             size = element.size
-
-    #             # 요소 중앙 y좌표
-    #             element_center_y = location["y"] + (size["height"] / 2)
-
-    #             self.log.info(
-    #                 f"[scroll_to_element_center] "
-    #                 f"attempt={attempt}, "
-    #                 f"element_center_y={element_center_y}, "
-    #                 f"screen_center_y={screen_center_y}"
-    #             )
-
-    #             # 중앙 허용 범위 (±100)
-    #             if abs(element_center_y - screen_center_y) <= 100:
-    #                 self.log.info("[scroll_to_element_center] element centered")
-    #                 return element
-
-    #             # 요소가 화면 아래쪽 → 아래로 스크롤
-    #             if element_center_y > screen_center_y:
-    #                 self.scroll_down()
-
-    #             # 요소가 화면 위쪽 → 위로 스크롤
-    #             else:
-    #                 self.scroll_up()
-
-    #             time.sleep(1)
-
-    #         except Exception as e:
-    #             self.log.info(f"[scroll_to_element_center] not found: {e}")
-
-    #             # 요소 못찾으면 아래로 계속 탐색
-    #             self.scroll_down()
-    #             time.sleep(1)
-
-    #     raise Exception("요소를 화면 중앙으로 이동 실패")
-
-
-    # def scroll_up_until_element_displayed(self, locator, max_scroll=5):
-    #     """
-    #     특정 요소가 보일 때까지 위로 스크롤
-
-    #     :param locator: element locator
-    #     :param max_scroll: 최대 스크롤 횟수
-    #     :return: element
-    #     """
-
-    #     for attempt in range(max_scroll):
-
-    #         if self.is_displayed(locator):
-    #             self.log.info(
-    #                 f"[scroll_up_until_element_displayed] "
-    #                 f"element found (attempt={attempt})"
-    #             )
-    #             return self.find_element(locator)
-
-    #         self.log.info(
-    #             f"[scroll_up_until_element_displayed] "
-    #             f"scroll_up (attempt={attempt})"
-    #         )
-
-    #         self.scroll_up()
-    #         time.sleep(1)
-
-    #     raise Exception(
-    #         f"요소를 찾지 못했습니다. locator={locator}"
-    # )
