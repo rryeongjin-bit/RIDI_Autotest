@@ -87,6 +87,7 @@ class BasePage:
             return False
         
     def is_element_present(self, locator: tuple, timeout: int = DEFAULT_TIMEOUT) -> bool:
+        """ visible 여부와 관계없이 DOM에 존재하는지만 확인"""
         try:
             WebDriverWait(self.driver, timeout).until(
                 EC.presence_of_element_located(locator)

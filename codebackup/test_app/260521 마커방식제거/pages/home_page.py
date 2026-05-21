@@ -11,7 +11,7 @@ class Alertnotification(BasePage):
                         d.execute_script("mobile: alert", {"action": "getButtons"})
                         return True
                     except:
-                        return False  
+                        return False  # 예외 시 False 반환 → WebDriverWait 재시도
 
                 WebDriverWait(self.driver, 10).until(check_alert)
                 return True
@@ -22,7 +22,9 @@ class Alertnotification(BasePage):
     def click_noti_alert(self):
         if self.platform == "ios":
             try:
+                # 1번 알림 권한 팝업 허용
                 self.driver.execute_script("mobile: alert", {"action": "accept"})
+                # 2번 트래킹 팝업 허용
                 try:
                     self.driver.execute_script("mobile: alert", {"action": "accept"})
                 except:
@@ -58,6 +60,7 @@ class Alertnotification(BasePage):
                 self.switch_to_native()
                 self.wait_for_native()
         else:
+            # iOS - 웹뷰 전환 없이 직접 감지
             try:
                 WebDriverWait(self.driver, 10).until(
                     lambda d: self.is_braze_displayed()
@@ -99,6 +102,7 @@ class ContentshomePage(BasePage):
             return self.is_displayed(locator)
 
     def is_contents_title_displayed(self, locator: tuple, title: str) -> bool:
+        """특정 요소가 작품명을 포함하는지 확인"""
         el = self.find_element(locator)
         text = el.text if self.platform == "aos" else el.get_attribute("name")
         print(f"\n요소 텍스트: {text}")
@@ -153,21 +157,7 @@ class ContentshomePage(BasePage):
         locator = AOS_ContentshomeLocators.CONTENTS_EPISODE_DOWNLOAD if self.platform == "aos" \
                 else IOS_ContentshomeLocators.CONTENTS_EPISODE_DOWNLOAD
         return self.is_displayed(locator)
-    
-    def click_episode_all_btn(self):
-        if self.platform == "aos":
-            self.click(AOS_ContentshomeLocators.CONTENTS_EPISODE_ALL)
-        else:
-            self.click(IOS_ContentshomeLocators.CONTENTS_EPISODE_ALL)
 
-    def click_episode_download_with_fallback(self) -> str:
-        if not self.is_download_btn_displayed():
-            print("[FALLBACK] 선택가능한 다운로드 버튼 미노출_총 회차목록 진입 후 재시도")
-            self.click_episode_all_btn()
-            time.sleep(2)
-            if not self.is_download_btn_displayed():
-                raise Exception("❌ 총 회차목록 내 선택가능한 다운로드 버튼 미노출")
-            
     def is_paypopup_displayed(self) -> bool:
         locator = AOS_ContentshomeLocators.PAY_CASH_BTN if self.platform == "aos" \
                 else IOS_ContentshomeLocators.PAY_CASH_BTN
@@ -178,11 +168,6 @@ class ContentshomePage(BasePage):
             self.click(AOS_ContentshomeLocators.PAY_CASH_BTN)
         else:
             self.click(IOS_ContentshomeLocators.PAY_CASH_BTN)
-    
-    def is_pay_renttab_displayed(self) -> bool:
-        locator = AOS_ContentshomeLocators.PAY_RENT_TAB if self.platform == "aos" \
-                  else IOS_ContentshomeLocators.PAY_RENT_TAB
-        return self.is_displayed(locator)
 
     def click_pay_rent_tab(self):
         if self.platform == "aos":
@@ -195,11 +180,6 @@ class ContentshomePage(BasePage):
             self.click(AOS_ContentshomeLocators.PAY_RENT_BTN)
         else:
             self.click(IOS_ContentshomeLocators.PAY_RENT_BTN)
-    
-    def is_pay_ownbtn_displayed(self) -> bool:
-        locator = AOS_ContentshomeLocators.PAY_OWN_BTN if self.platform == "aos" \
-                  else IOS_ContentshomeLocators.PAY_OWN_BTN
-        return self.is_displayed(locator)
 
     def click_pay_buy_btn(self):
         if self.platform == "aos":
@@ -306,6 +286,7 @@ class ContentshomePage(BasePage):
         locator = AOS_ContentshomeLocators.CART_TOAST if self.platform == "aos" \
                 else IOS_ContentshomeLocators.CART_TOAST
         return self.is_present(locator, timeout=5)
+
 
 
 

@@ -30,20 +30,22 @@ def get_active_devices(platform: str = None) -> list:
 def build_pytest_command(
     device:  dict,
     module:  str  = None,
+    marker:  str  = None,
     keyword: str  = None,
-    login:   str  = "full", 
 ) -> list:
     ts       = datetime.now().strftime("%Y%m%d_%H%M%S")
     platform = device["platform"]
     env      = device["type"]
     report   = get_report_path(platform, ts)
 
+    auto_marker = f"{platform} and {env}"
+    if marker:
+        auto_marker = f"({auto_marker}) and ({marker})"
+
     cmd = [
         "pytest",
         module if module else "tests/",
-        f"--platform={platform}",  
-        f"--env={env}",
-        f"--login={login}",
+        f"-m", f"{auto_marker}",  
         f"--html={report}",
         "--self-contained-html",
     ]
@@ -56,7 +58,7 @@ def build_pytest_command(
 def run(
     platform: str  = None,
     module:   str  = None,
-    login:    str  = "full",
+    marker:   str  = None,
     keyword:  str  = None,
     parallel: bool = False,
 ):
@@ -70,8 +72,8 @@ def run(
         cmd = build_pytest_command(
             device=device,
             module=module,
+            marker=marker,
             keyword=keyword,
-            login=login,
         )
         print(f"\n[RUN] {' '.join(cmd)}\n")
 
@@ -89,15 +91,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Mobile App 자동화 테스트 실행")
     parser.add_argument("--platform", default=None,        help="실행 플랫폼: aos | ios")
     parser.add_argument("--module",   default=None,        help="특정 모듈: tests/test_basic.py")
+    parser.add_argument("--marker",   default=None,        help="추가 마커: smoke | regression")
     parser.add_argument("--keyword",  default=None,        help="키워드: test_login_success")
-    parser.add_argument("--login", default="full", help="로그인 방식: full | skip")
     parser.add_argument("--parallel", action="store_true", help="병렬 실행 여부")
     args = parser.parse_args()
 
     run(
         platform=args.platform,
         module=args.module,
-        login=args.login,
+        marker=args.marker,
         keyword=args.keyword,
         parallel=args.parallel,
     )

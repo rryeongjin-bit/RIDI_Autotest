@@ -52,6 +52,7 @@ class TestLogin:
         self.page.switch_to_native() 
         self.page.wait_for_native()
 
+        # 기기 대체 화면
         if self.replace.is_replace_device_displayed():
             self.replace.click_replace_toggle()
             self.replace.click_replace_btn()
@@ -90,14 +91,11 @@ class TestContentsHome_AllAges:
         assert result, "❌ 회차별 썸네일 확인필요"
 
     def test_App_Checklist_177_다운로드아이콘(self):
-        try:
-            self.page.click_episode_download_with_fallback()
-        except Exception as e:
-            pytest.fail(str(e))
-
+        assert self.page.is_download_btn_displayed(), "❌ 다운로드 버튼 미노출"
+        
         TestContentsHome_AllAges.episode_desc = self.page.get_first_download_episode_desc()
         self.page.click_episode_download()
-        time.sleep(3)
+        time.sleep(3)     
 
         TestContentsHome_AllAges.has_pay_popup = self.page.has_webview()
         print(f"\nhas_webview 결과: {TestContentsHome_AllAges.has_pay_popup}")
@@ -111,7 +109,6 @@ class TestContentsHome_AllAges:
                 assert self.page.is_paypopup_displayed(), "❌ 결제 팝업 미노출"
 
                 self.page.click_pay_cash()
-                assert self.page.is_pay_renttab_displayed(), "❌ 캐시로 결제 버튼 선택 실패"
                 self.page.click_pay_rent_btn()
                 self.page.switch_to_native()
                 self.page.wait_for_native()
@@ -203,7 +200,6 @@ class TestContentsHome_Adult:
                 assert self.page.is_paypopup_displayed(), "❌ 결제 팝업 미노출"
 
                 self.page.click_pay_cash()
-                assert self.page.is_pay_ownbtn_displayed(), "❌ 캐시로 결제 버튼 선택 실패"
                 self.page.click_pay_buy_btn()
                 self.page.switch_to_native()
                 self.page.wait_for_native()

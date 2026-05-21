@@ -87,6 +87,7 @@ def reset_app(driver, platform, request):
     login_mode = request.config.getoption("--login", default="full")
 
     if login_mode == "skip":
+        # 앱 초기화 없이 앱만 실행
         driver.activate_app(bundle_id)
         logging.info("[reset_app] 앱 실행 (초기화 없음 - 로그인 상태 유지)")
         yield
@@ -94,6 +95,7 @@ def reset_app(driver, platform, request):
         logging.info("[reset_app] 앱 종료 (로그인 상태 유지)")
         return
 
+    # full 모드 - 앱 초기화
     logging.info(f"[reset_app] 앱 초기화 시작: {bundle_id}")
     if platform == "aos":
         driver.execute_script("mobile: clearApp", {"appId": bundle_id})
@@ -103,15 +105,18 @@ def reset_app(driver, platform, request):
         driver.activate_app(bundle_id)
     logging.info("[reset_app] 앱 초기화 완료")
 
+    # 알림 팝업
     alert = Alertnotification(driver, platform)
     if alert.is_noti_displayed():
         alert.click_noti_alert()
     else:
         print("[SKIP] 알림 권한 팝업 미노출")
 
+    # Braze 팝업
     time.sleep(3)
     alert.close_braze_if_present()
 
+    # 로그인
     account = TestAccount.AOS if platform == "aos" else TestAccount.IOS
     page    = LoginPage(driver, platform)
     replace = Replacedevicelist(driver, platform)
@@ -124,6 +129,7 @@ def reset_app(driver, platform, request):
     page.switch_to_native()
     page.wait_for_native()
 
+    # 기기 대체 화면
     if replace.is_replace_device_displayed():
         replace.click_replace_toggle()
         replace.click_replace_btn()
@@ -183,3 +189,5 @@ def pytest_addoption(parser):
     parser.addoption("--platform", default="ios", help="플랫폼: aos | ios")
     parser.addoption("--env",      default="real", help="환경: real | emulator | simulator")
     parser.addoption("--login",    default="full", help="로그인 방식: full | skip")
+    #                                                     full = 앱초기화 + 로그인
+    #                                                     skip = 앱초기화 없이 로그인 상태 유지

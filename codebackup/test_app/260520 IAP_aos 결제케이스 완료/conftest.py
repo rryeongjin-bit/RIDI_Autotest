@@ -11,15 +11,13 @@ from config.capabilities import *
 from config.settings import *
 from pages.login_page import *
 from data.test_data import *
-from pages.home_page import *
-from pages.login_page import *
-
 
 _active_device_info: dict = {}
 
 @pytest.fixture(scope="session")
 def platform(request) -> str:
-    return request.config.getoption("--platform", default="ios")
+    marker_expr = request.config.getoption("-m", default="")
+    return "aos" if "aos" in marker_expr else "ios"
 
 @pytest.fixture(scope="session")
 def timestamp():
@@ -51,7 +49,9 @@ def setup_logger(platform, timestamp):
 @pytest.fixture(scope="session")
 def driver(request, platform):
     marker_expr = request.config.getoption("-m", default="")
-    env = request.config.getoption("--env", default="real")
+    env = "emulator"  if "emulator"  in marker_expr else \
+          "simulator" if "simulator" in marker_expr else \
+          "real"
 
     device = _find_active_device(platform, env)
     if device is None:
@@ -71,6 +71,7 @@ def driver(request, platform):
     drv.quit()
     logging.info("[driver] 드라이버 종료")
 
+
 def _find_active_device(platform: str, env: str) -> dict | None:
     devices = DEVICE_CONFIG.get(platform, [])
     for device in devices:
@@ -81,61 +82,25 @@ def _find_active_device(platform: str, env: str) -> dict | None:
                 return device
     return None
 
+
 @pytest.fixture(scope="module", autouse=True)
-def reset_app(driver, platform, request):
-    bundle_id  = BUNDLE_ID_AOS if platform == "aos" else BUNDLE_ID_IOS
-    login_mode = request.config.getoption("--login", default="full")
+def reset_app(driver, platform):
+    # bundle_id = BUNDLE_ID_AOS if platform == "aos" else BUNDLE_ID_IOS
+    # logging.info(f"[reset_app] 앱 초기화 시작: {bundle_id}")
 
-    if login_mode == "skip":
-        driver.activate_app(bundle_id)
-        logging.info("[reset_app] 앱 실행 (초기화 없음 - 로그인 상태 유지)")
-        yield
-        driver.terminate_app(bundle_id)
-        logging.info("[reset_app] 앱 종료 (로그인 상태 유지)")
-        return
+    # if platform == "aos":
+    #     driver.execute_script("mobile: clearApp", {"appId": bundle_id})
+    #     driver.activate_app(bundle_id)
+    # elif platform == "ios":
+    #     driver.terminate_app(bundle_id)
+    #     driver.activate_app(bundle_id)
 
-    logging.info(f"[reset_app] 앱 초기화 시작: {bundle_id}")
-    if platform == "aos":
-        driver.execute_script("mobile: clearApp", {"appId": bundle_id})
-        driver.activate_app(bundle_id)
-    elif platform == "ios":
-        driver.terminate_app(bundle_id)
-        driver.activate_app(bundle_id)
-    logging.info("[reset_app] 앱 초기화 완료")
-
-    alert = Alertnotification(driver, platform)
-    if alert.is_noti_displayed():
-        alert.click_noti_alert()
-    else:
-        print("[SKIP] 알림 권한 팝업 미노출")
-
-    time.sleep(3)
-    alert.close_braze_if_present()
-
-    account = TestAccount.AOS if platform == "aos" else TestAccount.IOS
-    page    = LoginPage(driver, platform)
-    replace = Replacedevicelist(driver, platform)
-
-    page.open_deeplink(DeepLinks.MYRIDI)
-    page.click_login_btn()
-    page.switch_to_webview()
-    page.wait_for_webview()
-    page.login(id=account["id"], pw=account["pw"])
-    page.switch_to_native()
-    page.wait_for_native()
-
-    if replace.is_replace_device_displayed():
-        replace.click_replace_toggle()
-        replace.click_replace_btn()
-    else:
-        print("[SKIP] 기기 대체 화면 미노출")
-
-    logging.info("[reset_app] 로그인 완료")
+    # logging.info("[reset_app] 앱 초기화 완료")
 
     yield
 
-    driver.terminate_app(bundle_id)
-    logging.info("[reset_app] 앱 종료")
+    # driver.terminate_app(bundle_id)
+    # logging.info("[reset_app] 앱 종료")
 
 def pytest_terminal_summary(terminalreporter, config):
     passed   = len(terminalreporter.stats.get("passed",   []))
@@ -146,7 +111,8 @@ def pytest_terminal_summary(terminalreporter, config):
 
     elapsed = round(time.time() - terminalreporter._sessionstarttime, 2)
 
-    platform = config.getoption("--platform", default="ios")
+    marker_expr = config.getoption("-m", default="")
+    platform    = "aos" if "aos" in marker_expr else "ios"
     log_dir     = os.path.join(LOG_DIR, platform)
     log_files   = sorted([f for f in os.listdir(log_dir) if f.endswith(".log")]) if os.path.exists(log_dir) else []
     log_file    = log_files[-1] if log_files else "로그 파일 없음"
@@ -157,7 +123,7 @@ def pytest_terminal_summary(terminalreporter, config):
     terminalreporter.write_line(f"✅ pass     : {passed}개")
     terminalreporter.write_line(f"❌ fail     : {failed}개")
     terminalreporter.write_line(f"🚫 skip     : {skipped}개")
-    terminalreporter.write_line(f"⚠️ error    : {error}개")
+    terminalreporter.write_line(f"🔴 error    : {error}개")
     terminalreporter.write_line(f"⏳ 총 실행시간 : {elapsed}s")
     terminalreporter.write_line(f"🛠️ 로그파일명  : {log_file}")
     terminalreporter.write_sep("=", "")
@@ -178,8 +144,3 @@ def pytest_runtest_makereport(item, call):
             path = os.path.join(screenshot_dir, f"{ts}_{item.name}.png")
             drv.save_screenshot(path)
             logging.info(f"[screenshot] 저장 완료: {path}")
-    
-def pytest_addoption(parser):
-    parser.addoption("--platform", default="ios", help="플랫폼: aos | ios")
-    parser.addoption("--env",      default="real", help="환경: real | emulator | simulator")
-    parser.addoption("--login",    default="full", help="로그인 방식: full | skip")

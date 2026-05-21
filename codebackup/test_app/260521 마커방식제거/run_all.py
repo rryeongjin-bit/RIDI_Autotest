@@ -31,7 +31,6 @@ def build_pytest_command(
     device:  dict,
     module:  str  = None,
     keyword: str  = None,
-    login:   str  = "full", 
 ) -> list:
     ts       = datetime.now().strftime("%Y%m%d_%H%M%S")
     platform = device["platform"]
@@ -41,9 +40,8 @@ def build_pytest_command(
     cmd = [
         "pytest",
         module if module else "tests/",
-        f"--platform={platform}",  
-        f"--env={env}",
-        f"--login={login}",
+        f"--platform={platform}",  # ← 추가
+        f"--env={env}",            # ← 추가
         f"--html={report}",
         "--self-contained-html",
     ]
@@ -56,7 +54,6 @@ def build_pytest_command(
 def run(
     platform: str  = None,
     module:   str  = None,
-    login:    str  = "full",
     keyword:  str  = None,
     parallel: bool = False,
 ):
@@ -71,7 +68,6 @@ def run(
             device=device,
             module=module,
             keyword=keyword,
-            login=login,
         )
         print(f"\n[RUN] {' '.join(cmd)}\n")
 
@@ -90,14 +86,12 @@ if __name__ == "__main__":
     parser.add_argument("--platform", default=None,        help="실행 플랫폼: aos | ios")
     parser.add_argument("--module",   default=None,        help="특정 모듈: tests/test_basic.py")
     parser.add_argument("--keyword",  default=None,        help="키워드: test_login_success")
-    parser.add_argument("--login", default="full", help="로그인 방식: full | skip")
     parser.add_argument("--parallel", action="store_true", help="병렬 실행 여부")
     args = parser.parse_args()
 
     run(
         platform=args.platform,
         module=args.module,
-        login=args.login,
         keyword=args.keyword,
         parallel=args.parallel,
     )

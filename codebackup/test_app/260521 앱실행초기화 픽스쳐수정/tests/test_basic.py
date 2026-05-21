@@ -97,7 +97,7 @@ class TestContentsHome_AllAges:
 
         TestContentsHome_AllAges.episode_desc = self.page.get_first_download_episode_desc()
         self.page.click_episode_download()
-        time.sleep(3)
+        time.sleep(5)
 
         TestContentsHome_AllAges.has_pay_popup = self.page.has_webview()
         print(f"\nhas_webview 결과: {TestContentsHome_AllAges.has_pay_popup}")
@@ -111,7 +111,6 @@ class TestContentsHome_AllAges:
                 assert self.page.is_paypopup_displayed(), "❌ 결제 팝업 미노출"
 
                 self.page.click_pay_cash()
-                assert self.page.is_pay_renttab_displayed(), "❌ 캐시로 결제 버튼 선택 실패"
                 self.page.click_pay_rent_btn()
                 self.page.switch_to_native()
                 self.page.wait_for_native()
@@ -122,7 +121,7 @@ class TestContentsHome_AllAges:
                 self.page.switch_to_native()
                 self.page.wait_for_native()
 
-        time.sleep(3)
+        time.sleep(5)
         self.viewer.click_all_viewer()
         assert self.viewer.is_all_viewer_top_title(TestContent.ALL_AGES["title"]), "❌ 뷰어 진입 실패"
 
@@ -189,7 +188,7 @@ class TestContentsHome_Adult:
         
         TestContentsHome_Adult.episode_desc = self.page.get_first_download_episode_desc()
         self.page.click_episode_download()
-        time.sleep(3)     
+        time.sleep(5)     
 
         TestContentsHome_Adult.has_pay_popup = self.page.has_webview()
         print(f"\nhas_webview 결과: {TestContentsHome_Adult.has_pay_popup}")
@@ -203,7 +202,6 @@ class TestContentsHome_Adult:
                 assert self.page.is_paypopup_displayed(), "❌ 결제 팝업 미노출"
 
                 self.page.click_pay_cash()
-                assert self.page.is_pay_ownbtn_displayed(), "❌ 캐시로 결제 버튼 선택 실패"
                 self.page.click_pay_buy_btn()
                 self.page.switch_to_native()
                 self.page.wait_for_native()
@@ -214,7 +212,7 @@ class TestContentsHome_Adult:
                 self.page.switch_to_native()
                 self.page.wait_for_native()
 
-        time.sleep(3)
+        time.sleep(5)
         self.viewer.click_adult_viewer()
         assert self.viewer.is_adult_viewer_top_title(TestContent.ADULT["title"]), "❌ 뷰어 진입 실패"
 

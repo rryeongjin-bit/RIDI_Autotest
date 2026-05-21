@@ -26,7 +26,7 @@ class CheckoutPage(BasePage):
 
         if not displayed:
             raise Exception(
-                "결제 동의 토글 미노출"
+                "결제 동의 토글 안보임"
             )
 
         self.click(locator)

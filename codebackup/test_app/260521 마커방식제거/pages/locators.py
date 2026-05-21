@@ -75,9 +75,6 @@ class AOS_ContentshomeLocators:
     EPISODE_TITLE_BEFORE_DOWNLOAD = (AppiumBy.XPATH,
     '(//android.view.ViewGroup[@resource-id="downloadButton"])[1]/preceding-sibling::android.view.ViewGroup[@content-desc][1]/android.widget.TextView[1]')
 
-    #총 회차목록
-    CONTENTS_EPISODE_ALL = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().textMatches("총 \\\\d+(화|권).*")')
-
     #작품홈 선택구매 및 카트담기 화면
     SELECTBUY_CART_SORT_EPISODE     = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("회차순")')
     SELECTBUY_CART_SORT_LAST        = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("최신순")')
@@ -116,9 +113,6 @@ class IOS_ContentshomeLocators:
     ALL_CONTENTS_THUMBNAIL_SECOND = (AppiumBy.XPATH, '(//XCUIElementTypeOther[@name="두 명의 상속인 2화 2022.04.14, 19.6MB"])[3]')
     EPISODE_TITLE_BEFORE_DOWNLOAD = (AppiumBy.XPATH, '(//XCUIElementTypeOther[@name="downloadButton"])[1]/../../XCUIElementTypeOther[1]')
     
-    #총 회차목록
-    CONTENTS_EPISODE_ALL = (AppiumBy.IOS_PREDICATE, 'type == "XCUIElementTypeOther" AND name MATCHES "총 \\\\d+(화|권)"')
-
     #작품홈 선택구매 및 카트담기 화면
     SELECTBUY_CART_SORT_EPISODE  = (AppiumBy.XPATH, '(//XCUIElementTypeOther[@name="회차순"])[2]')
     SELECTBUY_CART_SORT_LAST     = (AppiumBy.XPATH, '(//XCUIElementTypeOther[@name="최신순"])[2]')

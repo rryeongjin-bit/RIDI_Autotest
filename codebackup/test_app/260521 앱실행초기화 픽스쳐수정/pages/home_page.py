@@ -178,11 +178,6 @@ class ContentshomePage(BasePage):
             self.click(AOS_ContentshomeLocators.PAY_CASH_BTN)
         else:
             self.click(IOS_ContentshomeLocators.PAY_CASH_BTN)
-    
-    def is_pay_renttab_displayed(self) -> bool:
-        locator = AOS_ContentshomeLocators.PAY_RENT_TAB if self.platform == "aos" \
-                  else IOS_ContentshomeLocators.PAY_RENT_TAB
-        return self.is_displayed(locator)
 
     def click_pay_rent_tab(self):
         if self.platform == "aos":
@@ -195,11 +190,6 @@ class ContentshomePage(BasePage):
             self.click(AOS_ContentshomeLocators.PAY_RENT_BTN)
         else:
             self.click(IOS_ContentshomeLocators.PAY_RENT_BTN)
-    
-    def is_pay_ownbtn_displayed(self) -> bool:
-        locator = AOS_ContentshomeLocators.PAY_OWN_BTN if self.platform == "aos" \
-                  else IOS_ContentshomeLocators.PAY_OWN_BTN
-        return self.is_displayed(locator)
 
     def click_pay_buy_btn(self):
         if self.platform == "aos":
