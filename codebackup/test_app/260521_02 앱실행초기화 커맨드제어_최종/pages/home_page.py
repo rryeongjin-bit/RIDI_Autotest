@@ -142,22 +142,6 @@ class ContentshomePage(BasePage):
         locator = AOS_ContentshomeLocators.CONTENTS_EPISODE_FIRST if self.platform == "aos" \
                 else IOS_ContentshomeLocators.CONTENTS_EPISODE_FIRST
         return self.is_displayed(locator)
-    
-    def is_watchorder_displayed(self) -> bool:
-        locator = AOS_ContentshomeLocators.CONTENTS_WATCHING_SORT if self.platform == "aos" \
-                else IOS_ContentshomeLocators.CONTENTS_WATCHING_SORT
-        return self.is_displayed(locator)
-
-    def click_watchorder_sort(self):
-        if self.platform == "aos":
-            self.click(AOS_ContentshomeLocators.CONTENTS_WATCHING_SORT)
-        else:
-            self.click(IOS_ContentshomeLocators.CONTENTS_WATCHING_SORT)
-
-    def is_episode_any_displayed(self) -> bool:
-        locator = AOS_ContentshomeLocators.CONTENTS_EPISODE_ANY if self.platform == "aos" \
-                else IOS_ContentshomeLocators.CONTENTS_EPISODE_ANY
-        return self.is_displayed(locator)
         
     def click_episode_download(self):
         if self.platform == "aos":

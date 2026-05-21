@@ -62,12 +62,10 @@ class AOS_ContentshomeLocators:
     #작품홈 회차앵커탭
     CONTENTS_EPISODE_TAB      = (AppiumBy.ACCESSIBILITY_ID, '회차')
     CONTENTS_EPISODE_SORT     = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("회차순")')
-    CONTENTS_WATCHING_SORT    = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("보던순")')
     SELECTBUY_CART_BTN        = (AppiumBy.ACCESSIBILITY_ID, '선택 구매, /, 카트 담기')
     SELECTBUY_CART_TITLE      = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("고깔모자의 아틀리에 총 15권")')
     
     CONTENTS_EPISODE_FIRST      = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().textContains("1화")')
-    CONTENTS_EPISODE_ANY        = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().textMatches(".*[화권].*").instance(0)')
     CONTENTS_EPISODE_DOWNLOAD   = (AppiumBy.XPATH, '(//android.view.ViewGroup[@resource-id="downloadButton"])[1]/android.widget.ImageView')
     RENT_OWNERSHIP_LABEL        = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().resourceId("ownershipLabel")')
     OWN_OWNERSHIP_LABEL         = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().resourceId("ownershipLabel").text("소장")')
@@ -107,12 +105,10 @@ class IOS_ContentshomeLocators:
     #작품홈 회차앵커탭
     CONTENTS_EPISODE_TAB    = (AppiumBy.NAME, '회차')
     CONTENTS_EPISODE_SORT   = (AppiumBy.ACCESSIBILITY_ID, '회차순')
-    CONTENTS_WATCHING_SORT  = (AppiumBy.ACCESSIBILITY_ID, '보던순')
     SELECTBUY_CART_BTN      = (AppiumBy.NAME, '선택 구매 / 카트 담기')
     SELECTBUY_CART_TITLE    = (AppiumBy.IOS_CLASS_CHAIN, '**/XCUIElementTypeStaticText[`name == "고깔모자의 아틀리에 총 15권"`]')
 
     CONTENTS_EPISODE_FIRST          = (AppiumBy.IOS_CLASS_CHAIN, '**/XCUIElementTypeOther[`name CONTAINS "1화"`][1]')
-    CONTENTS_EPISODE_ANY            = (AppiumBy.IOS_CLASS_CHAIN, '**/XCUIElementTypeOther[`name CONTAINS "화" OR name CONTAINS "권"`][1]')
     CONTENTS_EPISODE_DOWNLOAD       = (AppiumBy.IOS_CLASS_CHAIN, '**/XCUIElementTypeOther[`name == "downloadButton"`][1]')
     OWNERSHIP_LABEL                 = (AppiumBy.NAME, 'ownershipLabel')
 

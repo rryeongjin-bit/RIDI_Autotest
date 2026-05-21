@@ -45,7 +45,7 @@ class TestLogin:
     def test_App_Checklist_072_로그인(self, request):
         if request.config.getoption("--reset") == "skip":
             pytest.skip("앱 초기화 없이 실행 중 - 스킵")
-
+            
         self.page.open_deeplink(DeepLinks.MYRIDI)
         self.page.click_login_btn()
         print("현재 컨텍스트:", self.driver.contexts)
@@ -94,12 +94,6 @@ class TestContentsHome_AllAges:
         result = self.page.is_all_thumbnail_changed()
         print(f"\n썸네일 변경 여부: {result}")
         assert result, "❌ 회차별 썸네일 확인필요"
-
-        if self.page.is_watchorder_displayed():
-            self.page.click_watchorder_sort()
-            assert self.page.is_episode_any_displayed(), "❌ 보던순 정렬 실패"
-        else:
-            print("[SKIP] 보던순 미노출 - 회차순 유지")
 
     def test_App_Checklist_177_다운로드아이콘(self):
         try:
@@ -193,12 +187,8 @@ class TestContentsHome_Adult:
         self.page.click_episode_tab()
         assert self.page.is_episode_tab_entered(), "❌ 회차 앵커탭 진입 실패"
 
-        if self.page.is_watchorder_displayed():
-            self.page.click_watchorder_sort()
-            assert self.page.is_episode_any_displayed(), "❌ 보던순 정렬 실패"
-        else:
-            self.page.click_episode_sort()
-            assert self.page.is_episode_1st_displayed(), "❌ 회차순 정렬 실패"
+        self.page.click_episode_sort()
+        assert self.page.is_episode_1st_displayed(), "❌ 회차순 정렬 실패"
 
     def test_App_Checklist_177_다운로드아이콘(self):
         assert self.page.is_download_btn_displayed(), "❌ 다운로드 버튼 미노출"

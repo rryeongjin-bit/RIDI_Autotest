@@ -92,6 +92,7 @@ def reset_app(driver, platform, request):
     login_mode = request.config.getoption("--login", default="auto")
 
     if reset_mode == "full":
+        # 앱 초기화 + 앱 실행만 (알림팝업/로그인은 TestLaunchApp, TestLogin에서 처리)
         logging.info(f"[reset_app] 앱 초기화 시작: {bundle_id}")
         if platform == "aos":
             driver.execute_script("mobile: clearApp", {"appId": bundle_id})
@@ -102,6 +103,7 @@ def reset_app(driver, platform, request):
         logging.info("[reset_app] 앱 초기화 완료")
 
     elif reset_mode == "skip" and login_mode == "auto":
+        # 앱 실행 + 알림팝업 + 로그인
         driver.activate_app(bundle_id)
         logging.info("[reset_app] 앱 실행 (초기화 없음)")
 
@@ -135,6 +137,7 @@ def reset_app(driver, platform, request):
         logging.info("[reset_app] 로그인 완료")
 
     elif reset_mode == "skip" and login_mode == "skip":
+        # 앱 실행만 (이미 로그인 상태)
         driver.activate_app(bundle_id)
         logging.info("[reset_app] 앱 실행 (초기화 없음 - 로그인 상태 유지)")
 
@@ -178,11 +181,11 @@ def pytest_runtest_makereport(item, call):
         platform = item.funcargs.get("platform", "unknown")
         ts       = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-        if drv is None:
+        if drv is None:  # ← None 체크 추가
             logging.warning("[screenshot] 드라이버 없음 - 스크린샷 스킵")
             return
 
-        try: 
+        try:  # ← try/except 추가
             screenshot_dir = os.path.join(SCREENSHOT_DIR, platform)
             os.makedirs(screenshot_dir, exist_ok=True)
             path = os.path.join(screenshot_dir, f"{ts}_{item.name}.png")
