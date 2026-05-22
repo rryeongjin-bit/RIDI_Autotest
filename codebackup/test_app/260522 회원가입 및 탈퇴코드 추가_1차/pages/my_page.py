@@ -84,6 +84,23 @@ class MyInfoPage(BasePage):
         else:
             self.click(IOS_MyInfoLocators.MY_INFO)
 
+    # def is_recheck_pw_title_displayed(self) -> bool:
+    #     if self.platform == "aos":
+    #         return self.is_displayed(AOS_MyInfoLocators.RECHECK_PW_TITLE)
+    #     else:
+    #         return self.is_displayed(IOS_MyInfoLocators.RECHECK_PW_TITLE)
+
+    # def input_recheck_pw(self, password: str):
+    #     if self.platform == "aos":
+    #         self.find_element(AOS_MyInfoLocators.RECHECK_PW_INPUT).send_keys(password)
+    #     else:
+    #         self.find_element(IOS_MyInfoLocators.RECHECK_PW_INPUT).send_keys(password)
+
+    # def click_recheck_pw_ok(self):
+    #     if self.platform == "aos":
+    #         self.click(AOS_MyInfoLocators.RECHECK_PW_OK_BTN)
+    #     else:
+    #         self.click(IOS_MyInfoLocators.RECHECK_PW_OK_BTN)
     def is_recheck_pw_title_displayed(self) -> bool:
         if self.platform == "aos":
             result = self.is_displayed(AOS_MyInfoLocators.RECHECK_PW_TITLE, timeout=3)

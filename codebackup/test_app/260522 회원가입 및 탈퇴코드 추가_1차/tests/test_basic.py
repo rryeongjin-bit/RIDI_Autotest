@@ -58,7 +58,7 @@ class TestSignUp:
         assert self.page.is_signup_title_displayed(), "❌ 회원가입 화면 진입 실패"
 
     def test_signup_form(self):
-        TestSignUp.signup_start_time = int(time.time()) 
+        TestSignUp.signup_start_time = int(time.time())  # ← 시작 시간 저장
         timestamp = datetime.now().strftime("%y%m%d%H%M%S")
         user_id   = f"qa{timestamp}"
         email     = f"qa.part.test+{timestamp}@ridi.com"
@@ -91,9 +91,11 @@ class TestSignUp:
         assert url, "❌ 인증 메일 수신 실패 (60초 초과)"
         print(f"[email_verify] 인증 URL: {url}")
 
+        # PC 크롬에서 인증 URL 열기
         self.page.open_url_in_browser_pc(url)
-        time.sleep(10)
+        time.sleep(10)  # 인증 완료 대기
 
+        # 모바일 화면 변경 확인
         self.page.switch_to_native()
         self.page.wait_for_native()
         assert self.page.is_emailverify_complete_displayed(), "❌ 이메일 인증완료 및 회원가입완료 화면 진입 실패"
@@ -132,7 +134,7 @@ class TestMyinfo:
             pytest.skip("aos - 해당 없음")
 
 class TestWithdraw:
-    current_user_id = None 
+    current_user_id = None  # ← 추가
 
     @pytest.fixture(autouse=True)
     def setup(self, driver, platform):
@@ -149,11 +151,12 @@ class TestWithdraw:
             self.myinfo.input_recheck_pw(SignUpData.SIGNUP_PASSWORD)
             self.myinfo.click_recheck_pw_ok()
             assert self.myinfo.is_my_info_manage_title_displayed(), "❌ 내 정보 관리 화면 진입 실패"
-       
+            # 현재 계정 ID 저장
             TestWithdraw.current_user_id = TestSignUp.sign_up_id or self.myinfo.get_current_user_id()
             self.myinfo.click_withdraw_account()
             assert self.page.is_withdraw_title_displayed(), "❌ 회원탈퇴 화면 진입 실패"
         else:
+            # 현재 계정 ID 저장
             TestWithdraw.current_user_id = TestSignUp.sign_up_id or self.myinfo.get_current_user_id()
             self.page.click_settings()
             assert self.page.is_settings_title_displayed(), "❌ 설정 화면 진입 실패"
@@ -165,6 +168,7 @@ class TestWithdraw:
         self.page.scroll_to_agree_checkbox()
         self.page.click_reason_checkbox()
         
+        # aos만 비밀번호 재입력 필요
         if self.platform == "aos":
             self.page.input_withdraw_pw(SignUpData.SIGNUP_PASSWORD)
         

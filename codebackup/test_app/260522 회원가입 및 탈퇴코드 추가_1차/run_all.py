@@ -31,8 +31,8 @@ def build_pytest_command(
     device:  dict,
     module:  str  = None,
     keyword: str  = None,
-    login:   str  = "auto",  
-    reset:   str  = "full",  
+    login:   str  = "auto",  # ← 추가
+    reset:   str  = "full",  # ← 추가
 ) -> list:
     ts       = datetime.now().strftime("%Y%m%d_%H%M%S")
     platform = device["platform"]
@@ -48,8 +48,8 @@ def build_pytest_command(
         f"--reset={reset}",
         f"--html={report}",
         "--self-contained-html",
-        "-s",     
-        "--tb=short", 
+        "-s",       # ← print문 출력
+        "--tb=short",  # ← 짧은 traceback
     ]
 
     if keyword:
@@ -76,8 +76,8 @@ def run(
             device=device,
             module=module,
             keyword=keyword,
-            login=login,   
-            reset=reset,   
+            login=login,   # ← 추가
+            reset=reset,   # ← 추가
         )
         print(f"\n[RUN] {' '.join(cmd)}\n")
 
@@ -97,8 +97,8 @@ if __name__ == "__main__":
     parser.add_argument("--platform", default=None,   help="실행 플랫폼: aos | ios")
     parser.add_argument("--module",   default=None,   help="특정 모듈: tests/test_basic.py")
     parser.add_argument("--keyword",  default=None,   help="키워드: test_login_success")
-    parser.add_argument("--login",    default="auto", help="로그인 방식: auto | skip")  
-    parser.add_argument("--reset",    default="full", help="앱 초기화: full | skip")   
+    parser.add_argument("--login",    default="auto", help="로그인 방식: auto | skip")  # ← 추가
+    parser.add_argument("--reset",    default="full", help="앱 초기화: full | skip")    # ← 추가
     parser.add_argument("--parallel", action="store_true", help="병렬 실행 여부")
     args = parser.parse_args()
 
@@ -106,7 +106,7 @@ if __name__ == "__main__":
         platform=args.platform,
         module=args.module,
         keyword=args.keyword,
-        login=args.login,    
-        reset=args.reset,  
+        login=args.login,    # ← 추가
+        reset=args.reset,    # ← 추가
         parallel=args.parallel,
     )
