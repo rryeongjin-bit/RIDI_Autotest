@@ -187,7 +187,7 @@ class TestWithdraw:
             self.myinfo.input_recheck_pw(SignUpData.SIGNUP_PASSWORD)
             self.myinfo.click_recheck_pw_ok()
             assert self.myinfo.is_my_info_manage_title_displayed(), "❌ 내 정보 관리 화면 진입 실패"
-       
+            # TestSignUp 또는 TestMyinfo에서 이미 저장된 값 있으면 재사용
             TestWithdraw.current_user_id = TestSignUp.sign_up_id or TestMyinfo.current_user_id or self.myinfo.get_current_user_id()
             self.myinfo.click_withdraw_account()
             assert self.page.is_withdraw_title_displayed(), "❌ 회원탈퇴 화면 진입 실패"
@@ -277,7 +277,7 @@ class TestContentsHome_AllAges:
 
     def test_contents_all_ages(self):
         self.page.open_deeplink(DeepLinks.CONTENT_ALL_AGES)
-        time.sleep(20)
+        time.sleep(30)
         assert self.page.is_all_contents_title_displayed(), "❌ 전연령작품홈 진입 실패"
 
     def test_App_Checklist_180_회차목록_정렬(self):
@@ -306,7 +306,7 @@ class TestContentsHome_AllAges:
 
         TestContentsHome_AllAges.episode_desc = self.page.get_first_download_episode_desc()
         self.page.click_episode_download()
-        time.sleep(20)
+        time.sleep(10)
 
         TestContentsHome_AllAges.has_pay_popup = self.page.has_webview()
         print(f"\nhas_webview 결과: {TestContentsHome_AllAges.has_pay_popup}")
@@ -331,7 +331,7 @@ class TestContentsHome_AllAges:
                 self.page.switch_to_native()
                 self.page.wait_for_native()
 
-        time.sleep(3)
+        time.sleep(10)
         self.viewer.click_all_viewer()
         assert self.viewer.is_all_viewer_top_title(TestContent.ALL_AGES["title"]), "❌ 뷰어 진입 실패"
 
@@ -384,7 +384,7 @@ class TestContentsHome_Adult:
       
     def test_contents_adult(self):
         self.page.open_deeplink(DeepLinks.CONTENT_ADULT)
-        time.sleep(20)
+        time.sleep(30)
         assert self.page.is_adult_contents_title_displayed(), "❌ 성인작품홈 진입 실패"
 
     def test_App_Checklist_180_회차목록_정렬(self):
@@ -403,7 +403,7 @@ class TestContentsHome_Adult:
         
         TestContentsHome_Adult.episode_desc = self.page.get_first_download_episode_desc()
         self.page.click_episode_download()
-        time.sleep(20)    
+        time.sleep(3)     
 
         TestContentsHome_Adult.has_pay_popup = self.page.has_webview()
         print(f"\nhas_webview 결과: {TestContentsHome_Adult.has_pay_popup}")
@@ -428,7 +428,7 @@ class TestContentsHome_Adult:
                 self.page.switch_to_native()
                 self.page.wait_for_native()
 
-        time.sleep(20)
+        time.sleep(3)
         self.viewer.click_adult_viewer()
         assert self.viewer.is_adult_viewer_top_title(TestContent.ADULT["title"]), "❌ 뷰어 진입 실패"
 
@@ -476,7 +476,7 @@ class TestSelectbuy_Cart:
 
     def test_contentshome(self):
         self.page.open_deeplink(DeepLinks.CONTENT_CART)
-        time.sleep(20)
+        time.sleep(30)
         assert self.page.is_cart_contents_title_displayed(), "❌ 작품홈 진입 실패"
 
     def test_selectbuy_cart(self):

@@ -39,6 +39,7 @@ class Alertnotification(BasePage):
 
     def is_braze_displayed(self) -> bool:
         if self.platform == "aos":
+            # 웹뷰 컨텍스트에서는 XPATH로 찾기
             return self.is_present(CommonLocators.BRAZEPOPUP_CLOSE_AOS)
         else:
             return self.is_present(CommonLocators.BRAZEPOPUP_CLOSE_IOS)

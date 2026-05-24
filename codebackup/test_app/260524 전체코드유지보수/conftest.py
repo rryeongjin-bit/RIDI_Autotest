@@ -203,6 +203,7 @@ def udid(request, platform):
 @pytest.hookimpl(tryfirst=True)
 def pytest_runtest_logreport(report):
     if report.failed and report.when == "call":
+        # 실패한 테스트의 클래스명 저장
         class_name = report.nodeid.split("::")[1] if "::" in report.nodeid else None
         if class_name:
             _failed_classes.add(class_name)
