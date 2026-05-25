@@ -37,6 +37,7 @@ class AOS_ContentshomeLocators:
     SELECTBUY_CART_RENT_ITEM        = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().description("0고깔모자의 아틀리에 1권, 0고깔모자의 아틀리에 1권, 2019.04.18, 214쪽, 328.7MB")')
     SELECTBUY_CART_OWN_ITEM         = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().description("고깔모자의 아틀리에 1권, 고깔모자의 아틀리에 1권, 2019.04.18, 214쪽, 328.7MB, 소장 3,800원 3,420원")')
     SELECTBUY_CART_OWN_LAST_ITEM    = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().description("고깔모자의 아틀리에 15권, 고깔모자의 아틀리에 15권, 2026.05.01, 198쪽, 325.2MB, 소장 3,800원 3,420원")')
+    #SELECTBUY_CART_FIRST_TOGGLE     = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().className("android.widget.ImageView").instance(2)')
     SELECTBUY_CART_FIRST_TOGGLE     = (AppiumBy.XPATH,'(//android.view.ViewGroup[contains(@content-desc, "고깔모자의 아틀리에") and contains(@content-desc, "소장 3,800원")]/android.widget.ImageView[@enabled="true"])[1]')    
     CART_BTN                        = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("카트")')
     CART_TOAST                      = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().description("카트에 작품을 담았습니다.")')

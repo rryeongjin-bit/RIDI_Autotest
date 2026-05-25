@@ -9,7 +9,7 @@ class AOS_GenrehomeLocators:
     COMIC_RECOMMEND_TAB           = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("만화")')
 
 
-    #CART_ICON          
+   #CART_ICON          
 
 class IOS_GenrehomeLocators:    
     #웹툰 장르홈

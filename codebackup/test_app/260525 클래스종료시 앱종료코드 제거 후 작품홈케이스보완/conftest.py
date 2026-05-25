@@ -209,3 +209,11 @@ def pytest_runtest_setup(item):
     if class_name and class_name in _failed_classes:
         pytest.skip(f"[SKIP] {class_name} 이전 테스트 실패로 현재 클래스 스킵")
 
+
+# @pytest.fixture(scope="class", autouse=True)
+# def restart_app_per_class(driver, platform):
+#     yield
+
+    #  bundle_id = BUNDLE_ID_AOS if platform == "aos" else BUNDLE_ID_IOS
+    #  driver.terminate_app(bundle_id)
+    #  logging.info(f"[restart_app_per_class] 앱 종료 ({platform})")
