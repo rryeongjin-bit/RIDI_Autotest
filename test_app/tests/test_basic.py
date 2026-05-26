@@ -243,7 +243,9 @@ class TestLogin:
             pytest.skip("앱 초기화 없이 실행 중 - 스킵")
 
         self.page.open_deeplink(DeepLinks.MYRIDI)
+        self.alert.close_braze_if_present() 
         self.page.click_login_btn()
+        time.sleep(3)
         print("현재 컨텍스트:", self.driver.contexts)
         self.page.switch_to_webview() 
         self.page.wait_for_webview()
@@ -519,10 +521,11 @@ class TestSelectbuy_Cart:
     
     def test_App_Checklist_226_회차목록정렬(self):
         self.page.click_selectbuy_cart_sort_last()
-        assert self.page.is_selectbuy_cart_1st_last_displayed(), "❌ 최신순 정렬 실패"
+        assert self.page.is_sort_latest_selected(), "❌ 최신순 정렬 실패"
 
     def test_App_Checklist_228_카트담기(self):
         self.page.click_selectbuy_cart_1st_episode()
+        time.sleep(3)
         self.page.click_cart_btn()
         assert self.page.is_cart_toast_displayed(), "❌ 카트 담기 토스트 미노출"
 

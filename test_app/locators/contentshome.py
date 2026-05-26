@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 from appium.webdriver.common.appiumby import AppiumBy
 
-
 class AOS_ContentshomeLocators:
     #작품홈 상단영역
     ALL_CONTENTS_TITLE      = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("두 명의 상속인")')
@@ -79,7 +78,7 @@ class IOS_ContentshomeLocators:
     SELECTBUY_CART_OWN_TAB       = (AppiumBy.NAME, '소장 소장')
     SELECTBUY_CART_RENT_ITEM     = (AppiumBy.XPATH, '(//XCUIElementTypeOther[@name="고깔모자의 아틀리에 1권 2019.04.18, 214쪽, 328.7MB"])[3]')
     SELECTBUY_CART_OWN_ITEM      = (AppiumBy.XPATH, '(//XCUIElementTypeOther[@name="고깔모자의 아틀리에 1권 2019.04.18, 214쪽, 328.7MB 소장 3,800원 3,420원"])[3]')
-    SELECTBUY_CART_OWN_LAST_ITEM = (AppiumBy.IOS_CLASS_CHAIN, '**/XCUIElementTypeOther[`name == "고깔모자의 아틀리에 15권 2026.05.01, 198쪽, 325.2MB 소장 3,800원 3,420원"`][3]')
+    SELECTBUY_CART_OWN_LAST_ITEM = (AppiumBy.IOS_CLASS_CHAIN, '**/XCUIElementTypeOther[`name CONTAINS "고깔모자의 아틀리에" AND name CONTAINS "소장 3,800원" AND NOT name ENDSWITH "소장"`]')
     CART_BTN                     = (AppiumBy.NAME, '카트')
     CART_TOAST                   = (AppiumBy.IOS_CLASS_CHAIN, '**/XCUIElementTypeOther[`name == "카트에 작품을 담았습니다. 보기"`][2]')
 

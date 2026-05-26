@@ -41,6 +41,7 @@ def _get_aos_capabilities(device: dict) -> UiAutomator2Options:
     options.app_activity     = APP_ACTIVITY
     options.no_reset         = True
     options.full_reset        = False  
+    options.set_capability("chromedriverAutoDownload", True)
     return options
 
 def _get_ios_capabilities(device: dict) -> XCUITestOptions:

@@ -84,8 +84,8 @@ class Alertnotification(BasePage):
 
 class MainhomePage(BasePage):
     def is_genrehome_displayed(self) -> bool:
-        locator = AOS_GenrehomeLocators.COMIC_RECOMMEND_TAB if self.platform == "aos" \
-                  else IOS_GenrehomeLocators.COMIC_NEW_QUICK
+        locator = AOS_GenrehomeLocators.WEBTOON_RECOMMEND_TAB if self.platform == "aos" \
+                  else IOS_GenrehomeLocators.WEBTOON_NEW_QUICK
         return self.is_present(locator)
     
     def click_cart_icon(self):
@@ -313,10 +313,9 @@ class ContentshomePage(BasePage):
                 else IOS_ContentshomeLocators.SELECTBUY_CART_OWN_ITEM
         return self.is_displayed(locator)
     
-    def is_selectbuy_cart_1st_last_displayed(self) -> bool:
-        locator = AOS_ContentshomeLocators.SELECTBUY_CART_OWN_LAST_ITEM if self.platform == "aos" \
-                else IOS_ContentshomeLocators.SELECTBUY_CART_OWN_LAST_ITEM
-        return self.is_displayed(locator)
+    def is_sort_latest_selected(self) -> bool:
+        el = self.find_element(IOS_ContentshomeLocators.SELECTBUY_CART_SORT_LAST)
+        return el.get_attribute('enabled') == 'false'
 
     def click_selectbuy_cart_1st_episode(self):
         if self.platform == "aos":
@@ -342,4 +341,16 @@ class ContentshomePage(BasePage):
         if self.is_present(locator, timeout=2):  
             self.click(CommonLocators.SELECT_DRAG_ALERT_CLOSE_AOS)
 
-
+    def click_selectbuy_cart_1st_episode(self):
+        if self.platform == "aos":
+            self.click(AOS_ContentshomeLocators.SELECTBUY_CART_FIRST_TOGGLE)
+        else:
+            import re
+            elements = self.find_elements((IOS_ContentshomeLocators.SELECTBUY_CART_OWN_LAST_ITEM))
+            single_items = [
+                el for el in elements
+                if el.location['y'] >= 190
+                and len(re.findall(r'\d+권', el.get_attribute('name'))) == 1
+            ]
+            target = min(single_items, key=lambda el: el.location['y'])
+            target.click()

@@ -209,3 +209,23 @@ def pytest_runtest_setup(item):
     if class_name and class_name in _failed_classes:
         pytest.skip(f"[SKIP] {class_name} 이전 테스트 실패로 현재 클래스 스킵")
 
+
+# @pytest.fixture(autouse=True)
+# def ensure_native_context(driver, platform):
+#     # # before  
+#     # try:
+#     #     if driver.current_context != "NATIVE_APP":
+#     #         driver.switch_to.context("NATIVE_APP")
+
+#     # except Exception:
+#     #     pass
+
+#     # yield
+
+#     #after
+#     try:
+#         if driver.current_context != "NATIVE_APP":
+#             driver.switch_to.context("NATIVE_APP")
+#     except Exception:
+#         pass
+
