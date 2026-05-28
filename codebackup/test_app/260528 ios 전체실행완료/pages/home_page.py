@@ -195,8 +195,8 @@ class ContentshomePage(BasePage):
             time.sleep(2)
             if not self.is_download_btn_displayed():
                 raise Exception("❌ 총 회차목록 내 선택가능한 다운로드 버튼 미노출")
-            return True  
-        return False  
+            return True  # 폴백 사용
+        return False  # 폴백 미사용
             
     def is_paypopup_displayed(self) -> bool:
         locator = AOS_ContentshomeLocators.PAY_CASH_BTN if self.platform == "aos" \

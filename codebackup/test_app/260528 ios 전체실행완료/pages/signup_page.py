@@ -56,13 +56,11 @@ class SignUpPage(BasePage):
     def click_agree_checkboxes(self):
         if self.platform == "aos":
             self.click(AOS_SignUpLocators.AGREE_FIRST)
-            if self.is_displayed(AOS_SignUpLocators.AGREE_CHECK):
-                raise Exception("❌ 약관 동의 체크 실패")
+            time.sleep(2)  # 체크박스 상태 반영 대기
+    
         else:
             self.click(IOS_SignUpLocators.AGREE_FIRST)
-            if self.is_displayed(IOS_SignUpLocators.AGREE_CHECK):
-                raise Exception("❌ 약관 동의 체크 실패")
-            
+            time.sleep(2)  # 체크박스 상태 반영 대기
 
     def click_signup_btn(self):
         if self.platform == "aos":

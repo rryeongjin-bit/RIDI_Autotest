@@ -331,6 +331,8 @@ class TestContentsHome_AllAges:
                 time.sleep(3)
                 self.page.switch_to_native()
                 self.page.wait_for_native()
+                # path = get_screenshot_path(self.platform, "before_click_ownership") 디버깅용 스샷 추출
+                # self.driver.save_screenshot(path)
                 self.page.click_ownership_by_desc(TestContentsHome_AllAges.episode_desc)
 
             except Exception as e:
@@ -338,7 +340,7 @@ class TestContentsHome_AllAges:
                 self.page.switch_to_native()
                 self.page.wait_for_native()
 
-        for _ in range(4):  
+        for _ in range(4):  # 20초 대기 (5초 x 4)
             time.sleep(5)
             try:
                 self.driver.execute_script("mobile: activeAppInfo")
