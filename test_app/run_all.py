@@ -48,8 +48,8 @@ def build_pytest_command(
         f"--reset={reset}",
         f"--html={report}",
         "--self-contained-html",
-        "-s",     
-        "--tb=short", 
+        "-v",
+        "--tb=short",  
     ]
 
     if keyword:

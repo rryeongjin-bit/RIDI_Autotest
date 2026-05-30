@@ -149,7 +149,7 @@ def pytest_terminal_summary(terminalreporter, config):
     log_files   = sorted([f for f in os.listdir(log_dir) if f.endswith(".log")]) if os.path.exists(log_dir) else []
     log_file    = log_files[-1] if log_files else "로그 파일 없음"
 
-    terminalreporter.write_sep("=", "테스트 결과 요약")
+    terminalreporter.write_sep("=", "테스트 결과")
     terminalreporter.write_line(f"테스트 기기 : {_active_device_info.get('device_name', 'unknown')}")
     terminalreporter.write_line(f"총 {total}개 실행")
     terminalreporter.write_line(f"✅ pass     : {passed}개")
@@ -209,23 +209,4 @@ def pytest_runtest_setup(item):
     if class_name and class_name in _failed_classes:
         pytest.skip(f"[SKIP] {class_name} 이전 테스트 실패로 현재 클래스 스킵")
 
-
-# @pytest.fixture(autouse=True)
-# def ensure_native_context(driver, platform):
-#     # # before  
-#     # try:
-#     #     if driver.current_context != "NATIVE_APP":
-#     #         driver.switch_to.context("NATIVE_APP")
-
-#     # except Exception:
-#     #     pass
-
-#     # yield
-
-#     #after
-#     try:
-#         if driver.current_context != "NATIVE_APP":
-#             driver.switch_to.context("NATIVE_APP")
-#     except Exception:
-#         pass
 
