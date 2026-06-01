@@ -31,6 +31,11 @@ _runs_lock = threading.Lock()
 TEST_MODULES = [
     {"value": "tests/test_basic.py", "label": "test_basic.py"},
 ]
+
+
+# ─────────────────────────────────────────
+# Slack 서명 검증
+# ─────────────────────────────────────────
 def verify_slack_signature(req) -> bool:
     timestamp = req.headers.get("X-Slack-Request-Timestamp", "")
     if abs(time.time() - int(timestamp)) > 60 * 5:
@@ -44,6 +49,10 @@ def verify_slack_signature(req) -> bool:
     slack_signature = req.headers.get("X-Slack-Signature", "")
     return hmac.compare_digest(my_signature, slack_signature)
 
+
+# ─────────────────────────────────────────
+# /QA-App-TestStart
+# ─────────────────────────────────────────
 @app.route("/slack/command/start", methods=["POST"])
 def slash_start():
     if not verify_slack_signature(request):
@@ -109,6 +118,10 @@ def _open_start_modal(trigger_id: str):
     except SlackApiError as e:
         logger.error(f"[modal] 열기 실패: {e}")
 
+
+# ─────────────────────────────────────────
+# /QA-App-TestStop
+# ─────────────────────────────────────────
 @app.route("/slack/command/stop", methods=["POST"])
 def slash_stop():
     if not verify_slack_signature(request):
@@ -143,6 +156,10 @@ def _open_stop_modal(trigger_id: str):
     except SlackApiError as e:
         logger.error(f"[modal] 종료 모달 열기 실패: {e}")
 
+
+# ─────────────────────────────────────────
+# 인터랙션 처리
+# ─────────────────────────────────────────
 @app.route("/slack/interactions", methods=["POST"])
 def interactions():
     if not verify_slack_signature(request):
@@ -168,6 +185,7 @@ def _handle_stop_modal_submit(payload: dict):
 
     if runner.stop_test(run_id):
         with _runs_lock:
+            # run_id로 시작하는 모든 플랫폼 메시지 종료 처리
             for key in list(_active_runs.keys()):
                 if key == run_id or key.startswith(f"{run_id}_"):
                     run_info = _active_runs[key]
@@ -218,6 +236,7 @@ def _handle_modal_submit(payload: dict):
     env_label = env_label_map.get(env_selected, "🔴 Stage")
 
     if parallel:
+        # aos, ios 각각 메시지 생성
         for p in ["aos", "ios"]:
             sub_run_id = f"{run_id}_{p}"
             msg = _post_main_message(channel, env_label, "테스트 시작 🚀", sub_run_id, p.upper())
@@ -263,6 +282,7 @@ def _execute_tests(run_id, platform, modules, env_selected, env_label, parallel,
             return _active_runs.get(sub_run_id, {}), sub_run_id
 
     def on_device(device_info: str):
+        # 기기 정보에서 플랫폼 추출
         platform_key = "ios" if "iPhone" in device_info or "iPad" in device_info else "aos"
         run_info, sub_run_id = _get_run_info(platform_key)
         if run_info:
@@ -276,7 +296,7 @@ def _execute_tests(run_id, platform, modules, env_selected, env_label, parallel,
                 device_info=device_info,
             )
 
-
+    # 플랫폼별 진행률 메시지 ts 관리
     progress_ts_map: dict = {}
     progress_lines_map: dict = {}
 
@@ -284,11 +304,13 @@ def _execute_tests(run_id, platform, modules, env_selected, env_label, parallel,
         if not log_chunk.strip():
             return
 
+        # 플랫폼 추출 (로그에서)
         platform_key = "ios" if "ios" in log_chunk.lower() else "aos"
         is_progress = any(kw in log_chunk for kw in ["PASSED", "FAILED", "SKIPPED", "ERROR"]) and "::" in log_chunk
 
         run_info, sub_run_id = _get_run_info(platform_key)
         if not run_info:
+            # parallel 아닐때 단일 run_info 사용
             with _runs_lock:
                 run_info = _active_runs.get(run_id, {})
             sub_run_id = run_id
@@ -323,6 +345,7 @@ def _execute_tests(run_id, platform, modules, env_selected, env_label, parallel,
         if not run_info:
             return
 
+        # 리포트 스크린샷 전송
         report_path = reporter.get_latest_report(platform_key)
         if report_path:
             with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as f:
@@ -361,6 +384,10 @@ def _execute_tests(run_id, platform, modules, env_selected, env_label, parallel,
         on_device=on_device,
     )
 
+
+# ─────────────────────────────────────────
+# 슬랙 메시지 헬퍼
+# ─────────────────────────────────────────
 def _post_main_message(channel: str, env_label: str, status: str,
                         run_id: str = "", platform_label: str = "") -> dict:
     text = f"*Test Environment :* {env_label}"
@@ -411,6 +438,7 @@ def _post_thread(channel: str, thread_ts: str, text: str) -> dict:
         return {}
 
 
+# ─────────────────────────────────────────
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", 3000))
+    port = int(os.getenv("PORT", 5000))
     app.run(port=port, debug=False)
