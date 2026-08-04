@@ -1,0 +1,703 @@
+- generic [active] [ref=f13e1]:
+  - generic [ref=f13e2]:
+    - heading "리디 웹툰" [level=1] [ref=f13e3]
+    - banner [ref=f13e5]:
+      - navigation [ref=f13e6]:
+        - link "리디 홈으로 이동" [ref=f13e7] [cursor=pointer]:
+          - /url: /
+        - search [ref=f13e11]:
+          - generic [ref=f13e14]:
+            - generic [ref=f13e17]: 인스턴트 검색
+            - textbox "인스턴트 검색" [ref=f13e18]
+        - generic [ref=f13e21]:
+          - link "알림" [ref=f13e23] [cursor=pointer]:
+            - /url: /notification
+          - link "카트" [ref=f13e28] [cursor=pointer]:
+            - /url: /cart
+          - link "내 서재" [ref=f13e33] [cursor=pointer]:
+            - /url: /library
+          - link "마이리디" [ref=f13e40] [cursor=pointer]:
+            - /url: /account/myridi
+      - generic [ref=f13e44]:
+        - navigation [ref=f13e45]:
+          - link "만화" [ref=f13e46] [cursor=pointer]:
+            - /url: /comics/ebook
+          - link "웹툰":
+            - /url: /webtoon/recommendation
+          - link "웹소설" [ref=f13e47] [cursor=pointer]:
+            - /url: /webnovel/recommendation
+          - link "도서" [ref=f13e48] [cursor=pointer]:
+            - /url: /ebook/recommendation
+          - link [ref=f13e49] [cursor=pointer]:
+            - /url: /shop/comic
+            - text: 리디샵
+            - img "badge" [ref=f13e50]
+          - link "셀렉트" [ref=f13e51] [cursor=pointer]:
+            - /url: https://select.ridibooks.com
+        - generic [ref=f13e54]:
+          - link "전체 카테고리" [ref=f13e55] [cursor=pointer]:
+            - /url: /category/list
+          - link "리디 캐시 충전 캐시충전" [ref=f13e59] [cursor=pointer]:
+            - /url: /order/checkout/cash
+            - img "리디 캐시 충전" [ref=f13e60]
+            - generic [ref=f13e63]: 캐시충전
+    - separator [ref=f13e64]
+    - list [ref=f13e69]:
+      - listitem [ref=f13e70]:
+        - link "추천":
+          - /url: /webtoon/recommendation
+      - listitem [ref=f13e71]:
+        - link "로맨스" [ref=f13e72] [cursor=pointer]:
+          - /url: /webtoon/romance
+      - listitem [ref=f13e73]:
+        - link "BL" [ref=f13e74] [cursor=pointer]:
+          - /url: /webtoon/bl
+      - listitem [ref=f13e75]:
+        - link "판타지/SF" [ref=f13e76] [cursor=pointer]:
+          - /url: /webtoon/fantasy
+      - listitem [ref=f13e77]:
+        - link "액션/무협" [ref=f13e78] [cursor=pointer]:
+          - /url: /webtoon/view-category-1605
+      - listitem [ref=f13e79]:
+        - link "공포/추리" [ref=f13e80] [cursor=pointer]:
+          - /url: /webtoon/view-category-1610
+      - listitem [ref=f13e81]:
+        - link "드라마" [ref=f13e82] [cursor=pointer]:
+          - /url: /webtoon/view-category-1603
+      - listitem [ref=f13e83]:
+        - link "GL" [ref=f13e84] [cursor=pointer]:
+          - /url: /webtoon/view-category-1609
+    - main [ref=f13e85]:
+      - button [ref=f13e87]:
+        - generic [ref=f13e89]:
+          - link "Only New 그러니까 내가 영원히 친구로 남고 싶은 거야. <XX 빼고 다 하는 친구> 론칭, 최대 2천P ⓒ건치,후쭈/학산문화사" [ref=f13e90] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96905
+            - generic [ref=f13e91]:
+              - generic [ref=f13e95]:
+                - img "Only" [ref=f13e96]
+                - img "New" [ref=f13e97]
+              - generic [ref=f13e98]:
+                - generic [ref=f13e99]: 그러니까 내가 영원히 친구로 남고 싶은 거야.
+                - generic [ref=f13e100]: <XX 빼고 다 하는 친구> 론칭, 최대 2천P
+                - generic [ref=f13e101]: ⓒ건치,후쭈/학산문화사
+          - link "Only 기프트올 나으리가 안 계셔도, 온통 나으리 뿐이었으니. <파륜> 도파민, 5화 무료 & 전원 포인트! ⓒ핫퍼지코믹스" [ref=f13e103] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96881
+            - generic [ref=f13e104]:
+              - generic [ref=f13e108]:
+                - img "Only" [ref=f13e109]
+                - img "기프트올" [ref=f13e110]
+              - generic [ref=f13e111]:
+                - generic [ref=f13e112]: 나으리가 안 계셔도, 온통 나으리 뿐이었으니.
+                - generic [ref=f13e113]: <파륜> 도파민, 5화 무료 & 전원 포인트!
+                - generic [ref=f13e114]: ⓒ핫퍼지코믹스
+          - link "Only 기프트올 상상했던 거 보다 훨씬 더 예쁘게 우네. <들개는 포식하는 꿈을 꾼다> 전원 포인트! ⓒ스토리웹툰" [ref=f13e116] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96856
+            - generic [ref=f13e117]:
+              - generic [ref=f13e121]:
+                - img "Only" [ref=f13e122]
+                - img "기프트올" [ref=f13e123]
+              - generic [ref=f13e124]:
+                - generic [ref=f13e125]: 상상했던 거 보다 훨씬 더 예쁘게 우네.
+                - generic [ref=f13e126]: <들개는 포식하는 꿈을 꾼다> 전원 포인트!
+                - generic [ref=f13e127]: ⓒ스토리웹툰
+          - link "Only 기프트올 <산가지는 도깨비의 꿈을 꾼다>시즌3 시작! [전원P] 네 마음이 어떻든 우린 서로밖에 없어 ⓒLAPIS / CRACK ENT" [ref=f13e129] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96760
+            - generic [ref=f13e130]:
+              - generic [ref=f13e134]:
+                - img "Only" [ref=f13e135]
+                - img "기프트올" [ref=f13e136]
+              - generic [ref=f13e137]:
+                - generic [ref=f13e138]: <산가지는 도깨비의 꿈을 꾼다>시즌3 시작!
+                - generic [ref=f13e139]: "[전원P] 네 마음이 어떻든 우린 서로밖에 없어"
+                - generic [ref=f13e140]: ⓒLAPIS / CRACK ENT
+          - link "선공개 감상하고 전원 포인트를 받으세요 <메리 배드 엔딩을 위한 공략집> 독점 티저! ⓒ강세아,프레티아/다온웹툰" [ref=f13e142] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96875
+            - generic [ref=f13e146]:
+              - generic [ref=f13e147]: 선공개 감상하고 전원 포인트를 받으세요
+              - generic [ref=f13e148]: <메리 배드 엔딩을 위한 공략집> 독점 티저!
+              - generic [ref=f13e149]: ⓒ강세아,프레티아/다온웹툰
+          - link "Only New 어찌해야 나만 봐 줄래? <가락지놀음> 론칭, 3화 무료 & 최대 2천P ⓒ구다윈,해양,덴탈픽/대원씨아이" [ref=f13e151] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96902
+            - generic [ref=f13e152]:
+              - generic [ref=f13e156]:
+                - img "Only" [ref=f13e157]
+                - img "New" [ref=f13e158]
+              - generic [ref=f13e159]:
+                - generic [ref=f13e160]: 어찌해야 나만 봐 줄래?
+                - generic [ref=f13e161]: <가락지놀음> 론칭, 3화 무료 & 최대 2천P
+                - generic [ref=f13e162]: ⓒ구다윈,해양,덴탈픽/대원씨아이
+          - link "Only New 팀장님 설마, 제 생각이 들리세요? <뇌트워크는 일방통행> 론칭, 전원 포인트백! ©불쏘,EJ(원작:TIP)/넥스큐브" [ref=f13e164] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96786
+            - generic [ref=f13e165]:
+              - generic [ref=f13e169]:
+                - img "Only" [ref=f13e170]
+                - img "New" [ref=f13e171]
+              - generic [ref=f13e172]:
+                - generic [ref=f13e173]: 팀장님 설마, 제 생각이 들리세요?
+                - generic [ref=f13e174]: <뇌트워크는 일방통행> 론칭, 전원 포인트백!
+                - generic [ref=f13e175]: ©불쏘,EJ(원작:TIP)/넥스큐브
+          - link "Only New 공작님이 바람 피우는 것을 아십니까, 부인? <짝사랑과 정략결혼 했더니> 론칭, 최대 1천P ⓒ벽페,철로(원작:온예담)/메타툰" [ref=f13e177] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96904
+            - generic [ref=f13e178]:
+              - generic [ref=f13e182]:
+                - img "Only" [ref=f13e183]
+                - img "New" [ref=f13e184]
+              - generic [ref=f13e185]:
+                - generic [ref=f13e186]: 공작님이 바람 피우는 것을 아십니까, 부인?
+                - generic [ref=f13e187]: <짝사랑과 정략결혼 했더니> 론칭, 최대 1천P
+                - generic [ref=f13e188]: ⓒ벽페,철로(원작:온예담)/메타툰
+          - link "Only 300원 모두가 기다린 전원 1,500P! <레디 슛, 포 러브> ⓒ강하, 미지, 영조 / 스토리작" [ref=f13e190] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96903
+            - generic [ref=f13e191]:
+              - generic [ref=f13e195]:
+                - img "Only" [ref=f13e196]
+                - img "300원" [ref=f13e197]
+              - generic [ref=f13e198]:
+                - generic [ref=f13e199]: 모두가 기다린 전원 1,500P!
+                - generic [ref=f13e200]: <레디 슛, 포 러브>
+                - generic [ref=f13e201]: ⓒ강하, 미지, 영조 / 스토리작
+          - link "Only 300원 <악인 남편> 연참으로 시즌 2 론칭! 7일 한정 포인트백 & 소장 할인! ⓒ스르륵코믹스" [ref=f13e203] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96845
+            - generic [ref=f13e204]:
+              - generic [ref=f13e208]:
+                - img "Only" [ref=f13e209]
+                - img "300원" [ref=f13e210]
+              - generic [ref=f13e211]:
+                - generic [ref=f13e212]: <악인 남편> 연참으로 시즌 2 론칭!
+                - generic [ref=f13e213]: 7일 한정 포인트백 & 소장 할인!
+                - generic [ref=f13e214]: ⓒ스르륵코믹스
+          - link "Only 포인트백 이대로 밀어붙여도 받아줄 거예요, 누나? <수절한 로맨스> 5화 무료 & 전원 포인트백! ⓒ달걀, 네지, 찹찹1 / 투유드림" [ref=f13e216] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96900
+            - generic [ref=f13e217]:
+              - generic [ref=f13e221]:
+                - img "Only" [ref=f13e222]
+                - img "포인트백" [ref=f13e223]
+              - generic [ref=f13e224]:
+                - generic [ref=f13e225]: 이대로 밀어붙여도 받아줄 거예요, 누나?
+                - generic [ref=f13e226]: <수절한 로맨스> 5화 무료 & 전원 포인트백!
+                - generic [ref=f13e227]: ⓒ달걀, 네지, 찹찹1 / 투유드림
+          - link "Only New 네가 그랬잖아. 가족 갖고 싶다며. <질 나쁜 삼촌> 론칭, 최대 1,500P! ⓒ모게게,글루(원작:곽두팔)/메타툰" [ref=f13e229] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96874
+            - generic [ref=f13e230]:
+              - generic [ref=f13e234]:
+                - img "Only" [ref=f13e235]
+                - img "New" [ref=f13e236]
+              - generic [ref=f13e237]:
+                - generic [ref=f13e238]: 네가 그랬잖아. 가족 갖고 싶다며.
+                - generic [ref=f13e239]: <질 나쁜 삼촌> 론칭, 최대 1,500P!
+                - generic [ref=f13e240]: ⓒ모게게,글루(원작:곽두팔)/메타툰
+          - link "마감임박 리다무 기프트올 안 자고 있던 내가 랜덤 티켓을 얻음 랜덤한 시간에 랜덤하게 찾아오는 전원 포인트!" [ref=f13e242] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96898
+            - generic [ref=f13e243]:
+              - generic [ref=f13e247]:
+                - img "마감임박" [ref=f13e248]
+                - img "리다무" [ref=f13e249]
+                - img "기프트올" [ref=f13e250]
+              - generic [ref=f13e251]:
+                - generic [ref=f13e252]: 안 자고 있던 내가 랜덤 티켓을 얻음
+                - generic [ref=f13e253]: 랜덤한 시간에 랜덤하게 찾아오는 전원 포인트!
+          - link "Only 기프트올 <순종적 임신> 외전으로 컴백! 기간 한정 6화 무료 & 전원 포인트로 정주행! ⓒDCCENT" [ref=f13e254] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96798
+            - generic [ref=f13e255]:
+              - generic [ref=f13e259]:
+                - img "Only" [ref=f13e260]
+                - img "기프트올" [ref=f13e261]
+              - generic [ref=f13e262]:
+                - generic [ref=f13e263]: <순종적 임신> 외전으로 컴백!
+                - generic [ref=f13e264]: 기간 한정 6화 무료 & 전원 포인트로 정주행!
+                - generic [ref=f13e265]: ⓒDCCENT
+          - link "Only New 환자, 그러니까 깡패한테 제대로 잘못 걸렸다! <구멍가게 불법 의료원> 론칭, 전원 포인트! ©뉴트론, 한이림/블루픽" [ref=f13e267] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96644
+            - generic [ref=f13e268]:
+              - generic [ref=f13e272]:
+                - img "Only" [ref=f13e273]
+                - img "New" [ref=f13e274]
+              - generic [ref=f13e275]:
+                - generic [ref=f13e276]: 환자, 그러니까 깡패한테 제대로 잘못 걸렸다!
+                - generic [ref=f13e277]: <구멍가게 불법 의료원> 론칭, 전원 포인트!
+                - generic [ref=f13e278]: ©뉴트론, 한이림/블루픽
+          - link "Only Up 거짓말. 이상한 게 아니라 좋은 거면서. <리버스> 완결, 4화 무료& 최대 1천P! ⓒ청자두, 비쟘, IlIlIIll, 백필만/블루픽" [ref=f13e280] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96862
+            - generic [ref=f13e281]:
+              - generic [ref=f13e285]:
+                - img "Only" [ref=f13e286]
+                - img "Up" [ref=f13e287]
+              - generic [ref=f13e288]:
+                - generic [ref=f13e289]: 거짓말. 이상한 게 아니라 좋은 거면서.
+                - generic [ref=f13e290]: <리버스> 완결, 4화 무료& 최대 1천P!
+                - generic [ref=f13e291]: ⓒ청자두, 비쟘, IlIlIIll, 백필만/블루픽
+          - link "Only New 하루바삐 사내를 만나야 살아 남는다고? <원녀는 색귀와 하고 싶어서> 론칭 포인트백! ⓒ현부,웅녀(원작:윤아원)/메타툰" [ref=f13e293] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96840
+            - generic [ref=f13e294]:
+              - generic [ref=f13e298]:
+                - img "Only" [ref=f13e299]
+                - img "New" [ref=f13e300]
+              - generic [ref=f13e301]:
+                - generic [ref=f13e302]: 하루바삐 사내를 만나야 살아 남는다고?
+                - generic [ref=f13e303]: <원녀는 색귀와 하고 싶어서> 론칭 포인트백!
+                - generic [ref=f13e304]: ⓒ현부,웅녀(원작:윤아원)/메타툰
+          - link "Only New 헤테로 연프에서 전애인과 만날 확률! 전원 즉시 포인트로 함께하는 헤연프 웹툰! ⓒ김저승,쩨다/텐믹스" [ref=f13e306] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96071
+            - generic [ref=f13e307]:
+              - generic [ref=f13e311]:
+                - img "Only" [ref=f13e312]
+                - img "New" [ref=f13e313]
+              - generic [ref=f13e314]:
+                - generic [ref=f13e315]: 헤테로 연프에서 전애인과 만날 확률!
+                - generic [ref=f13e316]: 전원 즉시 포인트로 함께하는 헤연프 웹툰!
+                - generic [ref=f13e317]: ⓒ김저승,쩨다/텐믹스
+          - link "마감임박 Only New 우리가 평범한 형제였던 적은 단 한 번도 없었어 [전원 포인트] <그 귀족가 형제들의 사정>론칭 ©STUDIO NUMBER ZERO" [ref=f13e319] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96343
+            - generic [ref=f13e320]:
+              - generic [ref=f13e324]:
+                - img "마감임박" [ref=f13e325]
+                - img "Only" [ref=f13e326]
+                - img "New" [ref=f13e327]
+              - generic [ref=f13e328]:
+                - generic [ref=f13e329]: 우리가 평범한 형제였던 적은 단 한 번도 없었어
+                - generic [ref=f13e330]: "[전원 포인트] <그 귀족가 형제들의 사정>론칭"
+                - generic [ref=f13e331]: ©STUDIO NUMBER ZERO
+          - link "Only New [전원 50% 포백] 차력<환상의 러브라인> 전원 즉시 포인트로 즐기는 환상의 BL웹툰! ©차력/씨엔씨레볼루션" [ref=f13e333] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96481
+            - generic [ref=f13e334]:
+              - generic [ref=f13e338]:
+                - img "Only" [ref=f13e339]
+                - img "New" [ref=f13e340]
+              - generic [ref=f13e341]:
+                - generic [ref=f13e342]: "[전원 50% 포백] 차력<환상의 러브라인>"
+                - generic [ref=f13e343]: 전원 즉시 포인트로 즐기는 환상의 BL웹툰!
+                - generic [ref=f13e344]: ©차력/씨엔씨레볼루션
+          - link "Only New 그러니까 내가 영원히 친구로 남고 싶은 거야. <XX 빼고 다 하는 친구> 론칭, 최대 2천P ⓒ건치,후쭈/학산문화사" [ref=f13e346] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96905
+            - generic [ref=f13e347]:
+              - generic [ref=f13e351]:
+                - img "Only" [ref=f13e352]
+                - img "New" [ref=f13e353]
+              - generic [ref=f13e354]:
+                - generic [ref=f13e355]: 그러니까 내가 영원히 친구로 남고 싶은 거야.
+                - generic [ref=f13e356]: <XX 빼고 다 하는 친구> 론칭, 최대 2천P
+                - generic [ref=f13e357]: ⓒ건치,후쭈/학산문화사
+          - link "Only 기프트올 나으리가 안 계셔도, 온통 나으리 뿐이었으니. <파륜> 도파민, 5화 무료 & 전원 포인트! ⓒ핫퍼지코믹스" [ref=f13e359] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96881
+            - generic [ref=f13e360]:
+              - generic [ref=f13e364]:
+                - img "Only" [ref=f13e365]
+                - img "기프트올" [ref=f13e366]
+              - generic [ref=f13e367]:
+                - generic [ref=f13e368]: 나으리가 안 계셔도, 온통 나으리 뿐이었으니.
+                - generic [ref=f13e369]: <파륜> 도파민, 5화 무료 & 전원 포인트!
+                - generic [ref=f13e370]: ⓒ핫퍼지코믹스
+          - link "Only 기프트올 상상했던 거 보다 훨씬 더 예쁘게 우네. <들개는 포식하는 꿈을 꾼다> 전원 포인트! ⓒ스토리웹툰" [ref=f13e372] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96856
+            - generic [ref=f13e373]:
+              - generic [ref=f13e377]:
+                - img "Only" [ref=f13e378]
+                - img "기프트올" [ref=f13e379]
+              - generic [ref=f13e380]:
+                - generic [ref=f13e381]: 상상했던 거 보다 훨씬 더 예쁘게 우네.
+                - generic [ref=f13e382]: <들개는 포식하는 꿈을 꾼다> 전원 포인트!
+                - generic [ref=f13e383]: ⓒ스토리웹툰
+          - link "Only 기프트올 <산가지는 도깨비의 꿈을 꾼다>시즌3 시작! [전원P] 네 마음이 어떻든 우린 서로밖에 없어 ⓒLAPIS / CRACK ENT" [ref=f13e385] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96760
+            - generic [ref=f13e386]:
+              - generic [ref=f13e390]:
+                - img "Only" [ref=f13e391]
+                - img "기프트올" [ref=f13e392]
+              - generic [ref=f13e393]:
+                - generic [ref=f13e394]: <산가지는 도깨비의 꿈을 꾼다>시즌3 시작!
+                - generic [ref=f13e395]: "[전원P] 네 마음이 어떻든 우린 서로밖에 없어"
+                - generic [ref=f13e396]: ⓒLAPIS / CRACK ENT
+          - link "선공개 감상하고 전원 포인트를 받으세요 <메리 배드 엔딩을 위한 공략집> 독점 티저! ⓒ강세아,프레티아/다온웹툰" [ref=f13e398] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96875
+            - generic [ref=f13e402]:
+              - generic [ref=f13e403]: 선공개 감상하고 전원 포인트를 받으세요
+              - generic [ref=f13e404]: <메리 배드 엔딩을 위한 공략집> 독점 티저!
+              - generic [ref=f13e405]: ⓒ강세아,프레티아/다온웹툰
+          - link "Only New 어찌해야 나만 봐 줄래? <가락지놀음> 론칭, 3화 무료 & 최대 2천P ⓒ구다윈,해양,덴탈픽/대원씨아이" [ref=f13e407] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96902
+            - generic [ref=f13e408]:
+              - generic [ref=f13e412]:
+                - img "Only" [ref=f13e413]
+                - img "New" [ref=f13e414]
+              - generic [ref=f13e415]:
+                - generic [ref=f13e416]: 어찌해야 나만 봐 줄래?
+                - generic [ref=f13e417]: <가락지놀음> 론칭, 3화 무료 & 최대 2천P
+                - generic [ref=f13e418]: ⓒ구다윈,해양,덴탈픽/대원씨아이
+          - link "Only New 팀장님 설마, 제 생각이 들리세요? <뇌트워크는 일방통행> 론칭, 전원 포인트백! ©불쏘,EJ(원작:TIP)/넥스큐브" [ref=f13e420] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96786
+            - generic [ref=f13e421]:
+              - generic [ref=f13e425]:
+                - img "Only" [ref=f13e426]
+                - img "New" [ref=f13e427]
+              - generic [ref=f13e428]:
+                - generic [ref=f13e429]: 팀장님 설마, 제 생각이 들리세요?
+                - generic [ref=f13e430]: <뇌트워크는 일방통행> 론칭, 전원 포인트백!
+                - generic [ref=f13e431]: ©불쏘,EJ(원작:TIP)/넥스큐브
+          - link "Only New 공작님이 바람 피우는 것을 아십니까, 부인? <짝사랑과 정략결혼 했더니> 론칭, 최대 1천P ⓒ벽페,철로(원작:온예담)/메타툰" [ref=f13e433] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96904
+            - generic [ref=f13e434]:
+              - generic [ref=f13e438]:
+                - img "Only" [ref=f13e439]
+                - img "New" [ref=f13e440]
+              - generic [ref=f13e441]:
+                - generic [ref=f13e442]: 공작님이 바람 피우는 것을 아십니까, 부인?
+                - generic [ref=f13e443]: <짝사랑과 정략결혼 했더니> 론칭, 최대 1천P
+                - generic [ref=f13e444]: ⓒ벽페,철로(원작:온예담)/메타툰
+          - link "Only 300원 모두가 기다린 전원 1,500P! <레디 슛, 포 러브> ⓒ강하, 미지, 영조 / 스토리작" [ref=f13e446] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96903
+            - generic [ref=f13e447]:
+              - generic [ref=f13e451]:
+                - img "Only" [ref=f13e452]
+                - img "300원" [ref=f13e453]
+              - generic [ref=f13e454]:
+                - generic [ref=f13e455]: 모두가 기다린 전원 1,500P!
+                - generic [ref=f13e456]: <레디 슛, 포 러브>
+                - generic [ref=f13e457]: ⓒ강하, 미지, 영조 / 스토리작
+          - link "Only 300원 <악인 남편> 연참으로 시즌 2 론칭! 7일 한정 포인트백 & 소장 할인! ⓒ스르륵코믹스" [ref=f13e459] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96845
+            - generic [ref=f13e460]:
+              - generic [ref=f13e464]:
+                - img "Only" [ref=f13e465]
+                - img "300원" [ref=f13e466]
+              - generic [ref=f13e467]:
+                - generic [ref=f13e468]: <악인 남편> 연참으로 시즌 2 론칭!
+                - generic [ref=f13e469]: 7일 한정 포인트백 & 소장 할인!
+                - generic [ref=f13e470]: ⓒ스르륵코믹스
+          - link "Only 포인트백 이대로 밀어붙여도 받아줄 거예요, 누나? <수절한 로맨스> 5화 무료 & 전원 포인트백! ⓒ달걀, 네지, 찹찹1 / 투유드림" [ref=f13e472] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96900
+            - generic [ref=f13e473]:
+              - generic [ref=f13e477]:
+                - img "Only" [ref=f13e478]
+                - img "포인트백" [ref=f13e479]
+              - generic [ref=f13e480]:
+                - generic [ref=f13e481]: 이대로 밀어붙여도 받아줄 거예요, 누나?
+                - generic [ref=f13e482]: <수절한 로맨스> 5화 무료 & 전원 포인트백!
+                - generic [ref=f13e483]: ⓒ달걀, 네지, 찹찹1 / 투유드림
+          - link "Only New 네가 그랬잖아. 가족 갖고 싶다며. <질 나쁜 삼촌> 론칭, 최대 1,500P! ⓒ모게게,글루(원작:곽두팔)/메타툰" [ref=f13e485] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96874
+            - generic [ref=f13e486]:
+              - generic [ref=f13e490]:
+                - img "Only" [ref=f13e491]
+                - img "New" [ref=f13e492]
+              - generic [ref=f13e493]:
+                - generic [ref=f13e494]: 네가 그랬잖아. 가족 갖고 싶다며.
+                - generic [ref=f13e495]: <질 나쁜 삼촌> 론칭, 최대 1,500P!
+                - generic [ref=f13e496]: ⓒ모게게,글루(원작:곽두팔)/메타툰
+          - link "마감임박 리다무 기프트올 안 자고 있던 내가 랜덤 티켓을 얻음 랜덤한 시간에 랜덤하게 찾아오는 전원 포인트!" [ref=f13e498] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96898
+            - generic [ref=f13e499]:
+              - generic [ref=f13e503]:
+                - img "마감임박" [ref=f13e504]
+                - img "리다무" [ref=f13e505]
+                - img "기프트올" [ref=f13e506]
+              - generic [ref=f13e507]:
+                - generic [ref=f13e508]: 안 자고 있던 내가 랜덤 티켓을 얻음
+                - generic [ref=f13e509]: 랜덤한 시간에 랜덤하게 찾아오는 전원 포인트!
+          - link "Only 기프트올 <순종적 임신> 외전으로 컴백! 기간 한정 6화 무료 & 전원 포인트로 정주행! ⓒDCCENT" [ref=f13e510] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96798
+            - generic [ref=f13e511]:
+              - generic [ref=f13e515]:
+                - img "Only" [ref=f13e516]
+                - img "기프트올" [ref=f13e517]
+              - generic [ref=f13e518]:
+                - generic [ref=f13e519]: <순종적 임신> 외전으로 컴백!
+                - generic [ref=f13e520]: 기간 한정 6화 무료 & 전원 포인트로 정주행!
+                - generic [ref=f13e521]: ⓒDCCENT
+          - link "Only New 환자, 그러니까 깡패한테 제대로 잘못 걸렸다! <구멍가게 불법 의료원> 론칭, 전원 포인트! ©뉴트론, 한이림/블루픽" [ref=f13e523] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96644
+            - generic [ref=f13e524]:
+              - generic [ref=f13e528]:
+                - img "Only" [ref=f13e529]
+                - img "New" [ref=f13e530]
+              - generic [ref=f13e531]:
+                - generic [ref=f13e532]: 환자, 그러니까 깡패한테 제대로 잘못 걸렸다!
+                - generic [ref=f13e533]: <구멍가게 불법 의료원> 론칭, 전원 포인트!
+                - generic [ref=f13e534]: ©뉴트론, 한이림/블루픽
+          - link "Only Up 거짓말. 이상한 게 아니라 좋은 거면서. <리버스> 완결, 4화 무료& 최대 1천P! ⓒ청자두, 비쟘, IlIlIIll, 백필만/블루픽" [ref=f13e536] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96862
+            - generic [ref=f13e537]:
+              - generic [ref=f13e541]:
+                - img "Only" [ref=f13e542]
+                - img "Up" [ref=f13e543]
+              - generic [ref=f13e544]:
+                - generic [ref=f13e545]: 거짓말. 이상한 게 아니라 좋은 거면서.
+                - generic [ref=f13e546]: <리버스> 완결, 4화 무료& 최대 1천P!
+                - generic [ref=f13e547]: ⓒ청자두, 비쟘, IlIlIIll, 백필만/블루픽
+          - link "Only New 하루바삐 사내를 만나야 살아 남는다고? <원녀는 색귀와 하고 싶어서> 론칭 포인트백! ⓒ현부,웅녀(원작:윤아원)/메타툰" [ref=f13e549] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96840
+            - generic [ref=f13e550]:
+              - generic [ref=f13e554]:
+                - img "Only" [ref=f13e555]
+                - img "New" [ref=f13e556]
+              - generic [ref=f13e557]:
+                - generic [ref=f13e558]: 하루바삐 사내를 만나야 살아 남는다고?
+                - generic [ref=f13e559]: <원녀는 색귀와 하고 싶어서> 론칭 포인트백!
+                - generic [ref=f13e560]: ⓒ현부,웅녀(원작:윤아원)/메타툰
+          - link "Only New 헤테로 연프에서 전애인과 만날 확률! 전원 즉시 포인트로 함께하는 헤연프 웹툰! ⓒ김저승,쩨다/텐믹스" [ref=f13e562] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96071
+            - generic [ref=f13e563]:
+              - generic [ref=f13e567]:
+                - img "Only" [ref=f13e568]
+                - img "New" [ref=f13e569]
+              - generic [ref=f13e570]:
+                - generic [ref=f13e571]: 헤테로 연프에서 전애인과 만날 확률!
+                - generic [ref=f13e572]: 전원 즉시 포인트로 함께하는 헤연프 웹툰!
+                - generic [ref=f13e573]: ⓒ김저승,쩨다/텐믹스
+          - link "마감임박 Only New 우리가 평범한 형제였던 적은 단 한 번도 없었어 [전원 포인트] <그 귀족가 형제들의 사정>론칭 ©STUDIO NUMBER ZERO" [ref=f13e575] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96343
+            - generic [ref=f13e576]:
+              - generic [ref=f13e580]:
+                - img "마감임박" [ref=f13e581]
+                - img "Only" [ref=f13e582]
+                - img "New" [ref=f13e583]
+              - generic [ref=f13e584]:
+                - generic [ref=f13e585]: 우리가 평범한 형제였던 적은 단 한 번도 없었어
+                - generic [ref=f13e586]: "[전원 포인트] <그 귀족가 형제들의 사정>론칭"
+                - generic [ref=f13e587]: ©STUDIO NUMBER ZERO
+          - link "Only New [전원 50% 포백] 차력<환상의 러브라인> 전원 즉시 포인트로 즐기는 환상의 BL웹툰! ©차력/씨엔씨레볼루션" [ref=f13e589] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96481
+            - generic [ref=f13e590]:
+              - generic [ref=f13e594]:
+                - img "Only" [ref=f13e595]
+                - img "New" [ref=f13e596]
+              - generic [ref=f13e597]:
+                - generic [ref=f13e598]: "[전원 50% 포백] 차력<환상의 러브라인>"
+                - generic [ref=f13e599]: 전원 즉시 포인트로 즐기는 환상의 BL웹툰!
+                - generic [ref=f13e600]: ©차력/씨엔씨레볼루션
+          - link "Only New 그러니까 내가 영원히 친구로 남고 싶은 거야. <XX 빼고 다 하는 친구> 론칭, 최대 2천P ⓒ건치,후쭈/학산문화사" [ref=f13e602] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96905
+            - generic [ref=f13e603]:
+              - generic [ref=f13e607]:
+                - img "Only" [ref=f13e608]
+                - img "New" [ref=f13e609]
+              - generic [ref=f13e610]:
+                - generic [ref=f13e611]: 그러니까 내가 영원히 친구로 남고 싶은 거야.
+                - generic [ref=f13e612]: <XX 빼고 다 하는 친구> 론칭, 최대 2천P
+                - generic [ref=f13e613]: ⓒ건치,후쭈/학산문화사
+          - link "Only 기프트올 나으리가 안 계셔도, 온통 나으리 뿐이었으니. <파륜> 도파민, 5화 무료 & 전원 포인트! ⓒ핫퍼지코믹스" [ref=f13e615] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96881
+            - generic [ref=f13e616]:
+              - generic [ref=f13e620]:
+                - img "Only" [ref=f13e621]
+                - img "기프트올" [ref=f13e622]
+              - generic [ref=f13e623]:
+                - generic [ref=f13e624]: 나으리가 안 계셔도, 온통 나으리 뿐이었으니.
+                - generic [ref=f13e625]: <파륜> 도파민, 5화 무료 & 전원 포인트!
+                - generic [ref=f13e626]: ⓒ핫퍼지코믹스
+          - link "Only 기프트올 상상했던 거 보다 훨씬 더 예쁘게 우네. <들개는 포식하는 꿈을 꾼다> 전원 포인트! ⓒ스토리웹툰" [ref=f13e628] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96856
+            - generic [ref=f13e629]:
+              - generic [ref=f13e633]:
+                - img "Only" [ref=f13e634]
+                - img "기프트올" [ref=f13e635]
+              - generic [ref=f13e636]:
+                - generic [ref=f13e637]: 상상했던 거 보다 훨씬 더 예쁘게 우네.
+                - generic [ref=f13e638]: <들개는 포식하는 꿈을 꾼다> 전원 포인트!
+                - generic [ref=f13e639]: ⓒ스토리웹툰
+          - link "Only 기프트올 <산가지는 도깨비의 꿈을 꾼다>시즌3 시작! [전원P] 네 마음이 어떻든 우린 서로밖에 없어 ⓒLAPIS / CRACK ENT" [ref=f13e641] [cursor=pointer]:
+            - /url: https://ridibooks.com/event/96760
+            - generic [ref=f13e642]:
+              - generic [ref=f13e646]:
+                - img "Only" [ref=f13e647]
+                - img "기프트올" [ref=f13e648]
+              - generic [ref=f13e649]:
+                - generic [ref=f13e650]: <산가지는 도깨비의 꿈을 꾼다>시즌3 시작!
+                - generic [ref=f13e651]: "[전원P] 네 마음이 어떻든 우린 서로밖에 없어"
+                - generic [ref=f13e652]: ⓒLAPIS / CRACK ENT
+        - generic:
+          - button "이전" [ref=f13e654] [cursor=pointer]
+          - button "다음" [ref=f13e659] [cursor=pointer]
+      - generic [ref=f13e664]:
+        - generic [ref=f13e665]: 퀵 메뉴
+        - generic [ref=f13e666]:
+          - list [ref=f13e670]:
+            - listitem [ref=f13e671]:
+              - link "이달의 신작" [ref=f13e672] [cursor=pointer]:
+                - /url: /event/95966?fresh=1785212380378
+                - img "이달의 신작" [ref=f13e674]
+            - listitem [ref=f13e676]:
+              - link "이벤트" [ref=f13e677] [cursor=pointer]:
+                - /url: /event/webtoon?fresh=1785212380379
+                - img "이벤트" [ref=f13e679]
+            - listitem [ref=f13e681]:
+              - link "리디온리" [ref=f13e682] [cursor=pointer]:
+                - /url: /ridi-only/webtoon
+                - img "리디온리" [ref=f13e684]
+            - listitem [ref=f13e686]:
+              - link "리다무" [ref=f13e687] [cursor=pointer]:
+                - /url: /event/61442?fresh=1785212380379
+                - img "리다무" [ref=f13e689]
+            - listitem [ref=f13e691]:
+              - link "리디 메이드" [ref=f13e692] [cursor=pointer]:
+                - /url: /event/96980?fresh=1785212380379
+                - img "리디 메이드" [ref=f13e694]
+            - listitem [ref=f13e696]:
+              - link "단편작" [ref=f13e697] [cursor=pointer]:
+                - /url: /event/80628?fresh=1785212380379
+                - img "단편작" [ref=f13e699]
+            - listitem [ref=f13e701]:
+              - link "완결작" [ref=f13e702] [cursor=pointer]:
+                - /url: /event/47044?fresh=1785212380379
+                - img "완결작" [ref=f13e704]
+            - listitem [ref=f13e706]:
+              - link "All100" [ref=f13e707] [cursor=pointer]:
+                - /url: /event/83990?fresh=1785212380379
+                - img "All100" [ref=f13e709]
+          - generic:
+            - button "이전 퀵 메뉴" [disabled]
+            - button "다음 퀵 메뉴" [disabled]
+      - list [ref=f13e714]
+      - generic [ref=f13e743]:
+        - list [ref=f13e744]:
+          - listitem [ref=f13e745]
+          - listitem [ref=f13e752]
+          - listitem [ref=f13e759]
+        - list [ref=f13e766]:
+          - listitem [ref=f13e767]
+          - listitem [ref=f13e774]
+          - listitem [ref=f13e781]
+        - list [ref=f13e788]:
+          - listitem [ref=f13e789]
+          - listitem [ref=f13e796]
+          - listitem [ref=f13e803]
+      - list [ref=f13e823]:
+        - listitem [ref=f13e824]
+        - listitem [ref=f13e830]
+        - listitem [ref=f13e836]
+        - listitem [ref=f13e842]
+        - listitem [ref=f13e848]
+        - listitem [ref=f13e854]
+      - list [ref=f13e863]
+      - list [ref=f13e897]
+      - list [ref=f13e925]
+      - list [ref=f13e953]:
+        - listitem [ref=f13e954]
+        - listitem [ref=f13e956]
+        - listitem [ref=f13e958]
+        - listitem [ref=f13e960]
+        - listitem [ref=f13e962]
+      - generic [ref=f13e968]:
+        - list [ref=f13e969]:
+          - listitem [ref=f13e970]
+          - listitem [ref=f13e977]
+          - listitem [ref=f13e984]
+        - list [ref=f13e991]:
+          - listitem [ref=f13e992]
+          - listitem [ref=f13e999]
+          - listitem [ref=f13e1006]
+        - list [ref=f13e1013]:
+          - listitem [ref=f13e1014]
+          - listitem [ref=f13e1021]
+          - listitem [ref=f13e1028]
+      - list [ref=f13e1038]
+      - list [ref=f13e1066]:
+        - listitem [ref=f13e1067]
+        - listitem [ref=f13e1069]
+        - listitem [ref=f13e1071]
+      - list [ref=f13e1076]
+      - list [ref=f13e1110]
+      - list [ref=f13e1144]
+      - list [ref=f13e1178]:
+        - listitem [ref=f13e1179]
+        - listitem [ref=f13e1184]
+        - listitem [ref=f13e1189]
+      - list [ref=f13e1197]
+      - list [ref=f13e1225]:
+        - listitem [ref=f13e1226]
+        - listitem [ref=f13e1228]
+        - listitem [ref=f13e1230]
+      - list [ref=f13e1235]
+      - list [ref=f13e1269]:
+        - listitem [ref=f13e1270]
+        - listitem [ref=f13e1276]
+        - listitem [ref=f13e1282]
+        - listitem [ref=f13e1288]
+        - listitem [ref=f13e1294]
+        - listitem [ref=f13e1300]
+    - generic [ref=f13e1306]:
+      - separator [ref=f13e1307]
+      - contentinfo [ref=f13e1308]:
+        - generic [ref=f13e1309]:
+          - generic [ref=f13e1310]:
+            - list [ref=f13e1311]:
+              - listitem [ref=f13e1312]:
+                - link "고객센터" [ref=f13e1313] [cursor=pointer]:
+                  - /url: https://ridihelp.ridibooks.com/support/home
+              - listitem [ref=f13e1316]:
+                - link "공지사항" [ref=f13e1317] [cursor=pointer]:
+                  - /url: https://ridihelp.ridibooks.com/support/solutions/folders/154000698539
+            - generic [ref=f13e1320]:
+              - generic [ref=f13e1321]:
+                - generic [ref=f13e1322]: 서비스
+                - list [ref=f13e1323]:
+                  - listitem [ref=f13e1324]:
+                    - link "제휴카드" [ref=f13e1325] [cursor=pointer]:
+                      - /url: /support/partner-card
+                  - listitem [ref=f13e1326]:
+                    - link "뷰어 다운로드" [ref=f13e1327] [cursor=pointer]:
+                      - /url: /support/app/download
+                  - listitem [ref=f13e1328]:
+                    - link "CP사이트" [ref=f13e1329] [cursor=pointer]:
+                      - /url: https://cp.ridibooks.com
+                  - listitem [ref=f13e1330]:
+                    - link "리디바탕" [ref=f13e1331] [cursor=pointer]:
+                      - /url: https://ridicorp.com/ridibatang
+              - generic [ref=f13e1332]:
+                - generic [ref=f13e1333]:
+                  - generic [ref=f13e1334]: 기타 문의
+                  - list [ref=f13e1335]:
+                    - listitem [ref=f13e1336]:
+                      - link "원고 투고" [ref=f13e1337] [cursor=pointer]:
+                        - /url: https://ridibooks.com/go/creators
+                    - listitem [ref=f13e1338]:
+                      - link "사업 제휴 문의" [ref=f13e1339] [cursor=pointer]:
+                        - /url: https://ridibusiness.com
+                - generic [ref=f13e1340]:
+                  - generic [ref=f13e1341]: 회사
+                  - list [ref=f13e1342]:
+                    - listitem [ref=f13e1343]:
+                      - link "회사 소개" [ref=f13e1344] [cursor=pointer]:
+                        - /url: https://www.ridicorp.com/
+                    - listitem [ref=f13e1345]:
+                      - link [ref=f13e1346] [cursor=pointer]:
+                        - /url: https://www.ridicorp.com/career/
+                        - text: 인재채용
+                        - img "NEW" [ref=f13e1347]
+          - generic [ref=f13e1350]:
+            - button "리디(주) 사업자 정보" [ref=f13e1351] [cursor=pointer]
+            - list [ref=f13e1355]:
+              - listitem [ref=f13e1356]:
+                - link "이용약관" [ref=f13e1357] [cursor=pointer]:
+                  - /url: https://policy.ridi.com/legal/terms
+              - listitem [ref=f13e1358]:
+                - link "개인정보 처리방침" [ref=f13e1359] [cursor=pointer]:
+                  - /url: https://policy.ridi.com/legal/privacy
+              - listitem [ref=f13e1360]:
+                - link "청소년보호정책" [ref=f13e1361] [cursor=pointer]:
+                  - /url: https://policy.ridi.com/legal/youth
+              - listitem [ref=f13e1362]:
+                - link "사업자정보확인" [ref=f13e1363] [cursor=pointer]:
+                  - /url: https://www.ftc.go.kr/bizCommPop.do?wrkr_no=1208727435
+            - generic [ref=f13e1364]:
+              - generic [ref=f13e1365]: ©
+              - text: RIDI Corp.
+        - list [ref=f13e1366]:
+          - listitem [ref=f13e1367]:
+            - link "페이스북" [ref=f13e1368] [cursor=pointer]:
+              - /url: https://www.facebook.com/official.ridi
+          - listitem [ref=f13e1372]:
+            - link "인스타그램" [ref=f13e1373] [cursor=pointer]:
+              - /url: https://instagram.com/ridi_official_/
+          - listitem [ref=f13e1377]:
+            - link "트위터" [ref=f13e1378] [cursor=pointer]:
+              - /url: https://twitter.com/RIDI_twt
+          - listitem [ref=f13e1382]:
+            - link "유튜브" [ref=f13e1383] [cursor=pointer]:
+              - /url: https://www.youtube.com/user/ridibooks0331
+          - listitem [ref=f13e1387]:
+            - link "틱톡" [ref=f13e1388] [cursor=pointer]:
+              - /url: https://www.tiktok.com/@ridi.official
+    - button [ref=f13e1392] [cursor=pointer]:
+      - img "맨 위로 스크롤" [ref=f13e1393]
+  - paragraph: stage
+  - alert [ref=f13e1395]

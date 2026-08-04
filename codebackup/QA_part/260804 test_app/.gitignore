@@ -1,0 +1,47 @@
+
+# 환경 변수 
+.env
+
+# 산출물
+reports/
+screenshots/
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.python-version
+
+# 가상환경
+venv/
+.venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Google OAuth
+config/credentials.json
+config/token.json
+
+# claude
+.claude/
+
+# Claude 작업 메모/기록 파일 (git 추적 제외)
+claude.md
+memory.md
+
+# 작업 중인 테스트 모듈
+tests/test_webtoon_genrehome.py
+tests/test_general_genrehome.py
+
+# 내부 분석/조치 기록 문서
+docs/

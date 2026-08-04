@@ -337,30 +337,44 @@ class ContentshomePage(BasePage):
             el = self.find_element(IOS_ContentshomeLocators.SELECTBUY_CART_SORT_LAST)
             return el.get_attribute('enabled') == 'false'
 
+    @staticmethod
+    def _get_episode_num(desc: str) -> int:
+        match = re.search(r'(\d+)권', desc)
+        return int(match.group(1)) if match else 0
+    
     def click_selectbuy_cart_1st_episode(self):
         if self.platform == "aos":
-            elements = self.find_elements(AOS_ContentshomeLocators.SELECTBUY_CART_OWN_LAST_ITEM)
-            single_items = [
-                el for el in elements
-                if not el.get_attribute('content-desc').endswith(', 소장')
-            ]
+            max_scroll = 10
+            target_desc = None
 
-            def get_episode_num(el):
-                match = re.search(r'(\d+)권', el.get_attribute('content-desc'))
-                return int(match.group(1)) if match else 0
+            for i in range(max_scroll):
+                elements = self.find_elements(AOS_ContentshomeLocators.SELECTBUY_CART_OWN_LAST_ITEM)
+                single_items = [
+                    el for el in elements
+                    if not (el.get_attribute('content-desc') or '').endswith(', 소장')
+                    and re.search(r'\d+권', el.get_attribute('content-desc') or '')
+                ]
 
-            target = max(single_items, key=get_episode_num)
-            target_desc = target.get_attribute('content-desc')
-            self.log.info(f"[click_selectbuy_cart_1st_episode] 선택한 에피소드: {target_desc}")
-            
+                if single_items:
+                    target_el = max(single_items, key=lambda el: self._get_episode_num(el.get_attribute('content-desc') or ''))
+                    target_desc = target_el.get_attribute('content-desc')
+                    self.log.info(f"[click_selectbuy_cart_1st_episode] 발견 attempt={i}, 선택: {target_desc}")
+                    break
+
+                self.log.info(f"[click_selectbuy_cart_1st_episode] 요소 없음, 스크롤 attempt={i}")
+                self.scroll_uiautomator()
+
+            if not target_desc:
+                raise Exception("[click_selectbuy_cart_1st_episode] 조건에 맞는 에피소드 없음")
+
             target_locator = (
                 AppiumBy.XPATH,
                 f'//android.view.ViewGroup[@content-desc="{target_desc}"]'
             )
-            self.scroll_until_visible(target_locator, direction="up")
             target = self.find_element(target_locator)
             toggle = target.find_element(AppiumBy.CLASS_NAME, 'android.widget.ImageView')
             toggle.click()
+
         else:
             elements = self.find_elements(IOS_ContentshomeLocators.SELECTBUY_CART_OWN_LAST_ITEM)
             single_items = [
@@ -372,6 +386,7 @@ class ContentshomePage(BasePage):
             target = max(single_items, key=lambda el: int(re.search(r'(\d+)권', el.get_attribute('name')).group(1)))
             self.log.info(f"[click_selectbuy_cart_1st_episode] 선택 에피소드: {target.get_attribute('name')}")
             target.click()
+                            
                             
     def click_cart_btn(self):
         if self.platform == "aos":

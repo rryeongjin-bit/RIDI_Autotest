@@ -1,0 +1,106 @@
+[     518ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785212691377' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     519ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785212691377:0
+[     539ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785212691398' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     540ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785212691398:0
+[     553ms] [ERROR] Access to XMLHttpRequest at 'https://api.ridibooks.com/v2/feature-flag' from origin 'http://localhost:3001' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     553ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.ridibooks.com/v2/feature-flag:0
+[     571ms] [ERROR] Access to manifest at 'https://ridibooks.com/manifest.webmanifest' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     571ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://ridibooks.com/manifest.webmanifest:0
+[     772ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.91.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     772ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.91.woff2:0
+[     795ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.89.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     795ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.89.woff2:0
+[     847ms] [ERROR] Access to XMLHttpRequest at 'https://api.ridibooks.com/graphql' from origin 'http://localhost:3001' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     848ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.ridibooks.com/graphql:0
+[     879ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.90.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     879ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.90.woff2:0
+[     894ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.88.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     894ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.88.woff2:0
+[     914ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.83.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     915ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.83.woff2:0
+[     925ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.87.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     925ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.87.woff2:0
+[     938ms] [ERROR] Access to XMLHttpRequest at 'https://api.ridibooks.com/graphql' from origin 'http://localhost:3001' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     941ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.ridibooks.com/graphql:0
+[     980ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardStdVariable.subset.6.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     980ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardStdVariable.subset.6.woff2:0
+[    1090ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.118.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[    1090ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.118.woff2:0
+[    1103ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.117.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[    1103ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.117.woff2:0
+[    1115ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.115.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[    1115ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.115.woff2:0
+[    1625ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785212691377' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[    1626ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785212691377:0
+[    1640ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785212691398' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[    1640ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785212691398:0
+[    1642ms] [ERROR] Access to XMLHttpRequest at 'https://api.ridibooks.com/v2/feature-flag' from origin 'http://localhost:3001' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[    1643ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.ridibooks.com/v2/feature-flag:0
+[    2729ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785212691377' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[    2736ms] [ERROR] TypeError: Cannot read properties of undefined (reading 'sendPageView')
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1625063
+    at Generator.<anonymous> (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1622613)
+    at Generator.next (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1623456)
+    at f (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441574)
+    at Object.s [as cont] (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441892)
+    at y (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1440448)
+    at Object.<anonymous> (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1440102)
+    at f (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441619)
+    at hf (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441399)
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1437329
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441210
+    at d (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1442107)
+    at f (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441634)
+    at hf (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441399)
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1437969
+    at Fl (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1434675)
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1437949
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441210
+    at d (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1442107)
+    at f (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441634)
+    at s (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441892)
+    at u (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1436421)
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1435913
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1436102
+    at Ll (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1434584)
+    at Bl (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1434790)
+    at Dl (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1434638)
+    at Object.put (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1436088)
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1653793
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1653285
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1655103
+    at ys (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:480542)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496855)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496900)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496835)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496835)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496900)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496900)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496835)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496835)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496900)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739) @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1
+[    2737ms] [ERROR] The above error occurred in task v_
+    created by takeEvery(TRACK_PAGE, v_)
+    created by Uk
+    created by Uk
+Tasks cancelled due to error:
+takeEvery(TRACK_PAGE, v_)
+v_
+takeEvery(INIT_TRACKER, h_)
+takeEvery(TRACK_EVENT, g_)
+takeEvery(TRACK_EVENT_CLIENT, m_)
+takeEvery(TRACK_FFID_CHANGED, b_) @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1
+[    2738ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785212691377:0
+[    2739ms] [ERROR] Access to XMLHttpRequest at 'https://api.ridibooks.com/v2/feature-flag' from origin 'http://localhost:3001' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[    2740ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.ridibooks.com/v2/feature-flag:0
+[    2741ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785212691398' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[    2742ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785212691398:0

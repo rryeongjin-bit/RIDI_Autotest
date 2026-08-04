@@ -13,6 +13,7 @@ from slack_sdk.errors import SlackApiError
 from dotenv import load_dotenv
 import runner
 import reporter
+from pathlib import Path
 
 load_dotenv()
 
@@ -31,6 +32,9 @@ _runs_lock = threading.Lock()
 TEST_MODULES = [
     {"value": "tests/test_basic.py", "label": "test_basic.py"},
 ]
+
+LINES_PER_POST = 20
+
 def verify_slack_signature(req) -> bool:
     timestamp = req.headers.get("X-Slack-Request-Timestamp", "")
     if abs(time.time() - int(timestamp)) > 60 * 5:
@@ -108,6 +112,7 @@ def _open_start_modal(trigger_id: str):
         slack_client.views_open(trigger_id=trigger_id, view=modal)
     except SlackApiError as e:
         logger.error(f"[modal] 열기 실패: {e}")
+
 
 @app.route("/slack/command/stop", methods=["POST"])
 def slash_stop():
@@ -187,72 +192,76 @@ def _handle_stop_modal_submit(payload: dict):
     else:
         slack_client.chat_postMessage(
             channel=SLACK_CHANNEL_ID,
-            text=f"⚠️ Run ID `{run_id}` 에 해당하는 실행 중인 테스트가 없어요.",
+            text=f"⚠️ Run ID `{run_id}` 에 해당하는 실행 중인 테스트가 없습니다.",
         )
 
 
 def _handle_modal_submit(payload: dict):
-    values  = payload["view"]["state"]["values"]
-    user_id = payload["user"]["id"]
-    channel = SLACK_CHANNEL_ID
+    try:
+        values  = payload["view"]["state"]["values"]
+        user_id = payload["user"]["id"]
+        channel = SLACK_CHANNEL_ID
 
-    platform_selected = [
-        o["value"]
-        for o in values.get("platform_block", {}).get("platform_select", {}).get("selected_options", [])
-    ]
-    modules_selected = [
-        o["value"]
-        for o in values.get("module_block", {}).get("module_select", {}).get("selected_options", [])
-    ]
-    env_selected = values.get("env_block", {}).get("env_select", {}).get("selected_option", {}).get("value", "stage")
+        platform_selected = [
+            o["value"]
+            for o in values.get("platform_block", {}).get("platform_select", {}).get("selected_options", [])
+        ]
+        modules_selected = [
+            o["value"]
+            for o in values.get("module_block", {}).get("module_select", {}).get("selected_options", [])
+        ]
+        env_selected = values.get("env_block", {}).get("env_select", {}).get("selected_option", {}).get("value", "stage")
 
-    parallel = len(platform_selected) == 2
-    platform = "both" if parallel else (platform_selected[0] if platform_selected else None)
+        parallel = len(platform_selected) == 2
+        platform = "both" if parallel else (platform_selected[0] if platform_selected else None)
 
-    run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
-    env_label_map = {
-        "stage":      "🔴 Stage",
-        "canary":     "🟡 Canary",
-        "production": "🔵 Production",
-    }
-    env_label = env_label_map.get(env_selected, "🔴 Stage")
+        run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+        env_label_map = {
+            "stage":      "🔴 Stage",
+            "canary":     "🟡 Canary",
+            "production": "🔵 Production",
+        }
+        env_label = env_label_map.get(env_selected, "🔴 Stage")
 
-    if parallel:
-        for p in ["aos", "ios"]:
-            sub_run_id = f"{run_id}_{p}"
-            msg = _post_main_message(channel, env_label, "테스트 시작 🚀", sub_run_id, p.upper())
+        if parallel:
+            for p in ["aos", "ios"]:
+                sub_run_id = f"{run_id}_{p}"
+                msg = _post_main_message(channel, env_label, "테스트 시작 🚀", sub_run_id, p.upper())
+                ts  = msg["ts"]
+                _update_main_message(channel, ts, env_label, "테스트 진행중 ⏳", run_id=sub_run_id, platform_label=p.upper())
+                thread_resp = _post_thread(channel, ts, f"<@{user_id}> 님이 {p.upper()} 테스트를 시작했어요.")
+                thread_ts   = thread_resp["ts"]
+                with _runs_lock:
+                    _active_runs[sub_run_id] = {
+                        "channel":     channel,
+                        "ts":          ts,
+                        "thread_ts":   thread_ts,
+                        "environment": env_label,
+                        "platform":    p,
+                    }
+        else:
+            msg = _post_main_message(channel, env_label, "테스트 시작 🚀", run_id, platform.upper() if platform else "")
             ts  = msg["ts"]
-            _update_main_message(channel, ts, env_label, "테스트 진행중 ⏳", run_id=sub_run_id, platform_label=p.upper())
-            thread_resp = _post_thread(channel, ts, f"<@{user_id}> 님이 {p.upper()} 테스트를 시작했어요.")
+            _update_main_message(channel, ts, env_label, "테스트 진행중 ⏳", run_id=run_id, platform_label=platform.upper() if platform else "")
+            thread_resp = _post_thread(channel, ts, f"<@{user_id}> 님이 테스트를 시작했어요.")
             thread_ts   = thread_resp["ts"]
             with _runs_lock:
-                _active_runs[sub_run_id] = {
+                _active_runs[run_id] = {
                     "channel":     channel,
                     "ts":          ts,
                     "thread_ts":   thread_ts,
                     "environment": env_label,
-                    "platform":    p,
+                    "platform":    platform,
                 }
-    else:
-        msg = _post_main_message(channel, env_label, "테스트 시작 🚀", run_id, platform.upper() if platform else "")
-        ts  = msg["ts"]
-        _update_main_message(channel, ts, env_label, "테스트 진행중 ⏳", run_id=run_id, platform_label=platform.upper() if platform else "")
-        thread_resp = _post_thread(channel, ts, f"<@{user_id}> 님이 테스트를 시작했어요.")
-        thread_ts   = thread_resp["ts"]
-        with _runs_lock:
-            _active_runs[run_id] = {
-                "channel":     channel,
-                "ts":          ts,
-                "thread_ts":   thread_ts,
-                "environment": env_label,
-                "platform":    platform,
-            }
 
-    threading.Thread(
-        target=_execute_tests,
-        args=(run_id, platform, modules_selected, env_selected, env_label, parallel, channel),
-        daemon=True,
-    ).start()
+        threading.Thread(
+            target=_execute_tests,
+            args=(run_id, platform, modules_selected, env_selected, env_label, parallel, channel),
+            daemon=True,
+        ).start()
+
+    except Exception as e:
+        logger.error(f"[modal] 처리 오류: {e}", exc_info=True)
 
 
 def _execute_tests(run_id, platform, modules, env_selected, env_label, parallel, channel):
@@ -276,16 +285,17 @@ def _execute_tests(run_id, platform, modules, env_selected, env_label, parallel,
                 device_info=device_info,
             )
 
-
-    progress_ts_map: dict = {}
     progress_lines_map: dict = {}
+    failed_skip_lines: dict = {}
 
     def on_log(log_chunk: str):
         if not log_chunk.strip():
             return
 
-        platform_key = "ios" if "ios" in log_chunk.lower() else "aos"
-        is_progress = any(kw in log_chunk for kw in ["PASSED", "FAILED", "SKIPPED", "ERROR"]) and "::" in log_chunk
+        if not parallel:
+            platform_key = platform
+        else:
+            platform_key = "ios" if "ios" in log_chunk.lower() else "aos"
 
         run_info, sub_run_id = _get_run_info(platform_key)
         if not run_info:
@@ -297,46 +307,60 @@ def _execute_tests(run_id, platform, modules, env_selected, env_label, parallel,
         if not thread_ts:
             return
 
-        if is_progress:
-            if sub_run_id not in progress_lines_map:
-                progress_lines_map[sub_run_id] = []
-            progress_lines_map[sub_run_id].append(log_chunk)
-            content = "```\n" + "\n".join(progress_lines_map[sub_run_id][-50:]) + "\n```"
+        is_progress = (
+            any(kw in log_chunk for kw in ["PASSED", "FAILED", "SKIPPED", "ERROR"])
+            and "::" in log_chunk
+        )
 
-            if sub_run_id not in progress_ts_map:
-                resp = _post_thread(channel, thread_ts, content)
-                progress_ts_map[sub_run_id] = resp.get("ts")
-            else:
-                try:
-                    slack_client.chat_update(
-                        channel=channel,
-                        ts=progress_ts_map[sub_run_id],
-                        text=content,
-                    )
-                except SlackApiError as e:
-                    logger.error(f"[slack] 진행률 업데이트 실패: {e}")
+        if is_progress:
+            if "FAILED" in log_chunk or "SKIPPED" in log_chunk:
+                failed_skip_lines.setdefault(sub_run_id, []).append(log_chunk)
+
+            progress_lines_map.setdefault(sub_run_id, []).append(log_chunk)
+
+            if len(progress_lines_map[sub_run_id]) >= LINES_PER_POST:
+                content = "```\n" + "\n".join(progress_lines_map[sub_run_id]) + "\n```"
+                _post_thread(channel, thread_ts, content)
+                progress_lines_map[sub_run_id] = []
+
         else:
             _post_thread(channel, thread_ts, log_chunk)
 
-    def on_finish(platform_key: str, returncode: int, summary: str):
+    def on_finish(platform_key: str, returncode: int, summary: str, all_failures: list = None):
         run_info, sub_run_id = _get_run_info(platform_key)
         if not run_info:
             return
 
-        report_path = reporter.get_latest_report(platform_key)
-        if report_path:
-            with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as f:
-                screenshot_path = f.name
-            if reporter.capture_report_screenshot(report_path, screenshot_path):
-                try:
-                    slack_client.files_upload_v2(
-                        channel=channel,
-                        thread_ts=run_info["thread_ts"],
-                        file=screenshot_path,
-                        title=f"📊 {platform_key.upper()} 테스트 리포트",
-                    )
-                except SlackApiError as e:
-                    logger.error(f"[reporter] 업로드 실패: {e}")
+        remaining = progress_lines_map.get(sub_run_id, [])
+        if remaining:
+            content = "```\n" + "\n".join(remaining) + "\n```"
+            _post_thread(channel, run_info["thread_ts"], content)
+            progress_lines_map[sub_run_id] = []
+
+        fs_lines = failed_skip_lines.get(sub_run_id, [])
+        if fs_lines:
+            summary_text = "```\n⚠️ FAILED / SKIPPED 목록\n" + "\n".join(fs_lines) + "\n```"
+            _post_thread(channel, run_info["thread_ts"], summary_text)
+
+        if all_failures:
+            for chunk in all_failures:
+                _post_thread(channel, run_info["thread_ts"], f"```{chunk[:2900]}```")
+
+        if returncode != -15 and summary != "테스트 강제 종료":
+            report_path = reporter.get_latest_report(platform_key)
+            if report_path:
+                with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as f:
+                    screenshot_path = f.name
+                if reporter.capture_report_screenshot(report_path, screenshot_path):
+                    try:
+                        slack_client.files_upload_v2(
+                            channel=channel,
+                            thread_ts=run_info["thread_ts"],
+                            file=screenshot_path,
+                            title=f"📊 {platform_key.upper()} 테스트 리포트",
+                        )
+                    except SlackApiError as e:
+                        logger.error(f"[reporter] 업로드 실패: {e}")
 
         _update_main_message(
             channel=run_info["channel"],
@@ -360,6 +384,7 @@ def _execute_tests(run_id, platform, modules, env_selected, env_label, parallel,
         on_finish=on_finish,
         on_device=on_device,
     )
+
 
 def _post_main_message(channel: str, env_label: str, status: str,
                         run_id: str = "", platform_label: str = "") -> dict:
@@ -392,9 +417,10 @@ def _update_main_message(channel: str, ts: str, env_label: str, status: str,
 
     blocks = [{"type": "section", "text": {"type": "mrkdwn", "text": text}}]
     if summary:
+        truncated = summary[:2800]
         blocks.append({
             "type": "section",
-            "text": {"type": "mrkdwn", "text": f"```{summary}```"},
+            "text": {"type": "mrkdwn", "text": f"```{truncated}```"},
         })
 
     try:

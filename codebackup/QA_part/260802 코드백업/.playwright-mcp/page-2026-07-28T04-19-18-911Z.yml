@@ -1,0 +1,33 @@
+- generic [active] [ref=f4e1]:
+  - generic [ref=f4e3]:
+    - banner [ref=f4e4]:
+      - link [ref=f4e6] [cursor=pointer]:
+        - /url: /
+    - generic [ref=f4e10]:
+      - generic [ref=f4e11]:
+        - img "가입 혜택" [ref=f4e12]
+        - img "추가 혜택" [ref=f4e13]
+      - generic [ref=f4e14]:
+        - generic [ref=f4e15]:
+          - textbox "아이디" [ref=f4e16]
+          - textbox "비밀번호" [ref=f4e18]
+        - generic [ref=f4e19]:
+          - checkbox "로그인 상태 유지"
+          - generic [ref=f4e23] [cursor=pointer]: 로그인 상태 유지
+        - button "로그인" [ref=f4e25] [cursor=pointer]
+      - generic [ref=f4e26]:
+        - link "아이디 찾기" [ref=f4e27] [cursor=pointer]:
+          - /url: /account/find-id?state=%7B%22return_url%22%3A%22%2F%22%7D
+        - link "비밀번호 찾기" [ref=f4e29] [cursor=pointer]:
+          - /url: /account/find-password?state=%7B%22return_url%22%3A%22%2F%22%7D
+        - link "이메일로 가입하기" [ref=f4e31] [cursor=pointer]:
+          - /url: /account/signup/form?state=%7B%22return_url%22%3A%22%2F%22%7D
+      - generic [ref=f4e32]:
+        - paragraph [ref=f4e33]: SNS 계정으로 로그인/가입
+        - generic [ref=f4e34]:
+          - button "카카오 계정으로 로그인" [ref=f4e36] [cursor=pointer]
+          - button "네이버 계정으로 로그인" [ref=f4e40] [cursor=pointer]
+          - button "Google 계정으로 로그인" [ref=f4e44] [cursor=pointer]
+          - button "Apple 계정으로 로그인" [ref=f4e46] [cursor=pointer]
+  - paragraph: stage
+  - alert [ref=f4e49]

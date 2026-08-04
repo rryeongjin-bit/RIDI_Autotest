@@ -10,7 +10,6 @@ logger = logging.getLogger(__name__)
 
 _running_processes: dict[str, subprocess.Popen] = {}
 _lock = threading.Lock()
-
 _stopped_runs: set = set()
 
 
@@ -43,7 +42,6 @@ def run_single(
     on_device: callable,
     on_finish: callable,
 ):
- 
     logger.info(f"[runner] 실행: {' '.join(cmd)}")
 
     proc = subprocess.Popen(
@@ -64,6 +62,7 @@ def run_single(
     in_summary = False
     failure_buffer = []
     in_failure = False
+    all_failures = []      
     report_filename = None
     current_test_name = None
 
@@ -113,8 +112,7 @@ def run_single(
         elif in_failure:
             failure_buffer.append(line)
             if line.startswith("=====") and len(failure_buffer) > 2:
-                chunk = "\n".join(failure_buffer)
-                on_log(f"```{chunk[:2900]}```")
+                all_failures.append("\n".join(failure_buffer))
                 failure_buffer = []
                 in_failure = False
 
@@ -128,7 +126,7 @@ def run_single(
 
     if not was_stopped:
         summary = "\n".join(summary_lines) if summary_lines else "테스트 강제 종료"
-        on_finish(platform_key, proc.returncode, summary)
+        on_finish(platform_key, proc.returncode, summary, all_failures)
 
 
 def run_tests(
@@ -141,7 +139,6 @@ def run_tests(
     on_finish: callable,
     on_device: callable = None,
 ):
-
     project_path = os.getenv("TEST_PROJECT_PATH", ".")
     commands = build_commands(platform, modules, parallel)
 
@@ -168,7 +165,7 @@ def run_tests(
 
     except Exception as e:
         logger.error(f"[runner] 오류: {e}")
-        on_finish("error", -1, str(e))
+        on_finish("error", -1, str(e), [])
 
 
 def stop_test(run_id: str) -> bool:

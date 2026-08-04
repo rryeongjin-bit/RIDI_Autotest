@@ -1,0 +1,1529 @@
+from pages.base_page import *
+from locators.contentshome import *
+from locators.genrehome import *
+from locators.common import *
+from data.test_data import *
+
+class MainhomePage(BasePage):
+    def is_genrehome_displayed(self) -> bool:
+        locator = AOS_GenrehomeLocators.COMIC_RECOMMEND_TAB if self.platform == "aos" \
+                  else IOS_GenrehomeLocators.COMIC_NEW_QUICK
+        return self.is_present(locator)
+    
+    def click_cart_icon(self):
+        if self.platform == "aos":
+            self.tap_coordinate(1006, 156)
+        else:
+            self.tap_coordinate(363, 69)
+
+
+class ComicGenrePage(BasePage):
+    SUBTAB_LOCATOR = {
+        "추천":  "SUBTAB_RECOMMEND",
+        "베스트": "SUBTAB_BEST",
+        "신작":  "SUBTAB_NEW",
+        "BL":   "SUBTAB_BL",
+    }
+
+    def _loc(self, attr: str):
+        cls = AOS_COMIC_GENRE if self.platform == "aos" else IOS_COMIC_GENRE
+        return getattr(cls, attr)
+
+    def enter_comic_genrehome(self):
+        self.open_deeplink(DeepLinks.COMIC_RECOMMEND_HOME)
+        self.log.info("[진입] 만화 장르홈 진입")
+
+    def is_comic_genrehome_displayed(self) -> bool:
+        return self.is_present(self._loc("SUBTAB_RECOMMEND"))
+
+    def click_main_tab(self):
+        self.click(self._loc("MAIN_TAB"))
+        self.log.info("[메인탭] 만화 탭 클릭")
+
+    #서브탭 
+    def _subtab_y(self) -> int:
+        return int(self.driver.get_window_size()["height"] * 0.12)
+
+    def swipe_subtab_left(self):
+        w = self.driver.get_window_size()["width"]
+        y = self._subtab_y()
+        self.driver.swipe(int(w * 0.80), y, int(w * 0.20), y, 500)
+        time.sleep(0.4)
+
+    def swipe_subtab_right(self):
+        w = self.driver.get_window_size()["width"]
+        y = self._subtab_y()
+        self.driver.swipe(int(w * 0.20), y, int(w * 0.80), y, 500)
+        time.sleep(0.4)
+
+    def is_subtab_visible(self, tab_name: str, timeout: int = 3, log: bool = True) -> bool:
+        attr = self.SUBTAB_LOCATOR[tab_name]
+        if self.platform == "ios":
+            result = self.is_element_present(self._loc(attr), timeout=timeout)
+        else:
+            result = self.is_present(self._loc(attr), timeout=timeout)
+        if log:
+            self.log.info(f"[서브탭확인] {tab_name} {'✅' if result else '❌'}")
+        return result
+
+    def click_subtab(self, tab_name: str, log: bool = True):
+        attr = self.SUBTAB_LOCATOR[tab_name]
+        locator = self._loc(attr)
+        if self.platform == "ios":
+            self.wait_for_element(locator)
+            self.find_element(locator).click()
+        else:
+            self.click(locator)
+        if log:
+            self.log.info(f"[서브탭클릭] {tab_name}")
+
+    #빅배너
+    def is_big_banner_displayed(self) -> bool:
+        if self.platform == "ios":
+            items = self.get_big_banner_items()
+            if items:
+                self.log.info(f"[빅배너] ✅ 확인 ({len(items)}개)")
+                return True
+            self.log.warning("[빅배너] ❌ 미확인")
+            return False
+        size = self.driver.get_window_size()
+        h = size["height"]
+        els = self.find_elements(self._loc("BIG_BANNER"))
+        for el in els:
+            try:
+                y = el.location.get("y", 0)
+                if h * 0.12 < y < h * 0.65:
+                    self.log.info(f"[빅배너] ✅ 확인 (y={y})")
+                    return True
+            except Exception:
+                pass
+        self.log.warning("[빅배너] ❌ 미확인")
+        return False
+
+    def get_big_banner_items(self) -> list:
+        """빅배너 렌더링 완료 아이템 목록 반환"""
+        if self.platform == "aos":
+            size = self.driver.get_window_size()
+            h = size["height"]
+            seen = set()
+            items = []
+            for el in self.find_elements(self._loc("BIG_BANNER")):
+                try:
+                    y = el.location.get("y", 0)
+                    el_h = el.size.get("height", 0)
+                    if not (h * 0.12 < y < h * 0.65) or el_h < h * 0.25:
+                        continue
+                    desc = (el.get_attribute("content-desc") or "").strip()
+                    if desc and desc not in seen:
+                        seen.add(desc)
+                        items.append(desc)
+                except Exception:
+                    pass
+            return items
+
+        # 전체 page_source 덤프(driver.page_source)는 이 화면에서 WDA가 반복적으로 120초
+        # 타임아웃을 일으켜(_get_ios_section_content와 동일한 이유), 대신 BIG_BANNER 로케이터로
+        # 가벼운 타겟 조회만 수행하고 좌표/크기로 실제 배너 카드만 가려낸다(AOS 분기와 동일 방식).
+        seen = set()
+        items = []
+        for el in self.find_elements(self._loc("BIG_BANNER")):
+            try:
+                y = el.location.get("y", -1)
+                h = el.size.get("height", 0)
+                w = el.size.get("width", 0)
+                name = (el.get_attribute("name") or "").strip()
+                if 155 <= y <= 215 and 300 <= h <= 400 and 380 <= w <= 430 and name:
+                    clean = name.replace("\n", " / ")
+                    if clean not in seen:
+                        seen.add(clean)
+                        items.append(clean)
+            except Exception:
+                pass
+        return items
+
+    def get_all_subtab_names(self) -> list:
+        """page_source에서 전체 서브탭 이름 추출 """
+        if self.platform == "aos":
+            import re
+            bounds_pattern = re.compile(r'\[(\d+),(\d+)\]\[(\d+),(\d+)\]')
+            subtab_y = self._subtab_y()
+            y_tolerance = int(self.driver.get_window_size()["height"] * 0.03)
+            items = []
+            seen = set()
+            import xml.etree.ElementTree as ET
+            root = ET.fromstring(self.driver.page_source)
+            for elem in root.iter():
+                text = (elem.get("text") or "").strip()
+                if not text:
+                    continue
+                m = bounds_pattern.match(elem.get("bounds", ""))
+                if not m:
+                    continue
+                x1, y1, x2, y2 = map(int, m.groups())
+                y_center = (y1 + y2) // 2
+                if abs(y_center - subtab_y) <= y_tolerance and text not in seen:
+                    seen.add(text)
+                    items.append((x1, text))
+            items.sort(key=lambda t: t[0])
+            return [name for _, name in items]
+
+        import xml.etree.ElementTree as ET
+        source = self.driver.page_source
+        root = ET.fromstring(source)
+        items = []
+        seen = set()
+        for elem in root.iter():
+            y = int(elem.get("y", -1))
+            h = int(elem.get("height", 0))
+            name = (elem.get("name") or "").strip()
+            accessible = elem.get("accessible", "false")
+            x = int(elem.get("x", 0))
+            if 110 <= y <= 135 and 20 <= h <= 50 and accessible == "true" and name:
+                words = name.split()
+                mid = len(words) // 2
+                if mid > 0 and words[:mid] == words[mid:]:
+                    clean = " ".join(words[:mid])
+                else:
+                    clean = name
+                if clean not in seen:
+                    seen.add(clean)
+                    items.append((x, clean))
+        items.sort(key=lambda t: t[0])
+        return [name for _, name in items]
+
+    def _big_banner_screenshot_hash(self) -> int:
+        """iOS 전용: 빅배너 영역 스크린샷의 average hash(64bit) 반환.
+        iOS는 빅배너가 자동재생 중일 때 class-chain 접근성 조회(get_big_banner_items)가
+        실기기로 확인한 결과 항상 0건만 반환해(WDA가 이 화면에서 접근성 트리 조회 자체를
+        못함) 텍스트/카운터를 읽을 수 없다. OCR도 시도해봤으나 배너 20개가 각각 다른
+        일러스트 위에 그림자 낀 반투명 텍스트라 신뢰도 있게 못 읽어(실기기 검증됨), 텍스트
+        추출은 포기하고 화면 내용 자체의 변화를 이미지 해시로 판별한다."""
+        from PIL import Image
+        import io
+        png = self.driver.get_screenshot_as_png()
+        img = Image.open(io.BytesIO(png))
+        w, h = img.size
+        box = (int(w * 0.03), int(h * 0.18), int(w * 0.97), int(h * 0.62))
+        small = img.crop(box).convert("L").resize((8, 8), Image.LANCZOS)
+        pixels = list(small.tobytes())
+        avg = sum(pixels) / len(pixels)
+        bits = "".join("1" if p > avg else "0" for p in pixels)
+        return int(bits, 2)
+
+    def collect_big_banner_variants_by_polling(self, target_count: int = 5, interval: float = 4.0,
+                                                max_polls: int = 15, hash_threshold: int = 10) -> list:
+        """iOS 전용: 빅배너 영역 스크린샷 해시를 4초 간격으로 비교해, 이전에 본 해시들과
+        해밍 거리가 hash_threshold를 넘는(=충분히 다른 화면인) 변형이 target_count개
+        관측되면 종료한다. (수집한 해시 목록, 처음 관측된 순서 유지) 반환."""
+        seen_hashes = []
+        for _ in range(max_polls):
+            h = self._big_banner_screenshot_hash()
+            if all(bin(h ^ prev).count("1") > hash_threshold for prev in seen_hashes):
+                seen_hashes.append(h)
+            if len(seen_hashes) >= target_count:
+                break
+            time.sleep(interval)
+        return seen_hashes
+
+    def collect_big_banner_items_by_polling(self, target_count: int = 5, interval: float = 4.0, max_polls: int = 15) -> list:
+        """빅배너는 자동전환(autoplay)되는 캐러셀이라 스와이프로 직접 넘기려 하면 자동전환과
+        충돌해 오히려 불안정해진다. 스와이프 없이 일정 간격으로 그 순간 노출된 배너를 그대로
+        확인해, 서로 다른 배너 target_count개가 확인되면 종료한다.
+        AOS는 접근성 요소에서 배너 텍스트를 그대로 추출하지만(중복 제거, 처음 확인된 순서
+        유지), iOS는 자동재생 중 접근성 조회가 불가해(위 _big_banner_screenshot_hash 참고)
+        화면 해시 변화로 대체하고, 실제 텍스트 대신 변형 식별용 문자열을 반환한다."""
+        if self.platform == "ios":
+            hashes = self.collect_big_banner_variants_by_polling(target_count, interval, max_polls)
+            return [f"배너 변형 {i + 1} (hash={h:016x})" for i, h in enumerate(hashes)]
+
+        seen = set()
+        ordered_items = []
+        for _ in range(max_polls):
+            for text in self.get_big_banner_items():
+                if text not in seen:
+                    seen.add(text)
+                    ordered_items.append(text)
+            if len(ordered_items) >= target_count:
+                break
+            time.sleep(interval)
+        return ordered_items
+
+    #퀵메뉴
+    QUICK_MENU_LOCATOR = {
+        "무료":      "FREE_QUICK",
+        "이벤트":     "EVENT_QUICK",
+        "최저가 세트":  "LOWEST_PRICE_QUICK",
+        "월간 캘린더": "MONTHLY_CALENDER_QUICK",
+        "리디온리":   "RIDIONLY_QUICK",
+    }
+
+    def _quickmenu_y(self) -> int:
+        if getattr(self, "_quickmenu_y_cache", None) is not None:
+            return self._quickmenu_y_cache
+        fallback = int(self.driver.get_window_size()["height"] * 0.65)
+        try:
+            y = self.find_element(self._loc("FREE_QUICK")).location.get("y", fallback)
+        except Exception:
+            y = fallback
+        self._quickmenu_y_cache = y
+        return y
+
+    def swipe_quickmenu_left(self):
+        w = self.driver.get_window_size()["width"]
+        y = self._quickmenu_y()
+        self.driver.swipe(int(w * 0.80), y, int(w * 0.20), y, 500)
+        time.sleep(0.4)
+
+    def swipe_quickmenu_right(self):
+        w = self.driver.get_window_size()["width"]
+        y = self._quickmenu_y()
+        self.driver.swipe(int(w * 0.20), y, int(w * 0.80), y, 500)
+        time.sleep(0.4)
+
+    def is_quickmenu_visible(self, menu_name: str, timeout: int = 3, log: bool = True) -> bool:
+        attr = self.QUICK_MENU_LOCATOR[menu_name]
+        if self.platform == "ios":
+            result = self.is_element_present(self._loc(attr), timeout=timeout)
+        else:
+            result = self.is_present(self._loc(attr), timeout=timeout)
+        if log:
+            self.log.info(f"[퀵메뉴확인] {menu_name} {'✅' if result else '❌'}")
+        return result
+
+    def click_quickmenu(self, menu_name: str, log: bool = True):
+        attr = self.QUICK_MENU_LOCATOR[menu_name]
+        locator = self._loc(attr)
+        if self.platform == "ios":
+            self.wait_for_element(locator)
+            self.find_element(locator).click()
+        else:
+            self.click(locator)
+        if log:
+            self.log.info(f"[퀵메뉴클릭] {menu_name}")
+
+    PERSISTENT_TAB_LABELS = {
+        "만화", "웹툰", "웹소설", "도서", "리디샵", "셀렉트",
+        "내 서재", "검색", "홈", "알림", "MY",
+        "리디", "리디 (S)",  # iOS 하위 화면 좌상단 "◀ 리디" 뒤로가기 브레드크럼 라벨 (실제 페이지 타이틀 아님)
+        # "리디 (S)"는 새 기기/빌드(QA iPhone 16e)에서 브레드크럼에 붙는 환경 표기(스테이징 추정)
+        "STAGE", "S\nT\nA\nG\nE", "S T A G E",  # 화면 우측에 항상 떠 있는 STAGE 이벤트 띠지
+        # (세로로 한 글자씩 표기되며 화면/맥락에 따라 줄바꿈 또는 공백으로 구분됨)
+        "CANARY", "C\nA\nN\nA\nR\nY", "C A N A R Y",  # 새 기기(QA iPhone 16e)/빌드에서는 같은 자리에 STAGE 대신 CANARY 띠지로 노출됨
+        "topCarouselSafeArea",  # 일부 더보기 목적지 화면(웹툰/만화 키워드 검색, 지금 리디에서만
+        # 볼 수 있는 만화 등) 최상단(y=0)에 있는 상단 캐러셀 세이프에어리어의 내부 식별자 이름.
+        # 실제 페이지 타이틀보다 y가 작아 get_current_top_title()이 이 값을 잘못 1순위로
+        # 반환해 목적지 타이틀 검증이 계속 실패하던 원인이었다(실기기 확인).
+        "오늘, 리디의 발견",  # 이 섹션은 더보기 버튼이 없어(실기기 확인) 자기 자신의 목적지
+        # 화면이 존재하지 않는데도, 인접한 다른 섹션("구매이력 기반 AI 추천" 등)의 더보기
+        # 목적지 화면 최상단에 이 문구가 잘못 후보로 잡혀 엉뚱한 타이틀로 반환되는 문제가
+        # AOS 실기기로 확인되었다.
+    }
+
+    # get_current_top_title()에서 정확히 일치하는 고정 라벨(PERSISTENT_TAB_LABELS)뿐 아니라,
+    # "수직 스크롤 막대, N페이지"처럼 뒤에 가변 페이지 번호가 붙는 내부 접근성 라벨(스크롤
+    # 인디케이터)도 실기기로 확인되어("지금, 리디에서만 볼 수 있는 만화" 등에서 재현) 접두어
+    # 기준으로 걸러낸다.
+    NOISE_LABEL_PREFIXES = ("수직 스크롤 막대",)
+
+    def _is_noise_top_title_candidate(self, text: str) -> bool:
+        return text in self.PERSISTENT_TAB_LABELS or text.startswith(self.NOISE_LABEL_PREFIXES)
+
+    def get_current_top_title(self) -> str:
+        """현재 화면 최상단(헤더 영역) 텍스트 반환 (범용, 좌표기반)
+        상단에 항상 떠 있는 카테고리 탭바(만화/웹툰/...)는 페이지별 타이틀이 아니므로 제외
+        """
+        import xml.etree.ElementTree as ET
+        h = self.driver.get_window_size()["height"]
+        root = ET.fromstring(self.driver.page_source)
+        candidates = []
+        if self.platform == "aos":
+            import re
+            bounds_pattern = re.compile(r'\[(\d+),(\d+)\]\[(\d+),(\d+)\]')
+            for elem in root.iter():
+                text = (elem.get("text") or "").strip()
+                if not text or self._is_noise_top_title_candidate(text):
+                    continue
+                m = bounds_pattern.match(elem.get("bounds", ""))
+                if not m:
+                    continue
+                x1, y1, _, _ = map(int, m.groups())
+                # 서브탭 바(추천/베스트 등, 화면 상단 약 11%)는 항상 떠 있는 고정 UI라 제외
+                if y1 < h * 0.09:
+                    candidates.append((y1, x1, text))
+        else:
+            for elem in root.iter():
+                name = (elem.get("name") or "").strip()
+                # 이 화면에서 페이지 전체 텍스트가 하나의 블롭 요소에 뭉쳐서 노출되는 경우,
+                # 그 블롭의 y좌표가 0(최상단)이라 실제 타이틀처럼 후보에 잡힐 수 있음.
+                # 실제 타이틀은 항상 짧으므로 비정상적으로 긴 텍스트는 블롭으로 간주해 제외한다.
+                if not name or self._is_noise_top_title_candidate(name) or len(name) > 60:
+                    continue
+                y = int(elem.get("y", -1))
+                if 0 <= y < h * 0.09:
+                    x = int(elem.get("x", 0))
+                    candidates.append((y, x, name))
+        candidates.sort(key=lambda t: (t[0], t[1]))
+        return candidates[0][2] if candidates else ""
+
+    def navigate_back_to_genrehome(self):
+        """퀵메뉴 등 하위 화면에서 장르홈으로 뒤로가기"""
+        if self.platform == "aos":
+            self.driver.back()
+        else:
+            self.tap_coordinate(20, 69)
+        time.sleep(1)
+        self.log.info("[뒤로가기] 장르홈 복귀 시도")
+
+    QUICK_MENU_EXPECTED_TITLE = {
+        "무료":      "무료",
+        "이벤트":     "이벤트",
+        "최저가 세트":  "최저가 세트",
+        "월간 캘린더": "만화 캘린더",  # 연/월이 동적으로 붙어 포함 여부로 비교 (예: "2026년 7월 만화 캘린더")
+        "리디온리":   "RIDI ONLY 만화",
+    }
+
+    def verify_quickmenu_destination_title(self, menu_name: str, timeout: int = 6, interval: float = 1.0) -> bool:
+        """퀵메뉴 선택 후 진입한 화면의 타이틀이 기대값을 포함하는지 비교 (목적지별 로딩 속도가 달라 재시도).
+        페이지 전환 직후 콘텐츠가 아직 로딩 중일 수 있어(더보기 화면과 동일한 이유) 확인 전 5초 대기한다."""
+        time.sleep(5)
+        expected = self.QUICK_MENU_EXPECTED_TITLE.get(menu_name, "")
+        actual = ""
+        elapsed = 0.0
+        while elapsed <= timeout:
+            actual = self.get_current_top_title()
+            if expected and expected in actual:
+                self.log.info(f"[퀵메뉴타이틀검증] {menu_name} 기대:'{expected}' 실제:'{actual}' ✅")
+                return True
+            time.sleep(interval)
+            elapsed += interval
+        self.log.info(f"[퀵메뉴타이틀검증] {menu_name} 기대:'{expected}' 실제:'{actual}' ❌")
+        return False
+
+    #섹션별 (방금 본 작품과 비슷한 / 지금 많이 읽고 있는 만화 / 오늘, 리디의 발견 / 구매이력 기반 AI 추천)
+    SECTION_LOCATOR = {
+        "방금 본 작품과 비슷한":    "SECTION_SIMILAR_RECENT",
+        "지금 많이 읽고 있는 만화": "SECTION_READING_NOW",
+        "오늘, 리디의 발견":       "SECTION_TODAY_DISCOVERY",
+        "구매이력 기반 AI 추천":   "SECTION_AI_PURCHASE",
+        # 아래는 장르홈 하단에 이어지는 섹션들. AOS는 UiAutomator textContains 기반 범용
+        # is_present 스크롤이 그대로 통하지만, iOS는 위 4개와 동일하게 화면 전체가 하나의
+        # 블롭에 뭉쳐 노출되어(실기기 확인됨) IOS_SECTION_SWIPE_COUNT 결정론적 스크롤이 필요하다.
+        "오직 리디!":                    "SECTION_RIDI_ONLY",
+        "새로 나온 작품":                 "SECTION_NEW_ARRIVALS",
+        "만화 베스트":                    "SECTION_BEST",
+        "와 비슷한":                      "SECTION_SIMILAR_WORK",  # "<열혈강호>와 비슷한" 등 노출작품에 따라 앞부분이 바뀌는 동적 섹션명 — 고정 접미사만으로 식별
+        "웹툰/만화 키워드 검색":            "SECTION_KEYWORD_SEARCH",
+        "이벤트":                        "SECTION_EVENT",
+        "3분기 애니 원작 총집합!":          "SECTION_SEASONAL",
+        "만화를 특가 세트로!":             "SECTION_SPECIAL_SET",
+        "앞권 무료로 맛보기!":             "SECTION_FREE_PREVIEW",
+        "지금, 리디에서만 볼 수 있는 만화":  "SECTION_RIDI_EXCLUSIVE",
+        "2026 상반기 베스트 만화는?":       "SECTION_HALF_YEAR_BEST",
+        "인생에 스포츠 만화는 필수입니다.":  "SECTION_SPORTS",
+        "그날 인류는 떠올렸다.":           "SECTION_HUMANITY",
+        "만화는 리디! 제대로 즐기는 법":    "SECTION_RIDI_GUIDE",
+        "별점 5점만점 명예의 전당":         "SECTION_HALL_OF_FAME",
+        "역대 만화 대상 수상작 모아보기":    "SECTION_AWARD",
+        "이벤트 더 보기":                 "SECTION_EVENT_MORE",
+        "님의 취향 저격 AI 추천":          "SECTION_AI_TASTE",  # "41q...님의 취향 저격 AI 추천" 등 계정ID 접두사 제외 고정 접미사로 식별
+    }
+
+    def _iter_text_elements(self):
+        """page_source를 파싱해 (y1, x1, y2, x2, text) 목록 반환 (플랫폼 공통 포맷)"""
+        import xml.etree.ElementTree as ET
+        root = ET.fromstring(self.driver.page_source)
+        items = []
+        if self.platform == "aos":
+            import re
+            bounds_pattern = re.compile(r'\[(\d+),(\d+)\]\[(\d+),(\d+)\]')
+            for elem in root.iter():
+                text = (elem.get("text") or "").strip()
+                if not text or text in self.PERSISTENT_TAB_LABELS:
+                    continue
+                m = bounds_pattern.match(elem.get("bounds", ""))
+                if not m:
+                    continue
+                x1, y1, x2, y2 = map(int, m.groups())
+                items.append((y1, x1, y2, x2, text))
+        else:
+            for elem in root.iter():
+                text = (elem.get("name") or "").strip()
+                if not text or text in self.PERSISTENT_TAB_LABELS:
+                    continue
+                x1 = int(elem.get("x", 0))
+                y1 = int(elem.get("y", -1))
+                x2 = x1 + int(elem.get("width", 0))
+                y2 = y1 + int(elem.get("height", 0))
+                items.append((y1, x1, y2, x2, text))
+        return items
+
+    def _section_title_rect(self, section_name: str) -> dict:
+        attr = self.SECTION_LOCATOR[section_name]
+        el = self.find_element(self._loc(attr))
+        loc, size = el.location, el.size
+        return {"top": loc["y"], "bottom": loc["y"] + size["height"]}
+
+    # AOS 장르홈은 세로 스크롤 컨테이너(android.widget.ScrollView) 하나와, 그 안에 섹션별
+    # 가로 캐러셀(android.widget.HorizontalScrollView)이 여러 개 중첩되어 있다(실기기
+    # page_source로 확인됨). `UiSelector().scrollable(true)`만 쓰면 조건에 맞는 첫 위젯이
+    # 상황에 따라 세로 컨테이너가 아니라 화면에 걸쳐있는 가로 캐러셀로 잡힐 수 있어(특히 섹션이
+    # 화면 하단에 걸친 경우 실기기로 재현됨), 그 가로 캐러셀에 스크롤을 시도하면 이미 끝까지
+    # 스크롤된 상태라 제스처가 스크롤 대신 탭으로 처리되어 그 자리의 작품이 실수로 선택/진입되는
+    # 사고로 이어진다. className으로 세로 ScrollView를 명시해 이 오탐을 방지한다.
+    AOS_VERTICAL_SCROLLVIEW_SELECTOR = 'new UiSelector().className("android.widget.ScrollView")'
+
+    def _vertical_swipe_up(self):
+        """세로 스크롤 전용. AOS는 실기기(SM-S937N)에서 원시 좌표 스와이프(driver.swipe)와
+        mobile: scrollGesture 둘 다 스크롤을 전혀 일으키지 않는 것이 스크린샷 비교로 여러 번
+        확인되어(제스처가 아예 씹힘), Android 표준 스크롤 위젯 API인 UiScrollable로 대체한다
+        — 이 방식은 실기기로 스크린샷 비교 검증 완료(반복 호출해도 계속 앞으로 진행됨).
+        iOS는 기존 원시 스와이프가 계속 정상 동작해 그대로 유지한다."""
+        if self.platform == "aos":
+            self.driver.find_element(
+                AppiumBy.ANDROID_UIAUTOMATOR,
+                f'new UiScrollable({self.AOS_VERTICAL_SCROLLVIEW_SELECTOR}).scrollForward()'
+            )
+        else:
+            size = self.driver.get_window_size()
+            x = int(size["width"] * 0.5)
+            self.driver.swipe(x, int(size["height"] * 0.90), x, int(size["height"] * 0.60), 800)
+        time.sleep(1)
+
+    def _small_nudge_up(self):
+        """타이틀 바로 아래 아이템 행을 렌더링 영역 안으로 끌어오기 위한 소폭 스크롤.
+        AOS는 UiScrollable.scrollForward(N)이 이 시점에는 정수 인자값에 따라 완전히 안 움직이거나
+        (예: 1) 화면 여러 개를 건너뛸 정도로 과하게 움직이는(예: 인자 없음, 8) 등 세밀한 조정이
+        불가능함이 실기기로 확인되어, 원시 좌표 스와이프(driver.swipe)로 대체한다 — 소폭 이동
+        용도로는 실기기 스크린샷 비교로 안정적으로 동작 확인됨."""
+        size = self.driver.get_window_size()
+        x = int(size["width"] * 0.5)
+        if self.platform == "aos":
+            self.driver.swipe(x, int(size["height"] * 0.60), x, int(size["height"] * 0.42), 800)
+        else:
+            self.driver.swipe(x, int(size["height"] * 0.85), x, int(size["height"] * 0.70), 600)
+        time.sleep(0.8)
+
+    def _small_nudge_down_ios(self):
+        """_small_nudge_up의 반대 방향 (iOS에서 과하게 넘어갔을 때 되돌리는 용도, 동일 안전 영역 내)"""
+        size = self.driver.get_window_size()
+        x = int(size["width"] * 0.5)
+        self.driver.swipe(x, int(size["height"] * 0.70), x, int(size["height"] * 0.85), 600)
+        time.sleep(0.8)
+
+    def _vertical_swipe_down_ios(self):
+        """_vertical_swipe_up의 반대 방향 전체 스크롤(iOS 전용). test_003~005처럼 서브탭을
+        재클릭하지 않고 이전 테스트가 남긴 스크롤 위치에서 이어서 scroll_to_section을 호출하는
+        경우, 목표 섹션을 이미 지나쳐버렸을 수 있어 위로 되돌아가며 재탐색하는 용도로 쓴다."""
+        size = self.driver.get_window_size()
+        x = int(size["width"] * 0.5)
+        self.driver.swipe(x, int(size["height"] * 0.60), x, int(size["height"] * 0.90), 800)
+        time.sleep(1)
+
+    # iOS는 이 영역 텍스트가 개별 요소로 분리되지 않고 하나의 XCUIElementTypeOther에 뭉쳐서 노출되어
+    # (_section_title_rect가 실제 타이틀 위치가 아닌 뭉친 블롭 전체의 좌표를 반환) 좌표를 동적으로 계산할 수
+    # 없다. 실기기 스크린샷으로 실측한 화면비율 좌표를 하드코딩해서 AOS와 동일한 흐름을 흉내낸다.
+    IOS_SECTION_ROW_Y_RATIO = {
+        "방금 본 작품과 비슷한":    0.521,
+        "지금 많이 읽고 있는 만화": 0.395,
+        "오늘, 리디의 발견":       0.695,
+        "구매이력 기반 AI 추천":   0.404,
+        "오직 리디!":                    0.55,
+        "새로 나온 작품":                 0.60,
+        "만화 베스트":                    0.60,
+        "와 비슷한":                      0.65,
+        "웹툰/만화 키워드 검색":            0.62,
+        "이벤트":                        0.62,
+        "3분기 애니 원작 총집합!":          0.60,
+        "만화를 특가 세트로!":             0.58,
+        "앞권 무료로 맛보기!":             0.75,
+        "지금, 리디에서만 볼 수 있는 만화":  0.70,
+        "2026 상반기 베스트 만화는?":       0.65,
+        "인생에 스포츠 만화는 필수입니다.":  0.60,
+        "그날 인류는 떠올렸다.":           0.57,
+        "만화는 리디! 제대로 즐기는 법":    0.73,
+        "별점 5점만점 명예의 전당":         0.72,
+        "역대 만화 대상 수상작 모아보기":    0.68,
+        "이벤트 더 보기":                 0.63,
+        "님의 취향 저격 AI 추천":          0.63,
+    }
+    IOS_SECTION_MORE_COORD_RATIO = {
+        "지금 많이 읽고 있는 만화": (0.915, 0.328),
+        "구매이력 기반 AI 추천":   (0.915, 0.284),
+        "오직 리디!":                    (0.932, 0.490),
+        "새로 나온 작품":                 (0.932, 0.484),
+        "만화 베스트":                    (0.932, 0.545),
+        "웹툰/만화 키워드 검색":            (0.932, 0.539),
+        "이벤트":                        (0.932, 0.551),
+        "3분기 애니 원작 총집합!":          (0.932, 0.537),
+        "만화를 특가 세트로!":             (0.932, 0.498),
+        "앞권 무료로 맛보기!":             (0.932, 0.671),
+        "지금, 리디에서만 볼 수 있는 만화":  (0.932, 0.618),
+        "2026 상반기 베스트 만화는?":       (0.932, 0.557),
+        "인생에 스포츠 만화는 필수입니다.":  (0.932, 0.517),
+        "그날 인류는 떠올렸다.":           (0.932, 0.482),
+        "만화는 리디! 제대로 즐기는 법":    (0.932, 0.660),
+        "별점 5점만점 명예의 전당":         (0.932, 0.640),
+        "역대 만화 대상 수상작 모아보기":    (0.932, 0.603),
+        "이벤트 더 보기":                 (0.932, 0.563),
+        # "이 작품을 주목!" / "와 비슷한" / "님의 취향 저격 AI 추천"은 더보기 버튼 자체가 없음
+    }
+    # 더보기 클릭 후 실제 도달해야 하는 목적지 화면 타이틀에 포함되어야 하는 힌트 문자열.
+    # "구매이력 기반 AI 추천"의 실제 타이틀은 "{아이디}님의 구매이력 기반 AI 추천"처럼 계정별로
+    # 앞부분(계정ID)만 유동적이고 뒷부분은 고정이라, 그 고정 접미사로 확인한다. 아래 신규 섹션들은
+    # 계정ID 등 유동 접두사가 없어 섹션명 자체가 곧 목적지 타이틀이다.
+    IOS_SECTION_MORE_DEST_HINT = {
+        "지금 많이 읽고 있는 만화": "지금 많이 읽고 있는 만화",
+        "구매이력 기반 AI 추천":   "구매이력 기반 AI 추천",
+        # "오직 리디!"의 더보기 목적지 화면 실제 타이틀은 "오직 리디!"가 아니라 "이벤트"다
+        # (실기기로 확인됨 — 이 섹션이 이벤트 목록 화면으로 연결됨).
+        "오직 리디!":                    "이벤트",
+        # "새로 나온 작품"/"만화 베스트"는 목적지 화면 타이틀 추출이 불안정해 힌트를 두지
+        # 않는다 — 테스트 쪽에서 타이틀 대신 "전체" 필터 탭 노출 여부로 검증한다
+        # (is_all_filter_visible, verify_all_button 참고).
+        "웹툰/만화 키워드 검색":            "웹툰/만화 키워드 검색",
+        "이벤트":                        "이벤트",
+        "3분기 애니 원작 총집합!":          "3분기 애니 원작 총집합!",
+        "만화를 특가 세트로!":             "만화를 특가 세트로!",
+        "앞권 무료로 맛보기!":             "앞권 무료로 맛보기!",
+        # "지금, 리디에서만 볼 수 있는 만화"의 더보기 목적지 실제 타이틀은 섹션명이 아니라
+        # "RIDI ONLY 만화"다(aos/ios 공통, "만화" 탭이 활성화된 채로 노출됨 — 실기기 확인됨).
+        "지금, 리디에서만 볼 수 있는 만화":  "RIDI ONLY 만화",
+        "2026 상반기 베스트 만화는?":       "2026 상반기 베스트 만화는?",
+        "인생에 스포츠 만화는 필수입니다.":  "인생에 스포츠 만화는 필수입니다.",
+        "그날 인류는 떠올렸다.":           "그날 인류는 떠올렸다.",
+        "만화는 리디! 제대로 즐기는 법":    "만화는 리디! 제대로 즐기는 법",
+        "별점 5점만점 명예의 전당":         "별점 5점만점 명예의 전당",
+        "역대 만화 대상 수상작 모아보기":    "역대 만화 대상 수상작 모아보기",
+        "이벤트 더 보기":                 "이벤트 더 보기",
+    }
+    # "방금 본 작품과 비슷한"/"지금 많이 읽고 있는 만화"/"오늘, 리디의 발견"/"구매이력 기반 AI 추천"은
+    # is_present 기반 스크롤 판별이 통하지 않아(아래 scroll_to_section 설명 참고) 절대 최상단에서부터
+    # 고정 스와이프 횟수로 도달한다. 값은 (절대 최상단 도달 후 배너 영역을 벗어나기 위한 1회 탈출
+    # 스와이프) + (추가 큰 스와이프 횟수). "구매이력 기반 AI 추천"은 화면 우측에 항상 떠 있는
+    # STAGE 이벤트 띠지가 타이틀/더보기 행과 겹치는 스크롤 깊이(6회)에서는 오탭이 반복돼,
+    # 띠지가 완전히 아래로 내려가 겹치지 않는 깊이(7회)까지 더 내려간다. 아래 신규 섹션들도
+    # 실기기(Appium MCP)로 최상단부터 순서대로 스와이프하며 실측한 값이다.
+    IOS_SECTION_SWIPE_COUNT = {
+        "방금 본 작품과 비슷한":    1,
+        "지금 많이 읽고 있는 만화": 3,
+        "오늘, 리디의 발견":       4,
+        "구매이력 기반 AI 추천":   7,
+        "오직 리디!":                    8,
+        "새로 나온 작품":                 9,
+        "만화 베스트":                    12,
+        "와 비슷한":                      14,
+        "웹툰/만화 키워드 검색":            16,
+        "이벤트":                        17,
+        "3분기 애니 원작 총집합!":          18,
+        "만화를 특가 세트로!":             20,
+        "앞권 무료로 맛보기!":             21,
+        "지금, 리디에서만 볼 수 있는 만화":  23,
+        "2026 상반기 베스트 만화는?":       27,
+        "인생에 스포츠 만화는 필수입니다.":  29,
+        "그날 인류는 떠올렸다.":           31,
+        "만화는 리디! 제대로 즐기는 법":    32,
+        "별점 5점만점 명예의 전당":         33,
+        "역대 만화 대상 수상작 모아보기":    35,
+        "이벤트 더 보기":                 37,
+        "님의 취향 저격 AI 추천":          38,
+    }
+    # 섹션 콘텐츠 블롭에서 "다음 섹션이 시작되는 지점"을 잘라내기 위한 마커들.
+    # "더보기"는 여기 넣지 않는다 — 더보기 버튼이 있는 모든 섹션은 타이틀 바로 뒤에 자신의
+    # "더보기"가 오므로(아이템보다 앞), 범용 마커로 넣으면 모든 섹션의 콘텐츠가 추출 시작
+    # 지점에서 바로 잘려 항상 빈 문자열이 되는 문제가 있었다(실기기로 확인, 아래
+    # _get_ios_section_content의 앵커 처리로 대신 해결).
+    IOS_SECTION_END_MARKERS = [
+        "방금 본 작품과 비슷한", "지금 많이 읽고 있는 만화", "오늘, 리디의 발견",
+        "구매이력 기반 AI 추천", "오직 리디!", "새로 나온 작품",
+        "이 작품을 주목", "만화 베스트", "와 비슷한", "웹툰/만화 키워드 검색",
+        "이벤트 더 보기", "이벤트", "3분기 애니 원작 총집합!", "만화를 특가 세트로!",
+        "앞권 무료로 맛보기!", "지금, 리디에서만 볼 수 있는 만화", "NEW | 7월의 주목 신작!",
+        "2026 상반기 베스트 만화는?", "인생에 스포츠 만화는 필수입니다.",
+        "그날 인류는 떠올렸다.", "만화는 리디! 제대로 즐기는 법", "별점 5점만점 명예의 전당",
+        "역대 만화 대상 수상작 모아보기", "님의 취향 저격 AI 추천", "리디(주)",
+    ]
+
+    def _get_ios_section_content(self, section_name: str) -> str:
+        """iOS는 이 영역 텍스트가 개별 요소로 안 잡히고 하나의 블롭(XCUIElementTypeOther)에
+        화면 노출 순서 그대로 이어붙여져서 노출된다. 좌표 대신 문자열 파싱으로 해당 섹션 이름
+        직후 ~ 다음 마커 전까지의 원문 조각을 추출한다 (개별 아이템 구분은 아니지만 실제 노출된
+        콘텐츠 원문). 전체 page_source 덤프(_iter_text_elements)는 자동재생 배너가 있는 이
+        화면에서 WDA가 반복적으로 120초 타임아웃/hang을 일으켜, 대신 해당 블롭 요소 하나만
+        직접 조회한다 (scroll_to_section의 is_present와 동일하게 가벼운 타겟 조회).
+
+        더보기 버튼이 있는 섹션은 앵커를 "{섹션명} 더보기"로 잡는다 — 더보기 버튼이 타이틀
+        바로 뒤, 실제 아이템들보다 앞에 오는 접근성 순서라 섹션명만 앵커로 쓰면 그 뒤에 오는
+        "더보기" 텍스트에서 곧바로 다음 섹션으로 오인돼 잘리기 때문. 부가효과로 "이벤트"처럼
+        섹션명이 퀵메뉴 라벨(무료/이벤트/최저가 세트/월간 캘린더)에도 동일 문자열로 포함돼
+        앞쪽의 잘못된 위치를 찾아버리는 경우도, 퀵메뉴 라벨 뒤에는 "더보기"가 없어 이 앵커가
+        자동으로 올바른(진짜 섹션 타이틀) 위치를 찾아낸다."""
+        try:
+            attr = self.SECTION_LOCATOR[section_name]
+            blob = self.find_element(self._loc(attr)).get_attribute("name") or ""
+            if not blob:
+                return ""
+            anchor = f"{section_name} 더보기" if section_name in self.IOS_SECTION_MORE_COORD_RATIO else section_name
+            idx = blob.find(anchor)
+            after = blob[idx + len(anchor):]
+            end = len(after)
+            for marker in self.IOS_SECTION_END_MARKERS:
+                if marker == section_name:
+                    continue
+                pos = after.find(marker)
+                if pos != -1:
+                    end = min(end, pos)
+            return after[:end].strip()
+        except Exception as e:
+            self.log.warning(f"[_get_ios_section_content] {section_name} 콘텐츠 추출 실패: {e}")
+            return ""
+
+    @staticmethod
+    def _split_ios_ranked_items(content: str) -> list:
+        """"지금 많이 읽고 있는 만화"처럼 "{순위} {제목} ... {평점} ({평가수})"가 이어붙은
+        랭킹 블롭 문자열을, 각 항목이 ") {다음 순위} " 뒤에서 시작한다는 규칙으로 순위별
+        항목으로 분리한다."""
+        import re
+        bounds = [0] + [m.start(1) for m in re.finditer(r'\)\s+(\d{1,3})\s', content)]
+        bounds.append(len(content))
+        items = []
+        for i in range(len(bounds) - 1):
+            seg = content[bounds[i]:bounds[i + 1]].strip()
+            if seg:
+                items.append(seg)
+        return items
+
+    def _split_ios_card_items(self, section_name: str, content: str) -> list:
+        """"{제목} {저자} {평점} ({평가수})"가 순위 번호 없이 이어붙은 일반 카드 리스트
+        블롭을, "(평가수)" 뒤에서 다음 카드가 시작한다는 규칙으로 개별 항목으로 분리한다.
+        이 패턴이 아예 없는 콘텐츠(프로모션 배너형 섹션 등)나 IOS_SECTION_NO_CARD_SPLIT에
+        등록된 섹션(카드마다 평가수 뒤에 태그 등 부가 메타데이터가 더 붙어 경계 규칙이 안
+        맞는 경우)은 분리되지 않고 원문 그대로 한 덩어리로 반환된다."""
+        if not content:
+            return []
+        if section_name in self.IOS_SECTION_NO_CARD_SPLIT:
+            return [content]
+        import re
+        bounds = [0] + [m.end() for m in re.finditer(r'\(\d[\d,]*\)', content)]
+        if bounds[-1] != len(content):
+            bounds.append(len(content))
+        items = []
+        for i in range(len(bounds) - 1):
+            seg = content[bounds[i]:bounds[i + 1]].strip()
+            if seg:
+                items.append(seg)
+        return items
+
+    def _ios_scroll_to_section_deterministic(self, section_name: str) -> bool:
+        """iOS 전용: is_present 기반 스크롤 판별이 통하지 않는 섹션("방금 본 작품과 비슷한",
+        "지금 많이 읽고 있는 만화", "오늘, 리디의 발견")을 위한 결정론적 스크롤.
+
+        이 화면은 스크롤 위치와 무관하게 페이지 전체 텍스트가 하나의 접근성 블롭 요소에 뭉쳐서
+        노출되어(x=0,y=0,전체화면 크기 bounds), textContains 기반 is_present가 스크롤을 전혀
+        안 해도 항상 True를 반환한다 — 즉 "존재 확인으로 스크롤 완료 판단"이 원천적으로 불가능하다.
+        게다가 최상단(빅배너+퀵메뉴가 보이는 상태)에서는 느린 드래그가 배너/퀵메뉴 캐러셀에
+        제스처를 뺏겨 스크롤이 전혀 먹히지 않는다.
+
+        따라서 매번 딥링크로 절대 최상단부터 다시 시작해, 배너 영역을 벗어나는 첫 스와이프 +
+        섹션별로 실기기에서 실측한 고정 횟수의 추가 스와이프로 원하는 스크롤 깊이에 도달한다.
+        실기기(Appium MCP)로 동일 좌표/횟수를 그대로 재현하면 매번 정확히 도달하는 것으로
+        확인되어 좌표값 자체는 정확하다. 다만 "더보기" 자체는 iOS 접근성 트리에 개별 요소로
+        존재하지 않아(전체가 블롭 하나) 버튼의 실제 좌표(rect)를 직접 조회할 방법이 없으므로,
+        유일하게 신뢰 가능한 위치 확인 수단인 "섹션 콘텐츠 텍스트가 블롭에 채워졌는가"
+        (_wait_ios_section_loaded)의 결과를 그대로 반환해, 호출측이 이 확인 없이는 좌표 탭을
+        강행하지 않도록 한다.
+
+        딥링크 재진입 직후 빅배너가 아직 로딩/전환 애니메이션 중일 때 스와이프를 시작하면
+        스크롤 이동 거리가 매번 미세하게 달라져(특히 스와이프 횟수가 많은 섹션일수록 오차가
+        누적됨) 목적지를 지나치거나 못 미치는 문제가 있었다. 화면이 완전히 정지한 뒤에
+        스와이프를 시작하도록 충분히 대기한다.
+
+        실기기로 직접 확인한 결과, 이미 장르홈 화면에 있는 상태에서 딥링크로 재진입해도
+        스크롤 위치가 최상단으로 리셋되지 않는다 (앱이 "이미 이 화면"으로 판단해 그대로 유지).
+        재시도가 반복될수록 이전 위치 위에 스와이프가 누적돼 엉뚱한 섹션까지 밀려 내려가는
+        사고로 이어졌다 — 상태바를 탭하면(iOS 표준 동작) 최상단 스크롤뷰가 즉시 맨 위로
+        리셋되는 것을 실기기로 확인해, 스와이프 시작 전에 항상 이 방법으로 절대 위치를
+        보정한다."""
+        self.enter_comic_genrehome()
+        time.sleep(2.5)
+        self.click_subtab("추천", log=False)
+        time.sleep(2)
+
+        size = self.driver.get_window_size()
+        x = int(size["width"] * 0.5)
+        h = size["height"]
+
+        # 딥링크 재진입이 스크롤을 리셋해주지 않으므로, 상태바 탭으로 절대 최상단을 보정한다.
+        self.tap_coordinate(x, 10)
+        time.sleep(1)
+
+        # 배너/퀵메뉴 캐러셀 영역을 벗어나는 첫 스와이프 (배너 아래 지점에서 시작)
+        self.driver.swipe(x, int(h * 0.746), x, int(h * 0.533), 600)
+        time.sleep(1.3)
+
+        for _ in range(self.IOS_SECTION_SWIPE_COUNT.get(section_name, 0)):
+            self.driver.swipe(x, int(h * 0.829), x, int(h * 0.592), 600)
+            time.sleep(1.3)
+
+        # 네트워크 응답이 느리면 콘텐츠 로딩이 10초를 훌쩍 넘기는 경우가 실기기에서 확인되어,
+        # 섣불리 포기하지 않도록 기본(10초)보다 훨씬 넉넉하게 기다린다.
+        return self._wait_ios_section_loaded(section_name, timeout=30.0)
+
+    def _wait_ios_section_loaded(self, section_name: str, timeout: float = 10.0, interval: float = 1.0) -> bool:
+        """네트워크가 느리면 스크롤을 다 마친 시점에도 목표 섹션이 스켈레톤(빈 로딩 placeholder)
+        상태라 실제 콘텐츠 텍스트가 블롭에 아직 채워지지 않은 경우가 있다. 이 상태에서 좌표
+        기반으로 더보기를 탭하면 실제 콘텐츠가 로드되며 레이아웃이 밀려 오탭으로 이어진다.
+        섹션의 실제 콘텐츠 문자열이 블롭에 채워질 때까지(스켈레톤 탈출) 짧게 재확인하며 대기한다."""
+        attr = self.SECTION_LOCATOR.get(section_name)
+        if not attr:
+            return True
+        elapsed = 0.0
+        while elapsed <= timeout:
+            try:
+                if self._get_ios_section_content(section_name):
+                    return True
+            except Exception:
+                pass
+            time.sleep(interval)
+            elapsed += interval
+        self.log.warning(f"[_wait_ios_section_loaded] {section_name} 콘텐츠 로딩 대기 시간초과({timeout}s) - 스켈레톤 상태일 수 있음")
+        return False
+
+    def scroll_to_section(self, section_name: str, max_scroll: int = 12) -> bool:
+        """섹션 타이틀이 보이고, 아이템 행도 렌더링될 만큼 스크롤"""
+        if self.platform == "ios" and section_name in self.IOS_SECTION_SWIPE_COUNT:
+            self._ios_scroll_to_section_deterministic(section_name)
+            return True
+
+        attr = self.SECTION_LOCATOR[section_name]
+        locator = self._loc(attr)
+        found = False
+        for _ in range(max_scroll):
+            if self.is_present(locator, timeout=2):
+                found = True
+                break
+            self._vertical_swipe_up()
+        if not found:
+            found = self.is_present(locator, timeout=2)
+
+        if not found and self.platform == "ios":
+            # 아래로만 스크롤해서 못 찾았다면, 서브탭 재클릭 없이 이전 테스트의 스크롤 위치를
+            # 이어받는 케이스(test_003~005)에서 이미 섹션을 지나쳐버린 경우일 수 있다.
+            # 위로 되돌아가며 재탐색한다.
+            for _ in range(max_scroll):
+                self._vertical_swipe_down_ios()
+                if self.is_present(locator, timeout=2):
+                    found = True
+                    break
+
+        if not found:
+            return False
+
+        if self.platform == "ios":
+            # iOS는 _section_title_rect가 뭉친 블롭 좌표를 반환해 AOS 방식(rect 기반) 미세조정은
+            # 못 쓰지만, is_present가 True로 뜬 시점엔 섹션이 화면 하단에 걸쳐만 있는 경우가 많아
+            # 좌우스와이프 전에 화면 안쪽으로 들어오도록 소폭 추가 스크롤 1회는 항상 수행한다.
+            self._small_nudge_up()
+            if not self.is_present(locator, timeout=2):
+                # 너무 많이 넘어가서 섹션이 사라졌으면 되돌림
+                self._small_nudge_down_ios()
+            return True
+
+        # 타이틀이 화면 하단에 걸쳐 있으면 아이템 행이 아직 렌더링 안 됐을 수 있어 소폭 추가 스크롤.
+        # ("오늘, 리디의 발견" 섹션에서 이 보정 스크롤이 다른 화면으로 이탈시키던 문제는
+        # _small_nudge_up의 스크롤 대상 위젯 모호성이 근본 원인이었고 이미 그쪽에서 수정됨 -
+        # 매 섹션마다 별도 이탈 감지를 반복할 필요가 없어 제거함.)
+        h = self.driver.get_window_size()["height"]
+        for _ in range(3):
+            rect = self._section_title_rect(section_name)
+            if rect["bottom"] < h * 0.45:
+                break
+            self._small_nudge_up()
+            if not self.is_present(locator, timeout=2):
+                break
+        return True
+
+    def _section_item_row_y(self, section_name: str):
+        """섹션 타이틀 바로 아래에서 가장 먼저 나오는 아이템 행의 y좌표(스와이프/조회 기준) 반환.
+        타이틀과 같은 줄에 붙어있는 "총 N권" 같은 배지 텍스트를 아이템으로 오인하지 않도록
+        타이틀 바로 아래 60px 이내는 제외한다."""
+        if self.platform == "ios":
+            ratio = self.IOS_SECTION_ROW_Y_RATIO.get(section_name, 0.5)
+            return int(self.driver.get_window_size()["height"] * ratio)
+        rect = self._section_title_rect(section_name)
+        top = rect["bottom"] + 60
+        candidates = [e for e in self._iter_text_elements() if top < e[0] < rect["bottom"] + 900]
+        if not candidates:
+            return None
+        return min(c[0] for c in candidates)
+
+    def swipe_section_left(self, section_name: str):
+        w = self.driver.get_window_size()["width"]
+        y = self._section_item_row_y(section_name) or (self._section_title_rect(section_name)["bottom"] + 100)
+        self.driver.swipe(int(w * 0.80), y, int(w * 0.20), y, 500)
+        time.sleep(0.5)
+
+    def swipe_section_right(self, section_name: str):
+        w = self.driver.get_window_size()["width"]
+        y = self._section_item_row_y(section_name) or (self._section_title_rect(section_name)["bottom"] + 100)
+        self.driver.swipe(int(w * 0.20), y, int(w * 0.80), y, 500)
+        time.sleep(0.5)
+
+    def get_section_item_names(self, section_name: str) -> list:
+        """현재 화면에 보이는 섹션 아이템들의 대표 텍스트(카드 첫 줄) 목록 반환 (x좌표 순)"""
+        if self.platform == "ios":
+            content = self._get_ios_section_content(section_name)
+            if section_name in self.IOS_SWIPE_RANKED_SECTIONS:
+                # 랭킹 리스트는 순위별로 분리해, 1위/마지막 순위 항목이 개별적으로 확인되게 한다.
+                return self._split_ios_ranked_items(content)
+            # 개별 아이템 좌표 구분은 불가하지만, "(평가수)" 경계로 카드 단위 분리를 시도한다
+            # (프로모션 배너형 섹션 등 이 패턴이 없거나 안 맞는 섹션은 한 덩어리로 반환됨).
+            return self._split_ios_card_items(section_name, content)
+        top_y = self._section_item_row_y(section_name)
+        if top_y is None:
+            return []
+        band = [e for e in self._iter_text_elements() if abs(e[0] - top_y) <= 40]
+        band.sort(key=lambda e: e[1])
+        names, last_x = [], None
+        for y1, x1, y2, x2, text in band:
+            if last_x is not None and x1 - last_x < 100:
+                continue
+            names.append(text.replace("\n", " "))
+            last_x = x1
+        return names
+
+    # "지금 많이 읽고 있는 만화"는 다른 섹션과 달리 순위(1위~)가 매겨진 랭킹 리스트 UI로,
+    # 실기기로 확인한 결과 좌우 스와이프로 페이지가 실제 전환되며 다음 순위가 노출된다
+    # (다른 섹션들의 "블롭은 스와이프해도 안 바뀐다"는 일반 원칙과 다름).
+    IOS_SWIPE_RANKED_SECTIONS = {"지금 많이 읽고 있는 만화"}
+    # "구매이력 기반 AI 추천"은 카드마다 평점(개수) 뒤에 "비슷한 작품"/"#태그" 같은 부가
+    # 메타데이터가 더 붙어있어(실기기로 확인됨), "(평가수) 뒤가 곧 다음 카드"라는
+    # _split_ios_card_items의 경계 규칙이 안 맞아 항목이 태그 조각으로 잘못 쪼개진다.
+    # 안전하게 분리하지 않고 블롭 원문 그대로 한 덩어리로 취급한다.
+    IOS_SECTION_NO_CARD_SPLIT = {"구매이력 기반 AI 추천"}
+
+    def collect_section_items_by_swipe(self, section_name: str, max_swipes: int = 6):
+        """섹션을 좌스와이프하며 아이템을 중복없이 순서대로 수집. (수집목록, 스와이프횟수) 반환"""
+        if self.platform == "ios" and section_name in self.IOS_SWIPE_RANKED_SECTIONS:
+            seen, ordered = set(), []
+            for item in self._split_ios_ranked_items(self._get_ios_section_content(section_name)):
+                if item not in seen:
+                    seen.add(item)
+                    ordered.append(item)
+
+            stall = 0
+            swipe_count = 0
+            while swipe_count < max_swipes and (swipe_count < 3 or stall < 2):
+                self.swipe_section_left(section_name)
+                swipe_count += 1
+                newly = 0
+                for item in self._split_ios_ranked_items(self._get_ios_section_content(section_name)):
+                    if item not in seen:
+                        seen.add(item)
+                        ordered.append(item)
+                        newly += 1
+                stall = 0 if newly else stall + 1
+            return ordered, swipe_count
+
+        if self.platform == "ios":
+            # 실기기 확인 결과 블롭은 스와이프해도 내용이 안 바뀌는 경우가 많지만, 좌우스와이프
+            # 동작 자체는 섹션별로 최소 5회 무조건 수행한다(사용자 지시 — 서브탭 누수 등
+            # 이전에 확인된 위험을 감수하고서라도 스와이프 동작 자체를 항상 검증하길 원함).
+            # 일부 섹션("오직 리디!" 등 프로모션 배너형)은 스와이프할수록 블롭에 새 배너가
+            # 계속 이어붙는 "누적 성장형" 구조라(실기기로 확인됨), 매번 전체 블롭을 다시
+            # 분리하면 이미 본 접두사가 매번 새 항목처럼 겹쳐 보이는 문제가 있었다. 그래서
+            # 이전에 읽은 블롭과 비교해 새로 늘어난 부분(delta)만 카드 단위로 분리해 추가한다.
+            seen, ordered = set(), []
+            last_content = ""
+
+            def add_new_content(content):
+                nonlocal last_content
+                if not content or content == last_content:
+                    return
+                delta = content[len(last_content):].strip() if content.startswith(last_content) else content
+                last_content = content
+                for item in self._split_ios_card_items(section_name, delta):
+                    if item not in seen:
+                        seen.add(item)
+                        ordered.append(item)
+
+            add_new_content(self._get_ios_section_content(section_name))
+
+            swipe_count = 5
+            for _ in range(swipe_count):
+                self.swipe_section_left(section_name)
+                add_new_content(self._get_ios_section_content(section_name))
+            return ordered, swipe_count
+
+        seen, ordered = set(), []
+        for name in self.get_section_item_names(section_name):
+            if name not in seen:
+                seen.add(name)
+                ordered.append(name)
+
+        stall = 0
+        swipe_count = 0
+        while stall < 2 and swipe_count < max_swipes:
+            self.swipe_section_left(section_name)
+            swipe_count += 1
+            newly = 0
+            for name in self.get_section_item_names(section_name):
+                if name not in seen:
+                    seen.add(name)
+                    ordered.append(name)
+                    newly += 1
+            stall = 0 if newly else stall + 1
+        return ordered, swipe_count
+
+    def is_section_more_visible(self, section_name: str) -> bool:
+        """섹션 타이틀과 같은 행에 있는 [더보기] 버튼 존재 여부 (다른 섹션 더보기와 혼동 방지)"""
+        if self.platform == "ios":
+            return section_name in self.IOS_SECTION_MORE_COORD_RATIO
+        rect = self._section_title_rect(section_name)
+        return any(
+            text == "더보기" and y1 < rect["bottom"] and y2 > rect["top"]
+            for y1, x1, y2, x2, text in self._iter_text_elements()
+        )
+
+    def click_section_more(self, section_name: str) -> bool:
+        """섹션 타이틀과 같은 행의 [더보기] 버튼 클릭. iOS는 콘텐츠 로딩이 확인되지 않으면
+        (더보기 실제 위치를 신뢰할 수 없는 상태이므로) 탭을 강행하지 않고 False를 반환한다 —
+        호출측(click_section_more_and_verify)이 장르홈에 그대로 머문 채 재시도한다."""
+        if self.platform == "ios":
+            # collect_section_items_by_swipe가 좌우로 왕복 스와이프(최대 16회)를 수행하는 동안
+            # 세로 스크롤 위치가 미세하게 밀릴 수 있어, 더보기 좌표가 실제 버튼을 벗어나 바로
+            # 아래 책 표지를 오탭하는 사고가 있었다. 탭 직전에 결정론적 스크롤을 한 번 더 수행해
+            # 좌표 기준 위치를 항상 깨끗하게 재보정한 뒤 탭한다.
+            if section_name in self.IOS_SECTION_SWIPE_COUNT:
+                if not self._ios_scroll_to_section_deterministic(section_name):
+                    self.log.warning(f"[섹션더보기클릭] {section_name} 콘텐츠 로딩 미확인 - 탭 보류")
+                    return False
+            ratio = self.IOS_SECTION_MORE_COORD_RATIO[section_name]
+            size = self.driver.get_window_size()
+            self.tap_coordinate(int(size["width"] * ratio[0]), int(size["height"] * ratio[1]))
+            self.log.info(f"[섹션더보기클릭] {section_name} (iOS 좌표 기반)")
+            return True
+        rect = self._section_title_rect(section_name)
+        for y1, x1, y2, x2, text in self._iter_text_elements():
+            if text == "더보기" and y1 < rect["bottom"] and y2 > rect["top"]:
+                self.tap_coordinate((x1 + x2) // 2, (y1 + y2) // 2)
+                self.log.info(f"[섹션더보기클릭] {section_name}")
+                return True
+        raise RuntimeError(f"[click_section_more] {section_name} 더보기 버튼 위치를 찾지 못함")
+
+    def click_section_more_and_verify(self, section_name: str, max_attempts: int = 3) -> tuple:
+        """더보기 클릭 후 실제 도달한 화면의 타이틀을 확인해, 기대한 목적지가 아니면(WDA 터치
+        이벤트 유실이나 배너 애니메이션 타이밍에 따른 스크롤 오차 누적으로 인한 오탭) 장르홈으로
+        되돌아가 재시도한다. iOS 좌표 하드코딩 방식의 근본적 한계(is_present로 스크롤 완료를
+        검증할 수 없음)를 결과 검증으로 보완하는 안전장치. 힌트가 등록된 섹션명이면 AOS/iOS
+        동일하게 검증 및 재시도에 참여하고, 힌트가 없는 섹션은 기존과 동일하게 1회만 시도한다.
+        (목적지 타이틀, 기대한 목적지가 맞는지 검증 성공 여부) 튜플 반환 — 검증에 끝내 실패하면
+        호출측에서 목적지 화면 후속 처리(세로스크롤 등 무거운 작업)를 건너뛸 수 있도록
+        verified=False로 알려준다."""
+        hint = self.IOS_SECTION_MORE_DEST_HINT.get(section_name)
+        dest_title = ""
+        for attempt in range(max_attempts if hint else 1):
+            if not self.click_section_more(section_name):
+                # 콘텐츠 로딩이 확인 안 돼 탭 자체를 하지 않은 경우 — 장르홈을 벗어난 적이
+                # 없으므로 뒤로가기 없이 바로 다음 시도로 넘어간다.
+                continue
+            time.sleep(5)
+            try:
+                dest_title = self.get_current_top_title()
+            except Exception as e:
+                dest_title = ""
+                self.log.warning(f"[{section_name}] 목적지 타이틀 확인 실패(iOS WDA 이슈 가능): {e}")
+            if not hint or hint in dest_title:
+                return dest_title, True
+            if self.platform == "ios" and hint and self._is_text_visible_on_screen(hint):
+                # iOS는 접근성 요소값 추출 자체가 이 화면에서 불안정한 경우가 있어(빈 값,
+                # 내부 식별자 등이 잡힘), 요소 기반 확인이 실패해도 곧바로 재시도하지 않고
+                # 화면 스크린샷을 OCR로 읽어 기대 타이틀 문구가 실제로 노출되는지 한 번 더
+                # 확인한다. 여기서 확인되면 오탭이 아니라 타이틀 추출 자체의 실패였던 것.
+                self.log.info(f"[{section_name}] 요소 기반 타이틀 추출 실패 - 스크린샷 확인으로 '{hint}' 노출 확인됨")
+                return dest_title or hint, True
+            self.log.warning(
+                f"[{section_name}] 더보기 목적지 불일치(시도 {attempt + 1}/{max_attempts}) "
+                f"기대 힌트:'{hint}' 실제타이틀:'{dest_title}' - 장르홈 복귀 후 재시도"
+            )
+            self.navigate_back_to_genrehome()
+            time.sleep(1)
+        return dest_title, False
+
+    def _is_text_visible_on_screen(self, expected_text: str, top_ratio: float = 0.12, from_bottom: bool = False) -> bool:
+        """상단 타이틀(또는 하단 푸터) 접근성 요소 추출이 실패/부정확한 경우의 폴백. 화면
+        상단(또는 from_bottom=True 시 하단) 영역만 스크린샷으로 캡처해 OCR로 텍스트를 읽어
+        기대 문구가 실제로 보이는지 확인한다. 목적지 화면의 상단 타이틀바/하단 푸터는 배너와
+        달리 단색 배경 위 텍스트라(빅배너 OCR 시도와 달리) 실기기 확인 결과 OCR 신뢰도가
+        충분하다."""
+        try:
+            import pytesseract
+            from PIL import Image
+            import io
+            png = self.driver.get_screenshot_as_png()
+            img = Image.open(io.BytesIO(png))
+            w, h = img.size
+            if from_bottom:
+                crop = img.crop((0, int(h * (1 - top_ratio)), w, h))
+            else:
+                crop = img.crop((0, 0, w, int(h * top_ratio)))
+            text = pytesseract.image_to_string(crop, lang="kor+eng").strip()
+            return expected_text.replace(" ", "") in text.replace(" ", "").replace("\n", "")
+        except Exception as e:
+            self.log.warning(f"[_is_text_visible_on_screen] OCR 확인 실패: {e}")
+            return False
+
+    def is_all_filter_visible(self, expected_text: str = "필터") -> bool:
+        """더보기 목적지(카테고리 리스트) 화면에 기대하는 필터/탭 텍스트가 노출되는지 확인.
+        "새로 나온 작품"과 "만화 베스트" 더보기 목적지 화면 둘 다 공통으로 "필터" 버튼이
+        있어(실기기 확인됨), 두 섹션 모두 이 버튼 하나로 통일해서 정상 도달 여부를 판단한다.
+
+        iOS는 이 화면 전체 텍스트가 하나의 접근성 블롭(XCUIElementTypeOther)에 뭉쳐서
+        노출되지만("전체"/"필터" 모두 XCUIElementTypeStaticText/Button이 아님이 실기기로
+        확인됨 — 기존 타입 제약 로케이터가 항상 실패했던 원인), 카테고리 화면과 동일하게
+        블롭과 별개로 정확한 이름의 리프 요소가 존재해 타입 제약 없이 이름만으로 찾는
+        ACCESSIBILITY_ID로 조회한다.
+
+        _iter_text_elements()(전체 page_source 덤프)는 이 목적지 화면에서 WDA가 120초
+        타임아웃을 일으켜(실기기로 확인 — test_008 실패 원인) 테스트 세션 자체가 끊기므로,
+        대신 기대 문구 하나만 겨냥한 가벼운 조회를 사용한다."""
+        if self.platform == "ios":
+            locator = (AppiumBy.ACCESSIBILITY_ID, expected_text)
+        else:
+            locator = (AppiumBy.ANDROID_UIAUTOMATOR, f'new UiSelector().text("{expected_text}")')
+        return self.is_element_present(locator, timeout=5)
+
+    def get_visible_content_item_names(self, top_margin_ratio: float = 0.15) -> list:
+        """더보기 등 목적지 화면에서 상단 고정영역을 제외한 콘텐츠 아이템 대표 텍스트 목록 (위→아래 순)"""
+        h = self.driver.get_window_size()["height"]
+        top_cut = h * top_margin_ratio
+        elems = [e for e in self._iter_text_elements() if e[0] > top_cut]
+        elems.sort(key=lambda e: (e[0], e[1]))
+        return [e[4].replace("\n", " ") for e in elems]
+
+    def _ios_destination_scroll_down(self):
+        """더보기 등 목적지 화면(iOS) 전용 세로 스크롤. base_page.fallback_swipe("down")는
+        iOS에서 방향이 반대로 매핑되어 있어(콘텐츠를 더 아래로 보여주는 게 아니라 반대 방향으로
+        스크롤됨) 실질적으로 스크롤이 안 되는 것처럼 보이는 문제가 있어, 직접 방향을 맞춰 구현한다."""
+        size = self.driver.get_window_size()
+        x = int(size["width"] * 0.5)
+        self.driver.swipe(x, int(size["height"] * 0.80), x, int(size["height"] * 0.35), 800)
+        time.sleep(1)
+
+    def collect_items_by_vertical_scroll(self, max_scrolls: int = 6, force_full_scroll: bool = False) -> list:
+        """목적지 화면을 세로 스크롤하며 아이템을 중복없이 순서대로 수집.
+        더보기 등 목적지 화면은 장르홈과 달리 가로 캐러셀이 섞여있지 않은 일반 목록이므로,
+        원시 좌표 스와이프 대신 아이템 오클릭 위험이 없는 공용 scroll_down()(base_page)을 사용한다.
+        (iOS는 scroll_down()의 방향 매핑 버그를 피해 전용 스크롤 사용)
+
+        force_full_scroll=True는 "지금, 리디에서만 볼 수 있는 만화" 더보기처럼 화면 끝을
+        감지할 별도 수단이 없는 목적지 화면 전용 - 2회 연속 신규 항목 없음(stall) 조기 종료
+        없이 max_scrolls만큼 무조건 끝까지 스크롤해, 그 시점까지 확인된 마지막 항목을 사용한다.
+        기본값 False는 기존 동작(stall 조기 종료) 그대로라 다른 호출부에 영향 없다."""
+        seen, ordered = set(), []
+        for name in self.get_visible_content_item_names():
+            if name not in seen:
+                seen.add(name)
+                ordered.append(name)
+        stall = 0
+        count = 0
+        while (force_full_scroll or stall < 2) and count < max_scrolls:
+            if self.platform == "ios":
+                self._ios_destination_scroll_down()
+            else:
+                self.scroll_down()
+            count += 1
+            newly = 0
+            for name in self.get_visible_content_item_names():
+                if name not in seen:
+                    seen.add(name)
+                    ordered.append(name)
+                    newly += 1
+            stall = 0 if newly else stall + 1
+        return ordered
+
+    def scroll_to_footer_and_get_last_item(self, section_name: str, max_scroll: int = 40) -> tuple:
+        """장르홈 맨 마지막 섹션("...님의 취향 저격 AI 추천")은 더보기가 없어 좌우스와이프
+        수집 대신, 푸터가 노출될 때까지 세로 스크롤을 계속하며 마지막 작품명을 확인한다.
+        (마지막 작품명, 푸터 노출 여부) 튜플 반환.
+
+        이 섹션은 장르홈 맨 마지막 섹션 자체가 랭킹형이라 항목 수가 많아, 기존 max_scroll=20
+        으로는 푸터까지 도달하지 못하고 중간에 멈추는 문제가 실기기로 확인되어 상향한다.
+        이 함수는 이 섹션 전용(다른 호출부 없음)이라 다른 스크롤 동작에 영향 없다.
+
+        AOS는 스크롤이 진행될수록 이전에 지나친 요소(섹션 타이틀 포함)가 접근성 트리에서
+        아예 사라지는데, 끝까지 스크롤한 뒤에야 타이틀 기준으로 아이템을 조회하려 하면 타이틀을
+        찾지 못해 예외가 발생하는 문제가 실기기로 확인되었다(iOS는 블롭이 스크롤과 무관하게
+        항상 남아있어 영향 없음). 이를 피하기 위해 AOS는 스크롤 도중 매 회차 보이는 아이템을
+        갱신해두어, 이후 타이틀이 화면 밖으로 사라져도 마지막으로 확인된 값을 그대로 쓴다.
+
+        iOS는 푸터("리디(주)...")도 장르홈 전체와 마찬가지로 하나의 접근성 블롭에 포함되어
+        개별 StaticText로 존재하지 않아(실기기 확인됨) 로케이터 기반 감지가 원천적으로
+        불가능하다 - 화면 하단 영역을 스크린샷+OCR로 읽어 노출 여부를 확인한다."""
+        footer_locator = self._loc("FOOTER")
+        footer_reached = False
+
+        if self.platform == "ios":
+            for _ in range(max_scroll):
+                if self._is_text_visible_on_screen("리디(주)", top_ratio=0.15, from_bottom=True):
+                    footer_reached = True
+                    break
+                self._vertical_swipe_up()
+            content = self._get_ios_section_content(section_name)
+            items = self._split_ios_card_items(section_name, content)
+            last_item = items[-1] if items else "(확인불가)"
+            return last_item, footer_reached
+
+        last_item = "(확인불가)"
+        for _ in range(max_scroll):
+            try:
+                items = self.get_section_item_names(section_name)
+                if items:
+                    last_item = items[-1]
+            except Exception as e:
+                self.log.warning(f"[scroll_to_footer_and_get_last_item] {section_name} 아이템 조회 실패(무시): {e}")
+            if self.is_present(footer_locator, timeout=1):
+                footer_reached = True
+                break
+            self._vertical_swipe_up()
+        return last_item, footer_reached
+
+    #만화 카테고리
+    CATEGORY_TOPMENU_LOCATOR = {
+        "만화 e북":    "CATEGORY_TOPMENU_EBOOK",
+        "만화 연재":    "CATEGORY_TOPMENU_SERIAL",
+        "BL 만화 e북": "CATEGORY_TOPMENU_BL_EBOOK",
+        "라이트노벨":   "CATEGORY_TOPMENU_LIGHTNOVEL",
+    }
+
+    # 실기기(Appium MCP/직접 스크립트)로 확인한 상위메뉴별 하위메뉴 목록(개수: 15/13/3/3).
+    # 하위메뉴 구조 자체가 정적인 카테고리 트리라, 화면에서 동적으로 파싱하는 대신 실측한
+    # 목록을 그대로 사용한다.
+    CATEGORY_SUBMENUS = {
+        "만화 e북": [
+            "만화 e북 전체", "국내 순정", "해외 순정", "드라마", "할리퀸", "무협", "학원",
+            "액션", "판타지/SF", "스포츠", "코믹", "GL", "공포/추리", "극화", "만화잡지",
+        ],
+        "만화 연재": [
+            "만화 연재 전체", "국내 순정", "해외 순정", "드라마", "무협", "액션", "판타지/SF",
+            "학원", "스포츠", "코믹", "GL", "공포/추리", "극화",
+        ],
+        "BL 만화 e북": ["BL 만화 e북 전체", "국내 만화", "해외 만화"],
+        "라이트노벨": ["라이트노벨 전체", "국내 라노벨", "해외 라노벨"],
+    }
+
+    # 햄버거(카테고리) 버튼은 텍스트/접근성ID가 없는 아이콘이라(실기기 확인됨) 좌표비율로
+    # 탭한다. iOS(390x844 기준 362,121)/AOS(1080x2340 기준 1001,300) 모두 실기기로 실측한
+    # 값이며, 두 플랫폼 다 서브탭 바(추천/베스트/...) 우측 끝에 위치한다.
+    CATEGORY_BUTTON_COORD_RATIO = {
+        "ios": (0.928, 0.143),
+        "aos": (0.927, 0.1286),
+    }
+
+    def is_category_page_displayed(self) -> bool:
+        return self.is_present(self._loc("CATEGORY_TITLE"), timeout=5)
+
+    def _dismiss_ios_system_alert(self) -> bool:
+        """iOS 실기기 확인 결과, 앱 재진입 후 알림/앱추적투명성(ATT) 권한 시스템 팝업이
+        예측 불가한 시점에 떠서 좌표 탭을 가로채는 경우가 있다(장르홈 우측 상단 근처에서
+        빈번히 관측됨). Alertnotification.click_noti_alert()과 동일하게 mobile: alert
+        accept로 처리한다."""
+        if self.platform != "ios":
+            return False
+        try:
+            self.driver.execute_script("mobile: alert", {"action": "accept"})
+            self.log.info("[카테고리] 시스템 팝업(알림/ATT) 감지되어 허용 처리")
+            time.sleep(1)
+            return True
+        except Exception:
+            return False
+
+    def open_category_page(self) -> bool:
+        """장르홈 추천탭 우측 상단 햄버거(카테고리) 버튼을 탭해 만화 카테고리 화면으로 진입.
+        탭 전에 남아있는 시스템 팝업을 먼저 정리하고, 실패 시 팝업이 탭을 가로챈 경우를 대비해
+        한 번 더 정리 후 재탭한다."""
+        ratio = self.CATEGORY_BUTTON_COORD_RATIO[self.platform]
+        size = self.driver.get_window_size()
+
+        self._dismiss_ios_system_alert()
+        self.tap_coordinate(int(size["width"] * ratio[0]), int(size["height"] * ratio[1]))
+        self.log.info("[카테고리] 햄버거 버튼 탭")
+        time.sleep(3)
+        if self.is_category_page_displayed():
+            return True
+
+        if self._dismiss_ios_system_alert():
+            self.tap_coordinate(int(size["width"] * ratio[0]), int(size["height"] * ratio[1]))
+            self.log.info("[카테고리] 햄버거 버튼 재탭 (시스템 팝업 정리 후)")
+            time.sleep(3)
+        return self.is_category_page_displayed()
+
+    def _scroll_category_page_down(self):
+        """카테고리 화면에서 접힌 화면 밖으로 밀려난 항목을 노출시키기 위한 세로 스크롤.
+        base_page.scroll_down()(fallback_swipe)은 iOS에서 방향이 반대로 매핑되어 있어(콘텐츠를
+        더 아래로 보여주는 게 아니라 반대로 스크롤됨 — _ios_destination_scroll_down에서 이미
+        동일한 이유로 우회한 이슈) 카테고리 화면에서도 동일하게 직접 방향을 맞춰 처리한다."""
+        if self.platform == "ios":
+            self._ios_destination_scroll_down()
+        else:
+            self.scroll_down()
+
+    def _scroll_category_page_up(self):
+        """_scroll_category_page_down의 반대 방향 - 하위메뉴를 탭하며 아래로 내려간 뒤
+        위쪽에 있는 이미 펼쳐둔 상위메뉴 토글을 다시 찾아 접을 때 사용한다."""
+        if self.platform == "ios":
+            size = self.driver.get_window_size()
+            x = int(size["width"] * 0.5)
+            self.driver.swipe(x, int(size["height"] * 0.35), x, int(size["height"] * 0.80), 800)
+            time.sleep(1)
+        else:
+            self.scroll_up()
+
+    def _scroll_category_item_into_view(self, locator: tuple, max_scroll: int = 10, direction: str = "down") -> bool:
+        scroll_fn = self._scroll_category_page_down if direction == "down" else self._scroll_category_page_up
+        for _ in range(max_scroll):
+            if self.is_present(locator, timeout=2):
+                return True
+            scroll_fn()
+        return self.is_present(locator, timeout=2)
+
+    def expand_category_topmenu(self, topmenu_name: str):
+        """카테고리 화면에서 상위메뉴 토글을 펼쳐 하위메뉴 목록을 노출.
+        이전에 펼친 다른 상위메뉴 토글이 자동으로 접히지 않고 그대로 남아있어(실기기 확인됨),
+        뒤 순서 상위메뉴일수록 화면 아래로 밀려나 있을 수 있다 - 보이지 않으면 스크롤로
+        노출시킨 뒤 탭한다."""
+        attr = self.CATEGORY_TOPMENU_LOCATOR[topmenu_name]
+        locator = self._loc(attr)
+        self._scroll_category_item_into_view(locator)
+        self.click(locator)
+        time.sleep(1)
+        self.log.info(f"[카테고리] 상위메뉴 펼침: {topmenu_name}")
+
+    def collapse_category_topmenu(self, topmenu_name: str):
+        """expand_category_topmenu로 펼친 상위메뉴 토글을 다시 접는다(동일 토글 버튼 재탭).
+        이전 상위메뉴가 접히지 않은 채 남아있으면 다음 상위메뉴/하위메뉴가 화면 아래로 계속
+        밀려나 누적되어(실기기 확인됨, test_004~006 연쇄 실패 원인) 각 상위메뉴 처리가 끝나면
+        반드시 접어 카테고리 화면을 다음 상위메뉴 테스트를 위한 깨끗한 상태로 되돌린다.
+        하위메뉴를 여러 개 탭하며 아래로 스크롤한 뒤라 상위메뉴 토글은 화면 위쪽에 있으므로
+        위 방향으로 스크롤해 찾는다."""
+        attr = self.CATEGORY_TOPMENU_LOCATOR[topmenu_name]
+        locator = self._loc(attr)
+        self._scroll_category_item_into_view(locator, direction="up")
+        self.click(locator)
+        time.sleep(1)
+        self.log.info(f"[카테고리] 상위메뉴 접음: {topmenu_name}")
+
+    def _category_item_locator(self, name: str) -> tuple:
+        """카테고리 화면의 상위/하위메뉴 항목은 실기기 확인 결과 플랫폼 공통으로 정확히
+        일치하는 텍스트 하나로 개별 탭 가능한 요소라(iOS: accessibility id, AOS: UiSelector
+        text), 메뉴명으로 로케이터를 동적으로 구성한다."""
+        if self.platform == "ios":
+            return (AppiumBy.ACCESSIBILITY_ID, name)
+        return (AppiumBy.ANDROID_UIAUTOMATOR, f'new UiSelector().text("{name}")')
+
+    def tap_category_submenu(self, submenu_name: str):
+        """앞서 펼친 다른 상위메뉴들의 하위메뉴 목록이 위에 그대로 쌓여있어(실기기 확인됨)
+        뒤 순서 하위메뉴일수록 화면 아래로 밀려나 있을 수 있다 - 보이지 않으면 스크롤로
+        노출시킨 뒤 탭한다."""
+        locator = self._category_item_locator(submenu_name)
+        self._scroll_category_item_into_view(locator)
+        self.click(locator)
+        self.log.info(f"[카테고리] 하위메뉴 탭: {submenu_name}")
+
+    def is_category_dest_title_visible(self, expected_title: str, timeout: int = 8) -> bool:
+        """하위메뉴 선택 후 진입한 목적지 화면의 타이틀이 하위메뉴명과 일치하는지 확인.
+        AOS는 page_source 기반 get_current_top_title()이 안전하지만, iOS는 이 목적지 화면도
+        장르홈과 동일하게 전체 텍스트가 하나의 접근성 블롭에 뭉쳐 노출되고, 게다가 이 화면에서
+        전체 page_source를 덤프(get_current_top_title 내부 동작)하면 WDA가 세션 자체를
+        끊어버리는 것까지 실기기로 확인되어(장르홈보다 더 심각), 대신 is_all_filter_visible과
+        동일하게 타이틀 텍스트 하나만 겨냥한 가벼운 조회로 존재 여부만 확인한다."""
+        if self.platform == "ios":
+            locator = (AppiumBy.IOS_CLASS_CHAIN, f'**/XCUIElementTypeStaticText[`name == "{expected_title}"`]')
+            return self.is_element_present(locator, timeout=timeout)
+        time.sleep(3)
+        return expected_title in self.get_current_top_title()
+
+    def navigate_back_one_screen(self):
+        """카테고리 하위메뉴 목적지 화면 → 카테고리 화면처럼, 장르홈이 아닌 바로 이전 화면
+        하나만 되돌아간다 (navigate_back_to_genrehome과 동일한 방식, 목적지만 다름)."""
+        if self.platform == "aos":
+            self.driver.back()
+        else:
+            self.tap_coordinate(20, 69)
+        time.sleep(1.5)
+        self.log.info("[카테고리] 뒤로가기 (이전 화면 복귀)")
+
+    def _get_ios_category_dest_content(self, submenu_name: str) -> str:
+        """카테고리 하위메뉴 목적지 화면(iOS)의 콘텐츠 블롭 원문 추출. 장르홈 섹션과 동일하게
+        이 화면 전체 텍스트도 하나의 XCUIElementTypeOther에 뭉쳐서 노출되고(실기기 확인), 이
+        블롭은 화면이 바뀌어도 초기화되지 않고 앱 세션 내내 계속 이어붙는(누적) 것까지 실기기로
+        확인되었다.
+
+        하위메뉴명이 등장하는 마지막 위치를 무조건 현재 화면으로 간주하면, "할리퀸"처럼 실제
+        서점에서 임프린트/장르 태그로도 함께 쓰이는 이름은 이후 방문한 다른 화면 콘텐츠 어딘가에
+        태그로 다시 등장할 수 있어 엉뚱한 위치를 짚는 문제가 실기기로 확인되었다. 카테고리 목적지
+        화면은 타이틀 뒤에 항상 "베스트/신작/업데이트/전체" 서브탭바가 곧바로 이어지지만,
+        "지금 많이 읽고 있는 만화" 더보기처럼 서브탭 없이 타이틀 바로 뒤에 곧장 순위(1위) 항목이
+        오는 화면도 있어(실기기 확인됨), 타이틀 뒤에 "베스트" 또는 숫자+공백(순위 시작)이
+        바로 따라오는 위치만 진짜 목적지로 인정한다."""
+        try:
+            locator = (AppiumBy.IOS_CLASS_CHAIN, f'**/XCUIElementTypeOther[`name CONTAINS "{submenu_name}"`]')
+            blob = self.find_element(locator).get_attribute("name") or ""
+        except Exception as e:
+            self.log.warning(f"[_get_ios_category_dest_content] {submenu_name} 콘텐츠 추출 실패: {e}")
+            return ""
+
+        import re
+        title_pattern = re.compile(re.escape(submenu_name) + r'\s*(?=베스트|\d+\s)')
+        matches = list(title_pattern.finditer(blob))
+        if not matches:
+            return ""
+        after = blob[matches[-1].end():].strip()
+
+        # 목적지명 뒤에는 곧바로 항목이 오지 않고 "베스트/신작/업데이트/전체" 탭바와
+        # "N개 작품 주간" 같은 목록 상단 안내문구가 먼저 온다(실기기 확인됨). 이 안내문구까지
+        # 1위 항목에 잘못 묶이는 문제가 있어, "N개 작품" 마커 뒤 안내 단어(있는 경우)까지
+        # 건너뛰고 실제 순위(1) 항목이 시작하는 지점부터 반환한다. 뒤따르는 단어를 숫자가 없는
+        # 토큰으로 제한해(`[^\d\s]*`) "1위" 같은 순위 숫자 자체를 실수로 삼켜버리지 않게 한다.
+        marker = re.search(r'\d+개\s*작품\s*[^\d\s]*\s*', after)
+        if marker:
+            after = after[marker.end():]
+        return after
+
+    def _split_category_dest_items_aos(self, elements: list) -> list:
+        """AOS 카테고리 목적지 화면은 순위/제목/저자/평점 등 각 필드가 개별 요소로 노출되어
+        (실기기 확인됨), 순위 숫자 하나짜리 요소를 항목 경계로 삼아 다음 순위 전까지의 필드들을
+        하나의 항목 텍스트로 합친다. 첫 순위("1") 이전의 "N개 작품"/"주간" 같은 목록 상단
+        안내문구는 항목이 아니므로 첫 순위가 나오기 전까지는 아예 수집을 시작하지 않는다
+        (실기기 확인 결과, 안내문구까지 첫 항목으로 잘못 묶이는 문제가 있었음)."""
+        items, current = [], []
+        started = False
+        for _, _, _, _, text in elements:
+            if text.isdigit() and len(text) <= 3:
+                if started and current:
+                    items.append(" ".join(current))
+                current = []
+                started = True
+            if started:
+                current.append(text)
+        if started and current:
+            items.append(" ".join(current))
+        return items
+
+    @staticmethod
+    def _is_category_book_item_aos(text: str) -> bool:
+        """카테고리 목적지 화면의 실제 도서 항목은 항상 "...(평가수)"로 끝난다. AOS는 실기기
+        확인 결과 목록 하단에 장르홈과 유사한 추천 위젯(퀵메뉴/유사작품 섹션 등)이 이어져
+        있어, 순위 숫자로 오인될 수 있는 페이지 카운터/배지 텍스트까지 항목으로 잘못
+        수집되는 문제가 있었다 - 이 패턴으로 실제 도서 항목만 걸러낸다."""
+        import re
+        return bool(re.search(r'\(\d[\d,]*\)\s*$', text))
+
+    def _get_category_dest_elements_aos(self, top_margin_ratio: float = 0.15) -> list:
+        h = self.driver.get_window_size()["height"]
+        top_cut = h * top_margin_ratio
+        return [e for e in self._iter_text_elements() if e[0] > top_cut]
+
+    def get_category_dest_first_item(self, submenu_name: str) -> str:
+        """목적지 화면의 1위(첫번째) 작품명 반환"""
+        if self.platform == "ios":
+            items = self._split_ios_ranked_items(self._get_ios_category_dest_content(submenu_name))
+            return items[0] if items else "(확인불가)"
+        items = [i for i in self._split_category_dest_items_aos(self._get_category_dest_elements_aos())
+                 if self._is_category_book_item_aos(i)]
+        return items[0] if items else "(확인불가)"
+
+    def _category_dest_scroll_down(self):
+        """카테고리 하위메뉴 목적지 화면 순회검증(collect_category_dest_items_by_scroll) 전용
+        세로 스크롤. 다른 모듈/목적지 화면이 쓰는 공용 스크롤 함수(_ios_destination_scroll_down,
+        base_page.scroll_down)와는 완전히 분리된 별도 구현이다 - 카테고리 목적지 화면은 최대
+        200위까지 존재해 기본 이동폭으로는 시간이 너무 오래 걸리므로, 이 함수에서만 1회당
+        이동 폭을 크게 잡아 스크롤 횟수 자체를 줄인다. 공용 함수를 건드리지 않으므로 퀵메뉴
+        더보기 등 다른 목적지 화면 스크롤에는 전혀 영향 없다."""
+        if self.platform == "ios":
+            # 매 호출마다 블롭 전체를 다시 읽는 콘텐츠 추출(_get_ios_category_dest_content)이
+            # 세션 누적으로 갈수록 느려져 체감 시간의 대부분을 차지한다 - 스와이프 자체를
+            # 2회 연달아 실행해 추출 호출 횟수를 절반으로 줄인다. 델타 비교 방식이라 중간에
+            # 몇 번 스크롤됐는지와 무관하게 정확도에는 영향 없다.
+            size = self.driver.get_window_size()
+            x = int(size["width"] * 0.5)
+            for _ in range(2):
+                self.driver.swipe(x, int(size["height"] * 0.95), x, int(size["height"] * 0.08), 500)
+                time.sleep(0.3)
+        else:
+            # AOS는 원시 좌표 스와이프/mobile: swipeGesture 모두 이 실기기에서 스크롤을
+            # 전혀 일으키지 않는 것이 확인됨(_vertical_swipe_up 주석 참고) - 유일하게 검증된
+            # UiScrollable.scrollForward()를 재사용하되, 200위까지 빠르게 내려가도록 이 함수
+            # 호출 1회당 3번 연달아 실행해 이동 폭을 키운다.
+            for _ in range(3):
+                self.driver.find_element(
+                    AppiumBy.ANDROID_UIAUTOMATOR,
+                    f'new UiScrollable({self.AOS_VERTICAL_SCROLLVIEW_SELECTOR}).scrollForward()'
+                )
+        time.sleep(1)
+
+    def collect_category_dest_items_by_scroll(self, submenu_name: str, max_scrolls: int = 30) -> list:
+        """목적지 화면을 세로 스크롤하며 아이템을 중복없이 순서대로 수집 (마지막 작품 확인 및
+        스크롤 동작 자체의 검증 목적). "만화잡지"처럼 200위가 안 되는 목록은 아래 stall(연속
+        2회 신규 항목 없음) 조기 종료가 그대로 적용되어 불필요하게 끝까지 스크롤하지 않는다."""
+        if self.platform == "ios":
+            seen, ordered = set(), []
+            last_content = ""
+
+            def add_new(content):
+                nonlocal last_content
+                if not content or content == last_content:
+                    return
+                delta = content[len(last_content):].strip() if content.startswith(last_content) else content
+                last_content = content
+                for item in self._split_ios_ranked_items(delta):
+                    if item not in seen:
+                        seen.add(item)
+                        ordered.append(item)
+
+            add_new(self._get_ios_category_dest_content(submenu_name))
+            stall = 0
+            count = 0
+            while stall < 2 and count < max_scrolls:
+                self._category_dest_scroll_down()
+                count += 1
+                before = len(ordered)
+                add_new(self._get_ios_category_dest_content(submenu_name))
+                stall = 0 if len(ordered) > before else stall + 1
+            return ordered
+
+        seen, ordered = set(), []
+        for name in self._split_category_dest_items_aos(self._get_category_dest_elements_aos()):
+            if name not in seen and self._is_category_book_item_aos(name):
+                seen.add(name)
+                ordered.append(name)
+
+        stall = 0
+        count = 0
+        while stall < 2 and count < max_scrolls:
+            self._category_dest_scroll_down()
+            count += 1
+            newly = 0
+            for name in self._split_category_dest_items_aos(self._get_category_dest_elements_aos()):
+                if name not in seen and self._is_category_book_item_aos(name):
+                    seen.add(name)
+                    ordered.append(name)
+                    newly += 1
+
+            if newly == 0:
+                # 3배속 스크롤이 마지막 항목을 화면에 걸친 짧은 프레임째로 건너뛰었을 수 있어
+                # (실기기 확인됨 - 마지막 200위가 199위에서 누락됨), stall 처리 전 딱 한 번만
+                # 1칸(느린 폭)으로 미세 스크롤 후 재확인한다. 공용 스크롤 함수(_vertical_swipe_up)는
+                # 호출하지 않고 동일 메커니즘만 이 함수 안에 인라인으로 재사용해 완전히 분리 유지.
+                self.driver.find_element(
+                    AppiumBy.ANDROID_UIAUTOMATOR,
+                    f'new UiScrollable({self.AOS_VERTICAL_SCROLLVIEW_SELECTOR}).scrollForward()'
+                )
+                time.sleep(1)
+                for name in self._split_category_dest_items_aos(self._get_category_dest_elements_aos()):
+                    if name not in seen and self._is_category_book_item_aos(name):
+                        seen.add(name)
+                        ordered.append(name)
+                        newly += 1
+
+            stall = 0 if newly else stall + 1
+        return ordered

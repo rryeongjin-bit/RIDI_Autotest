@@ -1,0 +1,20 @@
+{
+  "rules": [
+    {
+      "id": "rule-2",
+      "desc": "",
+      "target": "/v2/views/48",
+      "match": {
+        "method": "GET",
+        "path": "^/v2/views/48"
+      },
+      "type": "text",
+      "replace": [
+        {
+          "find": "원누리",
+          "with": "테스트해보자프록시테스트123123214434"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+[     300ms] [LOG] event	 "PageView" @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1
+[     300ms] [LOG] event_params	 {"uId":6995133} @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1
+[     300ms] [LOG] ts	 1785212758781 @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1
+[     301ms] [LOG] event	 "PageView" @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1
+[     301ms] [LOG] event_params	 {"uId":6995133} @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1
+[     301ms] [LOG] ts	 1785212758781 @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1
+[     319ms] [LOG] event	 "PageView" @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1
+[     319ms] [LOG] event_params	 {"uId":6995133} @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1
+[     320ms] [LOG] ts	 1785212758800 @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1
+[     326ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.83.woff2' from origin 'https://library.ridibooks.com' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'https://ridibooks.com' that is not equal to the supplied origin. @ https://library.ridibooks.com/serial-preferences?ordering=UPDATE:0
+[     326ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.83.woff2:0
+[     401ms] [WARNING] Manifest: property 'start_url' ignored, should be same origin as document. @ https://ridibooks.com/manifest.webmanifest:0
+[     484ms] [LOG] event	 "PageView" @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1
+[     484ms] [LOG] event_params	 {"uId":6995133} @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1
+[     484ms] [LOG] ts	 1785212758964 @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1

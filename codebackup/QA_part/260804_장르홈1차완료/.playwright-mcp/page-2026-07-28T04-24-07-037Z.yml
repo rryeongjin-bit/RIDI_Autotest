@@ -1,0 +1,35 @@
+- generic [active] [ref=f20e1]:
+  - generic [ref=f20e3]:
+    - banner [ref=f20e4]:
+      - link [ref=f20e6] [cursor=pointer]:
+        - /url: /
+    - generic [ref=f20e10]:
+      - generic [ref=f20e11]:
+        - img "가입 혜택" [ref=f20e12]
+        - img "추가 혜택" [ref=f20e13]
+      - generic [ref=f20e14]:
+        - generic [ref=f20e15]:
+          - textbox "아이디" [ref=f20e16]
+          - textbox "비밀번호" [ref=f20e18]
+        - generic [ref=f20e19]:
+          - checkbox "로그인 상태 유지"
+          - generic [ref=f20e23] [cursor=pointer]: 로그인 상태 유지
+        - button "로그인" [ref=f20e25] [cursor=pointer]
+      - generic [ref=f20e26]:
+        - link "아이디 찾기" [ref=f20e27] [cursor=pointer]:
+          - /url: /account/find-id?state=%7B%22return_url%22%3A%22https%3A%2F%2Flibrary.ridibooks.com%2Fserial-preferences%3Fordering%3DUPDATE%22%7D
+        - link "비밀번호 찾기" [ref=f20e29] [cursor=pointer]:
+          - /url: /account/find-password?state=%7B%22return_url%22%3A%22https%3A%2F%2Flibrary.ridibooks.com%2Fserial-preferences%3Fordering%3DUPDATE%22%7D
+        - link "이메일로 가입하기" [ref=f20e31] [cursor=pointer]:
+          - /url: /account/signup/form?state=%7B%22return_url%22%3A%22https%3A%2F%2Flibrary.ridibooks.com%2Fserial-preferences%3Fordering%3DUPDATE%22%7D
+      - generic [ref=f20e32]:
+        - paragraph [ref=f20e33]: SNS 계정으로 로그인/가입
+        - generic [ref=f20e34]:
+          - button "카카오 계정으로 로그인" [ref=f20e36] [cursor=pointer]
+          - button "네이버 계정으로 로그인" [ref=f20e40] [cursor=pointer]
+          - button [ref=f20e44] [cursor=pointer]:
+            - iframe [ref=f20e47]:
+              - button "Google 계정으로 계속하기. 새 탭에서 열림" [ref=f23e3] [cursor=pointer]
+          - button "Apple 계정으로 로그인" [ref=f20e49] [cursor=pointer]
+  - paragraph: stage
+  - alert [ref=f20e52]

@@ -1,0 +1,697 @@
+[     426ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785212894088' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     427ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785212894088:0
+[     428ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785212894092' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     429ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785212894092:0
+[     459ms] [ERROR] Access to manifest at 'https://ridibooks.com/manifest.webmanifest' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     459ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://ridibooks.com/manifest.webmanifest:0
+[     528ms] [ERROR] Access to XMLHttpRequest at 'https://api.ridibooks.com/v2/feature-flag' from origin 'http://localhost:3001' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     529ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.ridibooks.com/v2/feature-flag:0
+[     650ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.91.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     650ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.91.woff2:0
+[     700ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.89.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     700ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.89.woff2:0
+[     728ms] [ERROR] Access to XMLHttpRequest at 'https://api.ridibooks.com/graphql' from origin 'http://localhost:3001' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     729ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.ridibooks.com/graphql:0
+[     747ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.90.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     747ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.90.woff2:0
+[     773ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.88.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     773ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.88.woff2:0
+[     806ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.83.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     806ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.83.woff2:0
+[     838ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.87.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     838ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.87.woff2:0
+[     841ms] [ERROR] Access to XMLHttpRequest at 'https://api.ridibooks.com/graphql' from origin 'http://localhost:3001' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     844ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.ridibooks.com/graphql:0
+[     875ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardStdVariable.subset.6.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     875ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardStdVariable.subset.6.woff2:0
+[     985ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.118.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[     985ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.118.woff2:0
+[    1027ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.117.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[    1027ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.117.woff2:0
+[    1029ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.115.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[    1029ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.115.woff2:0
+[    1525ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785212894088' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[    1526ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785212894088:0
+[    1533ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785212894092' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[    1536ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785212894092:0
+[    1614ms] [ERROR] Access to XMLHttpRequest at 'https://api.ridibooks.com/v2/feature-flag' from origin 'http://localhost:3001' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[    1617ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.ridibooks.com/v2/feature-flag:0
+[    2639ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785212894088' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[    2645ms] [ERROR] TypeError: Cannot read properties of undefined (reading 'sendPageView')
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1625063
+    at Generator.<anonymous> (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1622613)
+    at Generator.next (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1623456)
+    at f (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441574)
+    at Object.s [as cont] (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441892)
+    at y (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1440448)
+    at Object.<anonymous> (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1440102)
+    at f (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441619)
+    at hf (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441399)
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1437329
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441210
+    at d (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1442107)
+    at f (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441634)
+    at hf (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441399)
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1437969
+    at Fl (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1434675)
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1437949
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441210
+    at d (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1442107)
+    at f (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441634)
+    at s (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441892)
+    at u (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1436421)
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1435913
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1436102
+    at Ll (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1434584)
+    at Bl (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1434790)
+    at Dl (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1434638)
+    at Object.put (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1436088)
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1653793
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1653285
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1655103
+    at ys (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:480542)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496855)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496900)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496835)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496835)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496900)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496900)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496835)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496835)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739)
+    at Js (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496900)
+    at Xs (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:496739) @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1
+[    2645ms] [ERROR] The above error occurred in task v_
+    created by takeEvery(TRACK_PAGE, v_)
+    created by Uk
+    created by Uk
+Tasks cancelled due to error:
+takeEvery(TRACK_PAGE, v_)
+v_
+takeEvery(INIT_TRACKER, h_)
+takeEvery(TRACK_EVENT, g_)
+takeEvery(TRACK_EVENT_CLIENT, m_)
+takeEvery(TRACK_FFID_CHANGED, b_) @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1
+[    2646ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785212894088:0
+[    2648ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785212894092' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[    2649ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785212894092:0
+[    2709ms] [ERROR] Access to XMLHttpRequest at 'https://api.ridibooks.com/v2/feature-flag' from origin 'http://localhost:3001' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[    2711ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.ridibooks.com/v2/feature-flag:0
+[  208612ms] [ERROR] Access to manifest at 'https://ridibooks.com/manifest.webmanifest' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  208612ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://ridibooks.com/manifest.webmanifest:0
+[  208615ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785213102282' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  208616ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785213102282:0
+[  208616ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785213102284' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  208616ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785213102284:0
+[  208618ms] [ERROR] Access to XMLHttpRequest at 'https://api.ridibooks.com/v2/feature-flag' from origin 'http://localhost:3001' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  208619ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.ridibooks.com/v2/feature-flag:0
+[  208853ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.91.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  208853ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.91.woff2:0
+[  208919ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.90.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  208919ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.90.woff2:0
+[  208926ms] [ERROR] Access to XMLHttpRequest at 'https://api.ridibooks.com/graphql' from origin 'http://localhost:3001' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  208926ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.ridibooks.com/graphql:0
+[  208963ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.89.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  208963ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.89.woff2:0
+[  209000ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.88.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  209000ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.88.woff2:0
+[  209036ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.83.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  209036ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.83.woff2:0
+[  209051ms] [ERROR] Access to XMLHttpRequest at 'https://api.ridibooks.com/graphql' from origin 'http://localhost:3001' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  209053ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.ridibooks.com/graphql:0
+[  209076ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.87.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  209076ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.87.woff2:0
+[  209113ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardStdVariable.subset.6.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  209114ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardStdVariable.subset.6.woff2:0
+[  209234ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.118.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  209235ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.118.woff2:0
+[  209299ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.117.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  209299ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.117.woff2:0
+[  209344ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.115.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  209345ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.115.woff2:0
+[  209708ms] [ERROR] Access to XMLHttpRequest at 'https://api.ridibooks.com/v2/feature-flag' from origin 'http://localhost:3001' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  209709ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.ridibooks.com/v2/feature-flag:0
+[  209720ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785213102282' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  209721ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785213102282:0
+[  209725ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785213102284' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  209725ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785213102284:0
+[  210806ms] [ERROR] Access to XMLHttpRequest at 'https://api.ridibooks.com/v2/feature-flag' from origin 'http://localhost:3001' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  210809ms] [ERROR] t
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1534112
+    at Generator.<anonymous> (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1532694)
+    at Generator.next (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1533537)
+    at f (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441574)
+    at s (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441892)
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1436670
+    at Ll (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1434584)
+    at Bl (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1434790)
+    at Dl (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1434638)
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1436574
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441210
+    at d (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1442107)
+    at f (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441634)
+    at Object.s [as cont] (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441892)
+    at y (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1440448)
+    at a (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1439990)
+    at Object.<anonymous> (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1440067)
+    at f (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441695)
+    at s (https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1441892)
+    at https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:2:1436182 @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1
+[  210809ms] [ERROR] The above error occurred in task Dg
+    created by takeEvery(REFRESH_FEATURE_FLAG, Dg)
+    created by Uk
+    created by Uk
+Tasks cancelled due to error:
+takeEvery(REFRESH_FEATURE_FLAG, Dg) @ https://static.ridicdn.net/library-frontend/s/97eaa0/app.b6cd9f10bbdd4d4f0ecb.js:1
+[  210812ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.ridibooks.com/v2/feature-flag:0
+[  210812ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785213102282' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  210813ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785213102282:0
+[  210814ms] [ERROR] Access to XMLHttpRequest at 'https://account.ridibooks.com/accounts/me?t=1785213102284' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/library/serial-preferences?ordering=UPDATE:0
+[  210814ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://account.ridibooks.com/accounts/me?t=1785213102284:0
+[  240452ms] [LOG] tools	["amplitude","braze"] @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  240452ms] [LOG] current_genre	"웹툰" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  240452ms] [LOG] current_tab	"웹툰" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  240452ms] [LOG] current_sub_tab	"추천" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  240519ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.91.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  240519ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.91.woff2:0
+[  240620ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.89.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  240620ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.89.woff2:0
+[  240657ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.88.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  240658ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.88.woff2:0
+[  240705ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.90.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  240705ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.90.woff2:0
+[  240743ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.86.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  240743ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.86.woff2:0
+[  240791ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.83.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  240791ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.83.woff2:0
+[  240835ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.84.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  240835ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.84.woff2:0
+[  240872ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.85.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  240872ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.85.woff2:0
+[  240918ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.87.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  240919ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.87.woff2:0
+[  240934ms] [ERROR] Access to XMLHttpRequest at 'https://ridibooks.com/apps/books/api/cart/count' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  240934ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://ridibooks.com/apps/books/api/cart/count:0
+[  240944ms] [ERROR] Access to XMLHttpRequest at 'https://ridibooks.com/shop/api/cart/count/goods' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  240944ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://ridibooks.com/shop/api/cart/count/goods:0
+[  240953ms] [LOG] HTTP Request GET-/apps/books/api/schedule/events called with common request undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  240955ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.79.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  240955ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.79.woff2:0
+[  240985ms] [ERROR] Access to XMLHttpRequest at 'https://ridibooks.com/apps/frontend/v2/views/20?platform=web&camel_case=true' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  240985ms] [LOG] HTTP Request GET-/v2/views called with common request undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  240985ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://ridibooks.com/apps/frontend/v2/views/20?platform=web&camel_case=true:0
+[  241065ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.81.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  241065ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.81.woff2:0
+[  241112ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.82.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  241112ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.82.woff2:0
+[  241149ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.72.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  241149ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.72.woff2:0
+[  241176ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.78.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  241176ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.78.woff2:0
+[  241209ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.76.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  241209ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.76.woff2:0
+[  241604ms] [ERROR] Access to XMLHttpRequest at 'https://ridibooks.com/apps/books/api/schedule/events' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  241606ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://ridibooks.com/apps/books/api/schedule/events:0
+[  241723ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.75.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  241724ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.75.woff2:0
+[  241750ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.80.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  241750ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.80.woff2:0
+[  241750ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.20.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  241750ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.20.woff2:0
+[  241768ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.24.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  241769ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardVariable.subset.24.woff2:0
+[  241769ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardStdVariable.subset.6.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  241769ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardStdVariable.subset.6.woff2:0
+[  241769ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.56.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  241769ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.56.woff2:0
+[  241769ms] [ERROR] Access to XMLHttpRequest at 'https://notification-api.ridibooks.com/notification/unread_count' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  241769ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://notification-api.ridibooks.com/notification/unread_count:0
+[  241889ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.118.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  241889ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.118.woff2:0
+[  241929ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.106.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  241929ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.106.woff2:0
+[  241963ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.117.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  241963ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.117.woff2:0
+[  242006ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.112.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  242006ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.112.woff2:0
+[  242035ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.113.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  242035ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.113.woff2:0
+[  242064ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.116.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  242064ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.116.woff2:0
+[  242077ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.115.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  242077ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.115.woff2:0
+[  242102ms] [ERROR] Access to font at 'https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.104.woff2' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  242102ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://static.ridicdn.net/web-font/pretendard/PretendardJPVariable.subset.104.woff2:0
+[  242137ms] [ERROR] Access to XMLHttpRequest at 'https://ridibooks.com/apps/frontend/v2/views/20?platform=web&camel_case=true' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  242137ms] [LOG] HTTP Request GET-/v2/views called with common request undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242137ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://ridibooks.com/apps/frontend/v2/views/20?platform=web&camel_case=true:0
+[  242677ms] [LOG] 0	"web_2fa_onboarding_popup" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242677ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242677ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242677ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242677ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242677ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242677ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242677ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242677ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242677ms] [LOG] item_id	2495100 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242677ms] [LOG] item_title	"그러니까 내가 영원히\n친구로 남고 싶은 거야." @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242677ms] [LOG] item_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242678ms] [LOG] item_landing_url	"https://ridibooks.com/event/96905" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242681ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242681ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242681ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242681ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242681ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242681ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242681ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242681ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242681ms] [LOG] item_id	2494235 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242681ms] [LOG] item_title	"나으리가 안 계셔도,\n온통 나으리 뿐이었으니." @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242681ms] [LOG] item_index	1 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242681ms] [LOG] item_landing_url	"https://ridibooks.com/event/96881" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242684ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242684ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242684ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242684ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242684ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242684ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242684ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242684ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242684ms] [LOG] item_id	2494629 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242684ms] [LOG] item_title	"상상했던 거 보다 훨씬\n더 예쁘게 우네." @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242684ms] [LOG] item_index	2 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242684ms] [LOG] item_landing_url	"https://ridibooks.com/event/96856" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242687ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242687ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242687ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242687ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242687ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242687ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242687ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242687ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242689ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242689ms] [LOG] section_id	578 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242689ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242689ms] [LOG] section_layout	"QuickMenu" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242689ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242689ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242689ms] [LOG] section_index	1 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  242689ms] [LOG] view_session_id	"n1tc8bwwgc" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244311ms] [ERROR] Access to XMLHttpRequest at 'https://ridibooks.com/apps/frontend/v2/views/20?platform=web&camel_case=true' from origin 'http://localhost:3001' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3001/webtoon/recommendation:0
+[  244313ms] [LOG] HTTP Request GET-/v2/views called with common request undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244313ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://ridibooks.com/apps/frontend/v2/views/20?platform=web&camel_case=true:0
+[  244319ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244326ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244332ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244340ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244354ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244363ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244370ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244376ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244382ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244390ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244398ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244406ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244414ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244422ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244431ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244440ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244448ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244456ms] [ERROR] AxiosError: Network Error
+    at v.onerror (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jbv6qdgzkh3f.js:4:6463)
+    at XMLHttpRequest.l (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:46995)
+    at tn.request (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/1pif4etsef8ig.js:2:54136)
+    at async ef (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/3w08vsl_jkiqm.js:2:13343)
+    at async r (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:3795)
+    at async L (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2jgyw2cjuy3x2.js:2:36895)
+    at async queryFn (https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/2_7263agl0pyx.js:377:12191) @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  244778ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ http://localhost:3001/webtoon/recommendation:0
+[  244943ms] [ERROR] Access to XMLHttpRequest at 'https://cloudflareinsights.com/cdn-cgi/rum' from origin 'http://localhost:3001' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: The 'Access-Control-Allow-Origin' header has a value 'http://localhost' that is not equal to the supplied origin. @ http://localhost:3001/webtoon/recommendation:0
+[  244943ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://cloudflareinsights.com/cdn-cgi/rum:0
+[  246928ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  246928ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  246928ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  246928ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  246928ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  246928ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  246928ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  246928ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  246928ms] [LOG] item_id	2494464 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  246928ms] [LOG] item_title	"<산가지는 도깨비의\n꿈을 꾼다>시즌3 시작!" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  246928ms] [LOG] item_index	3 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  246928ms] [LOG] item_landing_url	"https://ridibooks.com/event/96760" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247004ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247005ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247005ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247005ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247005ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247005ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247005ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247005ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247005ms] [LOG] item_id	2494174 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247005ms] [LOG] item_title	"선공개 감상하고\n전원 포인트를 받으세요" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247005ms] [LOG] item_index	4 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247005ms] [LOG] item_landing_url	"https://ridibooks.com/event/96875" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247085ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247085ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247085ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247086ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247086ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247086ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247086ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247086ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247086ms] [LOG] item_id	2494606 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247086ms] [LOG] item_title	"어찌해야\n나만 봐 줄래?" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247086ms] [LOG] item_index	5 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  247086ms] [LOG] item_landing_url	"https://ridibooks.com/event/96902" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  252927ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  252927ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  252927ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  252927ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  252927ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  252928ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  252928ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  252928ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  252928ms] [LOG] item_id	2489812 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  252928ms] [LOG] item_title	"팀장님 설마,\n제 생각이 들리세요?" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  252928ms] [LOG] item_index	6 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  252928ms] [LOG] item_landing_url	"https://ridibooks.com/event/96786" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253005ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253005ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253005ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253005ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253005ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253005ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253005ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253005ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253005ms] [LOG] item_id	2494820 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253006ms] [LOG] item_title	"공작님이 바람 피우는\n것을 아십니까, 부인?" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253006ms] [LOG] item_index	7 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253006ms] [LOG] item_landing_url	"https://ridibooks.com/event/96904" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253085ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253085ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253085ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253085ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253085ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253085ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253085ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253085ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253085ms] [LOG] item_id	2494613 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253086ms] [LOG] item_title	"모두가 기다린\n전원 1,500P!" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253086ms] [LOG] item_index	8 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  253086ms] [LOG] item_landing_url	"https://ridibooks.com/event/96903" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  258929ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  258929ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  258929ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  258929ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  258929ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  258929ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  258929ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  258929ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  258929ms] [LOG] item_id	2495831 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  258929ms] [LOG] item_title	"<악인 남편> 연참으로\n시즌 2 론칭!" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  258929ms] [LOG] item_index	9 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  258929ms] [LOG] item_landing_url	"https://ridibooks.com/event/96845" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259004ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259004ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259004ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259004ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259004ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259004ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259004ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259004ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259004ms] [LOG] item_id	2494472 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259004ms] [LOG] item_title	"이대로 밀어붙여도\n받아줄 거예요, 누나?" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259004ms] [LOG] item_index	10 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259004ms] [LOG] item_landing_url	"https://ridibooks.com/event/96900" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259087ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259087ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259087ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259087ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259087ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259087ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259087ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259087ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259087ms] [LOG] item_id	2494115 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259087ms] [LOG] item_title	"네가 그랬잖아.\n가족 갖고 싶다며." @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259087ms] [LOG] item_index	11 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  259087ms] [LOG] item_landing_url	"https://ridibooks.com/event/96874" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  264929ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  264929ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  264929ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  264929ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  264929ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  264930ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  264930ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  264930ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  264930ms] [LOG] item_id	2494497 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  264930ms] [LOG] item_title	"안 자고 있던 내가\n랜덤 티켓을 얻음" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  264930ms] [LOG] item_index	12 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  264930ms] [LOG] item_landing_url	"https://ridibooks.com/event/96898" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265004ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265004ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265004ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265004ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265004ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265004ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265004ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265004ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265004ms] [LOG] item_id	2490924 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265004ms] [LOG] item_title	"<순종적 임신>\n외전으로 컴백!" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265004ms] [LOG] item_index	13 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265004ms] [LOG] item_landing_url	"https://ridibooks.com/event/96798" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265086ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265086ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265086ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265086ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265086ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265086ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265086ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265086ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265086ms] [LOG] item_id	2485024 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265086ms] [LOG] item_title	"환자, 그러니까 깡패한테\n제대로 잘못 걸렸다!" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265087ms] [LOG] item_index	14 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  265087ms] [LOG] item_landing_url	"https://ridibooks.com/event/96644" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  270929ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  270929ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  270929ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  270929ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  270929ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  270929ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  270929ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  270929ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  270929ms] [LOG] item_id	2494113 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  270929ms] [LOG] item_title	"거짓말. 이상한 게\n아니라 좋은 거면서." @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  270929ms] [LOG] item_index	15 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  270929ms] [LOG] item_landing_url	"https://ridibooks.com/event/96862" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271011ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271011ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271011ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271011ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271011ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271012ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271012ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271012ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271012ms] [LOG] item_id	2490928 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271012ms] [LOG] item_title	"하루바삐 사내를 만나야\n살아 남는다고?" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271012ms] [LOG] item_index	16 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271012ms] [LOG] item_landing_url	"https://ridibooks.com/event/96840" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271086ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271086ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271086ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271086ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271086ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271086ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271086ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271086ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271086ms] [LOG] item_id	2488111 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271086ms] [LOG] item_title	"헤테로 연프에서\n전애인과 만날 확률!" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271086ms] [LOG] item_index	17 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  271086ms] [LOG] item_landing_url	"https://ridibooks.com/event/96071" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  276927ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  276927ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  276927ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  276927ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  276927ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  276927ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  276927ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  276927ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  276927ms] [LOG] item_id	2473490 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  276927ms] [LOG] item_title	"우리가 평범한 형제였던\n적은 단 한 번도 없었어" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  276927ms] [LOG] item_index	18 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  276928ms] [LOG] item_landing_url	"https://ridibooks.com/event/96343" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277011ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277011ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277011ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277011ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277011ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277011ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277011ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277011ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277011ms] [LOG] item_id	2485296 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277011ms] [LOG] item_title	"[전원 50% 포백]\n차력<환상의 러브라인>" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277011ms] [LOG] item_index	19 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277011ms] [LOG] item_landing_url	"https://ridibooks.com/event/96481" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277086ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277086ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277086ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277087ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277087ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277087ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277087ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277087ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277087ms] [LOG] item_id	2495100 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277087ms] [LOG] item_title	"그러니까 내가 영원히\n친구로 남고 싶은 거야." @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277087ms] [LOG] item_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  277087ms] [LOG] item_landing_url	"https://ridibooks.com/event/96905" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  282962ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  282962ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  282962ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  282962ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  282962ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  282962ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  282962ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  282963ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  282963ms] [LOG] item_id	2494235 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  282963ms] [LOG] item_title	"나으리가 안 계셔도,\n온통 나으리 뿐이었으니." @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  282963ms] [LOG] item_index	1 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  282963ms] [LOG] item_landing_url	"https://ridibooks.com/event/96881" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  283065ms] [LOG] view_path	"/webtoon/recommendation" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  283065ms] [LOG] section_id	521 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  283065ms] [LOG] section_title	"" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  283065ms] [LOG] section_layout	"TopCarouselCover" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  283065ms] [LOG] section_type	null @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  283065ms] [LOG] section_landing_url	undefined @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  283065ms] [LOG] section_index	0 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  283065ms] [LOG] view_session_id	"52y00fqbg65" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  283065ms] [LOG] item_id	2494629 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  283065ms] [LOG] item_title	"상상했던 거 보다 훨씬\n더 예쁘게 우네." @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  283065ms] [LOG] item_index	2 @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12
+[  283065ms] [LOG] item_landing_url	"https://ridibooks.com/event/96856" @ https://static.ridicdn.net/books-frontend/s/97eaa0/_next/static/chunks/31rlx-4losysf.js:12

@@ -1,0 +1,38 @@
+
+# 환경 변수 
+.env
+
+# 산출물
+reports/
+screenshots/
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.python-version
+
+# 가상환경
+venv/
+.venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Google OAuth
+config/credentials.json
+config/token.json
+
+
+# claude
+claude.md
+memory.md

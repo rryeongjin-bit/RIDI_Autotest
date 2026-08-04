@@ -1,0 +1,15 @@
+- generic [active] [ref=f30e1]:
+  - banner [ref=f30e5]:
+    - heading [level=1] [ref=f30e7]:
+      - link "내 서재" [ref=f30e8] [cursor=pointer]:
+        - /url: /library
+    - generic [ref=f30e9]:
+      - list [ref=f30e10]:
+        - listitem [ref=f30e11]:
+          - link "RIDI" [ref=f30e12] [cursor=pointer]:
+            - /url: https://ridibooks.com/
+        - listitem [ref=f30e15]:
+          - link "RIDI Select" [ref=f30e16] [cursor=pointer]:
+            - /url: https://select.ridibooks.com/
+      - button "마이메뉴" [ref=f30e21] [cursor=pointer]
+  - paragraph: stage
